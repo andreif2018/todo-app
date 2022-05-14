@@ -9,6 +9,9 @@ export default {
 <template>
   <div class="home">
     <HeaderItem msg="This is an home page" />
+    <main class="main">
+
+    </main>
     <FooterItem />
   </div>
 </template>
@@ -25,5 +28,26 @@ export default {
     "header"
     "main"
     "footer";
+}
+
+.main {
+  grid-area: main;
+  line-height: 1.5;
+  width: 100vw;
+  height: 80vh;
+  background: linear-gradient(
+      45deg,
+      #2c3e50 0%,
+      #1c1e1c 50%,
+      #1c1e1c 51%,
+      #2c3e50 100%
+  );
+  border-top: 1px solid azure;
+  border-bottom: 1px solid azure;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2rem;
 }
 </style>
