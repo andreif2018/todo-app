@@ -10,12 +10,8 @@ export default {
   <div class="about">
     <HeaderItem msg="About page" />
     <main class="main">
-      <p>
-        This is Camel App!
-      </p>
-      <p>
-        Have Fun :)
-      </p>
+      <p>This is Camel App!</p>
+      <p>Have Fun :)</p>
       <div class="feature-container">
         <p>Available features:</p>
         <ul>

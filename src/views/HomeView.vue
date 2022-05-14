@@ -1,8 +1,9 @@
 <script>
 import HeaderItem from "../components/HeaderItem.vue";
 import FooterItem from "../components/FooterItem.vue";
+import ToDoList from "@/components/ToDoList.vue";
 export default {
-  components: { FooterItem, HeaderItem },
+  components: { ToDoList, FooterItem, HeaderItem },
 };
 </script>
 
@@ -10,7 +11,7 @@ export default {
   <div class="home">
     <HeaderItem msg="Home page" />
     <main class="main">
-
+      <ToDoList />
     </main>
     <FooterItem />
   </div>

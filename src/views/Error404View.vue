@@ -10,9 +10,7 @@ export default {
   <div class="error404">
     <HeaderItem msg="Error 404!" />
     <main class="main">
-      <h2>
-        Page Not found
-      </h2>
+      <h2>Page Not found</h2>
       <p>
         <a href="/">Go to the Home page</a>
       </p>
