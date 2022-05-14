@@ -1,16 +1,14 @@
 <script>
 import HeaderItem from "../components/HeaderItem.vue";
 import FooterItem from "../components/FooterItem.vue";
-import MainItem from "../components/MainItem.vue";
 export default {
-  components: { MainItem, FooterItem, HeaderItem },
+  components: { FooterItem, HeaderItem },
 };
 </script>
 
 <template>
   <div class="home">
     <HeaderItem msg="This is an home page" />
-    <MainItem />
     <FooterItem />
   </div>
 </template>

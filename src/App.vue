@@ -32,8 +32,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
-  text-decoration: underline;
+  color: mediumaquamarine;
 }
 
 nav a.router-link-exact-active:hover {
