@@ -1,0 +1,53 @@
+<script setup lang="ts">
+import LogoWrapper from "@/components/LogoWrapper.vue";
+import NavPanel from "@/components/NavPanel.vue";
+</script>
+
+<template>
+  <footer class="footer">
+    <LogoWrapper />
+    <a
+      class="github"
+      href="https://github.com/andreif2018"
+      target="_blank"
+      rel="noopener noreferrer"
+      >View in GitHub</a
+    >
+    <NavPanel />
+  </footer>
+</template>
+
+<style scoped>
+.footer {
+  grid-area: footer;
+  line-height: 1.5;
+  max-height: 100vh;
+  border-top: 1px solid aquamarine;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+}
+
+.github {
+  display: block;
+  width: max-content;
+  height: 45px;
+  padding-left: 45px;
+  background-image: url("../assets/github.svg");
+  background-size: 35px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  line-height: 45px;
+  color: #cbd5de;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  transition: 0.3s;
+}
+
+.github:hover {
+  color: #fff;
+}
+</style>
