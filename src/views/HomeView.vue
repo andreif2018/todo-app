@@ -1,9 +1,31 @@
-<script setup lang="ts">
-import TheWelcome from "@/components/TheWelcome.vue";
+<script>
+import HeaderItem from "../components/HeaderItem.vue";
+import FooterItem from "../components/FooterItem.vue";
+import MainItem from "../components/MainItem.vue";
+export default {
+  components: { MainItem, FooterItem, HeaderItem },
+};
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="home">
+    <HeaderItem msg="This is an home page" />
+    <MainItem />
+    <FooterItem />
+  </div>
 </template>
+
+<style>
+.home {
+  overflow-x: hidden;
+  min-height: 100vh;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+</style>

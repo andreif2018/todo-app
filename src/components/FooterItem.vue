@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LogoWrapper from "@/components/LogoWrapper.vue";
+import LogoWrapper from "@/components/LogoItem.vue";
 import NavPanel from "@/components/NavPanel.vue";
 </script>
 
@@ -21,8 +21,7 @@ import NavPanel from "@/components/NavPanel.vue";
 .footer {
   grid-area: footer;
   line-height: 1.5;
-  max-height: 100vh;
-  border-top: 1px solid aquamarine;
+  height: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: row;

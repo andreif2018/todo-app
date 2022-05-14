@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LogoWrapper from "@/components/LogoWrapper.vue";
+import LogoWrapper from "@/components/LogoItem.vue";
 import NavPanel from "@/components/NavPanel.vue";
 
 defineProps<{
@@ -21,8 +21,7 @@ defineProps<{
 .header {
   grid-area: header;
   line-height: 1.5;
-  max-height: 100vh;
-  border-bottom: 1px solid aquamarine;
+  height: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -34,5 +33,6 @@ defineProps<{
 .header .title {
   width: 40vw;
   text-align: center;
+  color: azure;
 }
 </style>
