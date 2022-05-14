@@ -28,6 +28,7 @@ import NavPanel from "@/components/NavPanel.vue";
   justify-content: space-between;
   align-items: center;
   background-color: #2c3e50;
+  border-top: 1px solid slategray;
 }
 
 .github {

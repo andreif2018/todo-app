@@ -8,7 +8,7 @@ export default {
 
 <template>
   <div class="about">
-    <HeaderItem msg="This is an about page" />
+    <HeaderItem msg="About page" />
     <main class="main">
       <p>
         This is Camel App!
@@ -30,6 +30,8 @@ export default {
 </template>
 
 <style>
+@import "./../assets/base.css";
+
 .about {
   min-height: 100vh;
   align-items: center;
@@ -44,23 +46,13 @@ export default {
 
 .main {
   grid-area: main;
-  line-height: 1.5;
-  width: 100vw;
-  height: 80vh;
-  background: linear-gradient(
-    45deg,
-    #2c3e50 0%,
-    #1c1e1c 50%,
-    #1c1e1c 51%,
-    #2c3e50 100%
-  );
-  border-top: 1px solid azure;
-  border-bottom: 1px solid azure;
+  width: var(--whidth-main);
+  height: var(--height-main);
+  background: var(--color-background-dark);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  font-size: 2rem;
 }
 
 .feature-container {

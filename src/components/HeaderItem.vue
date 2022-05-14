@@ -28,6 +28,7 @@ defineProps<{
   justify-content: space-between;
   align-items: center;
   background-color: #2c3e50;
+  border-bottom: 1px solid slategray;
 }
 
 .header .title {
