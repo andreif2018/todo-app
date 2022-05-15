@@ -11,6 +11,9 @@ module.exports = {
   ],
   env: {
     "vue/setup-compiler-macros": true,
+    browser: true,
+    amd: true,
+    node: true,
   },
   overrides: [
     {
@@ -18,4 +21,5 @@ module.exports = {
       extends: ["plugin:cypress/recommended"],
     },
   ],
+  ignorePatterns: ["dist/*"],
 };
