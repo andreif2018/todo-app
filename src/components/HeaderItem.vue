@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LogoWrapper from "@/components/LogoItem.vue";
+import LogoItem from "@/components/LogoItem.vue";
 import NavPanel from "@/components/NavPanel.vue";
 
 defineProps<{
@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <header class="header">
-    <LogoWrapper />
+    <LogoItem />
     <div class="title">
       <h1>{{ msg }}</h1>
     </div>

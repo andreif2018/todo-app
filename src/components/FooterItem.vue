@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import LogoWrapper from "@/components/LogoItem.vue";
+import LogoItem from "@/components/LogoItem.vue";
 import NavPanel from "@/components/NavPanel.vue";
 </script>
 
 <template>
   <footer class="footer">
-    <LogoWrapper />
+    <LogoItem />
     <a
       class="github"
-      href="https://github.com/andreif2018"
+      href="https://github.com/andreif2018/todo-app"
       target="_blank"
       rel="noopener noreferrer"
       >View in GitHub</a

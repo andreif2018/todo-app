@@ -6,7 +6,7 @@
         type="text"
         class="add-message"
         value=""
-        placeholder="Type ToDo name here..."
+        placeholder="Type ToDo name..."
       />
     </div>
     <h4 class="list-title">ToDo List</h4>
