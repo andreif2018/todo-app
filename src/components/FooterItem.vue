@@ -21,7 +21,7 @@ import NavPanel from "@/components/NavPanel.vue";
 .footer {
   grid-area: footer;
   line-height: 1.5;
-  height: 10vh;
+  height: 7vh;
   width: 100vw;
   display: flex;
   flex-direction: row;

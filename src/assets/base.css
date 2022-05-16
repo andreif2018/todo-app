@@ -30,7 +30,7 @@
 /* semantic color variables for this project */
 :root {
   --whidth-main: 100vw;
-  --height-main: 80vh;
+  --height-main: 83vh;
   --color-background-dark: var(--vt-c-background-dark);
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
