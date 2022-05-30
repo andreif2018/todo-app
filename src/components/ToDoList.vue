@@ -4,14 +4,28 @@ import AddToDo from "@/components/AddToDo.vue";
 import ToDoItem from "@/components/ToDoItem.vue";
 
 let id = 0;
-const list = ref([]);
-function addTodo(newTodo) {
-  list.value.push({
+const todoList = ref([]);
+
+const addTodo = (newTodo) => {
+  todoList.value.push({
     id: id++,
     text: newTodo.value,
-    createdTime: new Date().toString(),
+    createdTime: new Date().toLocaleString(),
   });
-}
+};
+
+const update = (id, message) => {
+  todoList.value[id] = {
+    id: id,
+    text: message,
+    createdTime: todoList.value[id].created,
+    modifiedTime: new Date().toLocaleString(),
+  };
+};
+
+const remove = (todoID) => {
+  todoList.value = todoList.value.filter((item) => item.id !== todoID);
+};
 </script>
 
 <template>
@@ -19,10 +33,13 @@ function addTodo(newTodo) {
   <h4 class="list-title">ToDo List</h4>
   <ol class="list-container">
     <ToDoItem
-      v-for="item in list"
+      v-for="item in todoList"
       :key="item.id"
       :title="item.text"
-      :time-stamp="item.createdTime"
+      :created="item.createdTime"
+      :modified="item.modifiedTime"
+      @update="(msg) => update(item.id, msg)"
+      @remove="() => remove(item.id)"
     />
   </ol>
 </template>
