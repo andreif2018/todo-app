@@ -12,7 +12,11 @@ const removeTodo = () => {
   emit("remove");
 };
 
+let isToDoDisabled = ref(true);
 const updateTodo = () => {
+  if (isToDoDisabled.value === true) {
+    isToDoDisabled.value = !isToDoDisabled.value;
+  }
   emit("update", text.value);
 };
 
@@ -30,10 +34,15 @@ const getInfo = () => {
 
 <template>
   <li class="todo-item">
-    <input class="item-title" type="text" v-model="text" />
+    <input
+      class="item-title"
+      type="text"
+      v-model="text"
+      :disabled="isToDoDisabled"
+    />
     <div class="button-wrapper">
       <button class="info" @click="getInfo">?</button>
-      <button class="update" @click="updateTodo" />
+      <button class="update" @click="updateTodo" :disabled="!isToDoDisabled" />
       <button class="remove" @click="removeTodo" />
     </div>
   </li>
@@ -69,16 +78,20 @@ const getInfo = () => {
 }
 
 .info:active,
-.update:active,
+.update:not(:disabled):active,
 .remove:active {
   cursor: pointer;
 }
 
 .info:hover,
-.update:hover,
+.update:not(:disabled):hover,
 .remove:hover {
   box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   cursor: pointer;
+}
+
+.update:disabled {
+  opacity: 50%;
 }
 
 .todo-item {

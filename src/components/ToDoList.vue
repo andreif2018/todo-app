@@ -18,7 +18,7 @@ const update = (id, message) => {
   todoList.value[id] = {
     id: id,
     text: message,
-    createdTime: todoList.value[id].created,
+    createdTime: todoList.value[id].createdTime,
     modifiedTime: new Date().toLocaleString(),
   };
 };
