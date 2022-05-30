@@ -35,7 +35,7 @@ export default {
 
 .main {
   grid-area: main;
-  width: var(--whidth-main);
+  width: var(--width-main);
   height: var(--height-main);
   background: var(--color-background-dark);
   display: flex;

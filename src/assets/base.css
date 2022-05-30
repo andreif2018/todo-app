@@ -25,11 +25,13 @@
       #2c3e50 65%,
       #1c1e1c 100%
   );
+  --button-width: 2.5vw;
+  --button-height: 2.5vw;
 }
 
 /* semantic color variables for this project */
 :root {
-  --whidth-main: 100vw;
+  --width-main: 100vw;
   --height-main: 83vh;
   --color-background-dark: var(--vt-c-background-dark);
   --color-background: var(--vt-c-white);
