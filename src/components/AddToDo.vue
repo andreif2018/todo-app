@@ -3,22 +3,40 @@ import { ref } from "vue";
 
 const text = ref("");
 const emit = defineEmits(["response"]);
+let showPopup = ref(false);
+
 const addItem = () => {
-  emit("response", text);
-  text.value = "";
+  if (text.value.length >= 2) {
+    emit("response", text);
+    text.value = "";
+    if (showPopup.value === true) {
+      showPopup.value = !showPopup.value;
+    }
+  } else if (showPopup.value === false) {
+    showPopup.value = !showPopup.value;
+  }
 };
 </script>
 
 <template>
-  <div class="add-container">
-    <button class="add-button" @click="addItem">+</button>
+  <div class="add-wrapper">
     <input
-      v-model="text"
-      class="add-message"
-      maxlength="32"
-      minlength="1"
-      placeholder="Type ToDo name..."
+      v-if="text.length < 2 && showPopup"
+      class="popup"
+      type="text"
+      :disabled="true"
+      value="Text length should be at least 2 characters"
     />
+    <div class="add-container">
+      <button class="add-button" @click="addItem">+</button>
+      <input
+        v-model="text"
+        class="todo"
+        maxlength="48"
+        minlength="2"
+        placeholder="Type ToDo name..."
+      />
+    </div>
   </div>
 </template>
 
@@ -29,6 +47,7 @@ const addItem = () => {
   width: 60vw;
   height: 10vh;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
@@ -60,7 +79,7 @@ const addItem = () => {
   cursor: pointer;
 }
 
-.add-message {
+.todo {
   padding-left: 15px;
   cursor: pointer;
   width: 50vw;
@@ -73,5 +92,25 @@ const addItem = () => {
     0 2px 3px 1px rgba(255, 255, 255, 0.19),
     0 2px 3px 1px rgba(255, 255, 255, 0.19),
     0 2px 3px 1px rgba(255, 255, 255, 0.19);
+}
+
+.todo:invalid {
+  border: 2px dashed red;
+}
+
+.popup {
+  color: red;
+  font-size: 1rem;
+  width: 22rem;
+  background: none;
+  text-align: center;
+}
+
+.add-wrapper {
+  height: 14vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 }
 </style>

@@ -30,7 +30,6 @@ const remove = (todoID) => {
 
 <template>
   <AddToDo @response="(msg) => addTodo(msg)" />
-  <h4 class="list-title">ToDo List</h4>
   <ol class="list-container">
     <ToDoItem
       v-for="item in todoList"
@@ -45,10 +44,6 @@ const remove = (todoID) => {
 </template>
 
 <style scoped>
-.list-title {
-  text-align: center;
-}
-
 .list-container {
   padding: 2vh;
   border-radius: 10px;
@@ -59,5 +54,6 @@ const remove = (todoID) => {
   flex-direction: column;
   align-items: center;
   row-gap: 2vh;
+  overflow-y: auto;
 }
 </style>

@@ -9,7 +9,7 @@ export default {
 
 <template>
   <div class="home">
-    <HeaderItem msg="Home page" />
+    <HeaderItem msg="ToDo list" />
     <main class="main">
       <ToDoList />
     </main>
