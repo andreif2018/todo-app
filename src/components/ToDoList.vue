@@ -24,7 +24,10 @@ const update = (id, message) => {
 };
 
 const remove = (todoID) => {
-  todoList.value = todoList.value.filter((item) => item.id !== todoID);
+  todoList.value = todoList.value.filter((item) => {
+    const { id: id1 } = item;
+    return id1 !== todoID;
+  });
 };
 </script>
 
