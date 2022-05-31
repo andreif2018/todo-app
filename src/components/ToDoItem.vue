@@ -7,14 +7,23 @@ const props = defineProps<{
 const emit = defineEmits(["update", "remove"]);
 import { ref } from "vue";
 const text = ref(props.title);
-
+let vFocus: { updated: (el: HTMLInputElement) => void };
+vFocus = {
+  updated: (el: HTMLInputElement) => el.focus(),
+};
 const removeTodo = () => {
   emit("remove");
 };
 
 let isToDoDisabled = ref(true);
-const updateTodo = () => {
+const editTodo = () => {
   if (isToDoDisabled.value === true) {
+    isToDoDisabled.value = !isToDoDisabled.value;
+  }
+};
+
+const updateTodo = () => {
+  if (isToDoDisabled.value === false) {
     isToDoDisabled.value = !isToDoDisabled.value;
   }
   emit("update", text.value);
@@ -39,11 +48,12 @@ const getInfo = () => {
       type="text"
       v-model="text"
       :disabled="isToDoDisabled"
-      @blur="isToDoDisabled = !isToDoDisabled"
+      v-focus
+      @blur="updateTodo"
     />
     <div class="button-wrapper">
       <button class="info" @click="getInfo">?</button>
-      <button class="update" @click="updateTodo" :disabled="!isToDoDisabled" />
+      <button class="edit" @click="editTodo" :disabled="!isToDoDisabled" />
       <button class="remove" @click="removeTodo" />
     </div>
   </li>
@@ -52,7 +62,7 @@ const getInfo = () => {
 <style scoped>
 @import "./../assets/base.css";
 
-.update {
+.edit {
   background-image: url("./../assets/edit.png");
 }
 
@@ -61,7 +71,7 @@ const getInfo = () => {
 }
 
 .info,
-.update,
+.edit,
 .remove {
   width: var(--button-width);
   height: var(--button-height);
@@ -79,19 +89,19 @@ const getInfo = () => {
 }
 
 .info:active,
-.update:not(:disabled):active,
+.edit:not(:disabled):active,
 .remove:active {
   cursor: pointer;
 }
 
 .info:hover,
-.update:not(:disabled):hover,
+.edit:not(:disabled):hover,
 .remove:hover {
   box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   cursor: pointer;
 }
 
-.update:disabled {
+.edit:disabled {
   opacity: 50%;
 }
 
@@ -116,5 +126,9 @@ const getInfo = () => {
   border: none;
   color: var(--color-text);
   font-size: 1.5rem;
+}
+.item-title:focus {
+  background: cadetblue;
+  border: blue;
 }
 </style>
