@@ -4,18 +4,20 @@ const props = defineProps<{
   created?: string;
   modified?: string;
 }>();
-const emit = defineEmits(["update", "remove"]);
+const emit = defineEmits(["update", "remove", "hint"]);
 import { ref } from "vue";
 const text = ref(props.title);
 let vFocus: { updated: (el: HTMLInputElement) => void };
 vFocus = {
   updated: (el: HTMLInputElement) => el.focus(),
 };
+
 const removeTodo = () => {
   emit("remove");
 };
 
 let isToDoDisabled = ref(true);
+
 const editTodo = () => {
   if (isToDoDisabled.value === true) {
     isToDoDisabled.value = !isToDoDisabled.value;
@@ -23,10 +25,10 @@ const editTodo = () => {
 };
 
 const updateTodo = () => {
-  if (isToDoDisabled.value === false) {
+  if (text.value && text.value.length >= 2) {
     isToDoDisabled.value = !isToDoDisabled.value;
+    emit("update", text.value);
   }
-  emit("update", text.value);
 };
 
 const getInfo = () => {
@@ -39,6 +41,14 @@ const getInfo = () => {
   }
   alert(info);
 };
+
+const handleTip = () => {
+  if (text.value && text.value.length >= 2) {
+    emit("hint", false);
+  } else {
+    emit("hint", true);
+  }
+};
 </script>
 
 <template>
@@ -49,11 +59,14 @@ const getInfo = () => {
       v-model="text"
       :disabled="isToDoDisabled"
       v-focus
-      @blur="updateTodo"
+      maxlength="48"
+      minlength="2"
+      @input="handleTip"
     />
     <div class="button-wrapper">
+      <button class="edit" v-if="isToDoDisabled" @click="editTodo" />
+      <button class="save" v-else @click="updateTodo">save</button>
       <button class="info" @click="getInfo">?</button>
-      <button class="edit" @click="editTodo" :disabled="!isToDoDisabled" />
       <button class="remove" @click="removeTodo" />
     </div>
   </li>
@@ -70,11 +83,10 @@ const getInfo = () => {
   background-image: url("./../assets/delete.png");
 }
 
+.save,
 .info,
 .edit,
 .remove {
-  width: var(--button-width);
-  height: var(--button-height);
   font-weight: bold;
   font-size: large;
   border-radius: 5px;
@@ -88,21 +100,32 @@ const getInfo = () => {
   background-size: cover;
 }
 
+.save {
+  width: 5vw;
+  height: var(--button-height);
+  font-weight: bold;
+}
+
+.info,
+.edit,
+.remove {
+  width: var(--button-width);
+  height: var(--button-height);
+}
+
+.save:active,
 .info:active,
 .edit:not(:disabled):active,
 .remove:active {
   cursor: pointer;
 }
 
+.save:hover,
 .info:hover,
 .edit:not(:disabled):hover,
 .remove:hover {
   box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   cursor: pointer;
-}
-
-.edit:disabled {
-  opacity: 50%;
 }
 
 .todo-item {
@@ -116,19 +139,26 @@ const getInfo = () => {
 }
 
 .button-wrapper {
-  width: 10vw;
+  width: max-content;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1vw;
 }
 
 .item-title {
+  width: 75%;
   background: none;
   border: none;
   color: var(--color-text);
   font-size: 1.5rem;
 }
+
 .item-title:focus {
   background: cadetblue;
   border: blue;
+}
+
+.item-title:invalid {
+  border: 2px dashed red;
 }
 </style>

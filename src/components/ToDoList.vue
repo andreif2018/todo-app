@@ -2,9 +2,11 @@
 import { ref } from "vue";
 import AddToDo from "@/components/AddToDo.vue";
 import ToDoItem from "@/components/ToDoItem.vue";
+import ToolTip from "@/components/ToolTip.vue";
 
 let id = 0;
 const todoList = ref([]);
+let isTip = ref(false);
 
 const addTodo = (newTodo) => {
   todoList.value.push({
@@ -29,21 +31,31 @@ const remove = (todoID) => {
     return id1 !== todoID;
   });
 };
+
+const showTip = (status) => {
+  if (isTip.value !== status) {
+    isTip.value = !isTip.value;
+  }
+};
 </script>
 
 <template>
   <AddToDo @response="(msg) => addTodo(msg)" />
-  <ol class="list-container">
-    <ToDoItem
-      v-for="item in todoList"
-      :key="item.id"
-      :title="item.text"
-      :created="item.createdTime"
-      :modified="item.modifiedTime"
-      @update="(msg) => update(item.id, msg)"
-      @remove="() => remove(item.id)"
-    />
-  </ol>
+  <div class="list-wrapper">
+    <ToolTip v-if="isTip" />
+    <ol class="list-container">
+      <ToDoItem
+        v-for="item in todoList"
+        :key="item.id"
+        :title="item.text"
+        :created="item.createdTime"
+        :modified="item.modifiedTime"
+        @update="(msg) => update(item.id, msg)"
+        @remove="() => remove(item.id)"
+        @hint="(msg) => showTip(msg)"
+      />
+    </ol>
+  </div>
 </template>
 
 <style scoped>
@@ -52,11 +64,19 @@ const remove = (todoID) => {
   border-radius: 10px;
   border: 1px solid slategray;
   width: 70vw;
-  height: 55vh;
+  height: 59vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 2vh;
   overflow-y: auto;
+}
+
+.list-wrapper {
+  height: 63vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 }
 </style>
