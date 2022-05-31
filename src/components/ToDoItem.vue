@@ -39,6 +39,7 @@ const getInfo = () => {
       type="text"
       v-model="text"
       :disabled="isToDoDisabled"
+      @blur="isToDoDisabled = !isToDoDisabled"
     />
     <div class="button-wrapper">
       <button class="info" @click="getInfo">?</button>
