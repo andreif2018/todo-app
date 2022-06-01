@@ -23,7 +23,6 @@ const addItem = () => {
       v-if="text.length < 2 && isWrongLength"
       :msg="toolTipEnum.LENGTH"
     />
-    <ToolTip v-else-if="isDuplicate" :msg="toolTipEnum.DUPLICATE" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
       <input
