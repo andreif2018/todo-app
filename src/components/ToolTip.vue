@@ -1,10 +1,10 @@
+<script setup lang="ts">
+defineProps<{
+  msg: string;
+}>();
+</script>
 <template>
-  <input
-    class="popup"
-    type="text"
-    :disabled="true"
-    value="Text length should be at least 2 characters"
-  />
+  <div class="popup">{{ msg }}</div>
 </template>
 
 <style scoped>
@@ -12,7 +12,9 @@
   color: red;
   font-size: 1rem;
   width: 22rem;
-  background: none;
   text-align: center;
+  cursor: default;
+  border: 1px solid rgba(118, 118, 118, 0.3);
+  background-color: rgba(59, 59, 59, 0.3);
 }
 </style>

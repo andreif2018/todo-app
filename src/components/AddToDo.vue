@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
+import toolTipEnum from "@/model/model.ts";
 
 const text = ref("");
 const emit = defineEmits(["response"]);
@@ -18,10 +19,9 @@ const addItem = () => {
   }
 };
 </script>
-
 <template>
   <div class="add-wrapper">
-    <ToolTip v-if="text.length < 2 && showPopup" />
+    <ToolTip v-if="text.length < 2 && showPopup" :msg="toolTipEnum.LENGTH" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
       <input
