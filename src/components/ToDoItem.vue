@@ -1,12 +1,18 @@
 <script setup lang="ts">
+import { toggleOff, toggleOn } from "@/utils";
+
 const props = defineProps<{
   title?: string;
   created?: string;
   modified?: string;
+  isDone?: boolean;
 }>();
-const emit = defineEmits(["update", "remove", "hint"]);
+const emit = defineEmits(["update", "remove", "hint", "check"]);
 import { ref } from "vue";
+import CustomCheckbox from "@/components/CustomCheckbox.vue";
 const text = ref(props.title);
+let isToDoDisabled = ref(true);
+const isChecked = ref(props.isDone);
 let vFocus: { updated: (el: HTMLInputElement) => void };
 vFocus = {
   updated: (el: HTMLInputElement) => el.focus(),
@@ -16,17 +22,13 @@ const removeTodo = () => {
   emit("remove");
 };
 
-let isToDoDisabled = ref(true);
-
 const editTodo = () => {
-  if (isToDoDisabled.value === true) {
-    isToDoDisabled.value = !isToDoDisabled.value;
-  }
+  toggleOff(isToDoDisabled);
 };
 
 const updateTodo = () => {
   if (text.value && text.value.length >= 2) {
-    isToDoDisabled.value = !isToDoDisabled.value;
+    toggleOn(isToDoDisabled);
     emit("update", text.value);
   }
 };
@@ -49,12 +51,19 @@ const handleTip = () => {
     emit("hint", true);
   }
 };
+
+const handleCheck = () => {
+  isChecked.value ? toggleOff(isChecked) : toggleOn(isChecked);
+  emit("check", isChecked.value);
+};
 </script>
 
 <template>
   <li class="todo-item">
+    <CustomCheckbox :is-checked="isChecked" @check="handleCheck" />
     <input
       class="item-title"
+      :class="{ done: isChecked }"
       type="text"
       v-model="text"
       :disabled="isToDoDisabled"
@@ -83,6 +92,7 @@ const handleTip = () => {
   background-image: url("./../assets/delete.png");
 }
 
+.done,
 .save,
 .info,
 .edit,
@@ -101,16 +111,17 @@ const handleTip = () => {
 }
 
 .save {
-  width: 5vw;
-  height: var(--button-height);
-  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: lightskyblue;
 }
 
+.save,
 .info,
 .edit,
 .remove {
   width: var(--button-width);
   height: var(--button-height);
+  font-weight: bold;
 }
 
 .save:active,
@@ -142,11 +153,12 @@ const handleTip = () => {
   width: max-content;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 1vw;
 }
 
 .item-title {
-  width: 75%;
+  width: 70%;
   background: none;
   border: none;
   color: var(--color-text);
@@ -160,5 +172,9 @@ const handleTip = () => {
 
 .item-title:invalid {
   border: 2px dashed red;
+}
+
+.done {
+  text-decoration: line-through;
 }
 </style>

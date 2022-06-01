@@ -14,15 +14,18 @@ const addTodo = (newTodo) => {
     id: id++,
     text: newTodo.value,
     createdTime: new Date().toLocaleString(),
+    isDone: false,
   });
 };
 
 const update = (id, message) => {
+  const tempo = todoList.value[id];
   todoList.value[id] = {
     id: id,
     text: message,
-    createdTime: todoList.value[id].createdTime,
+    createdTime: tempo.createdTime,
     modifiedTime: new Date().toLocaleString(),
+    isDone: tempo.isDone,
   };
 };
 
@@ -38,6 +41,17 @@ const showTip = (status) => {
     isTip.value = !isTip.value;
   }
 };
+
+const checkTodo = (id, message) => {
+  const tempo = todoList.value[id];
+  todoList.value[id] = {
+    id: id,
+    text: tempo.text,
+    createdTime: tempo.createdTime,
+    modifiedTime: new Date().toLocaleString(),
+    isDone: message,
+  };
+};
 </script>
 
 <template>
@@ -51,9 +65,11 @@ const showTip = (status) => {
         :title="item.text"
         :created="item.createdTime"
         :modified="item.modifiedTime"
+        :isDone="item.isDone"
         @update="(msg) => update(item.id, msg)"
         @remove="() => remove(item.id)"
         @hint="(msg) => showTip(msg)"
+        @check="(msg) => checkTodo(item.id, msg)"
       />
     </ol>
   </div>
