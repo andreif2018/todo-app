@@ -1,27 +1,29 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
-import toolTipEnum from "@/model/model.ts";
+import { toolTipEnum, toggleOn, toggleOff } from "@/utils";
 
 const text = ref("");
 const emit = defineEmits(["response"]);
-let showPopup = ref(false);
+let isWrongLength = ref(false);
 
 const addItem = () => {
   if (text.value.length >= 2) {
+    toggleOff(isWrongLength);
     emit("response", text);
     text.value = "";
-    if (showPopup.value === true) {
-      showPopup.value = !showPopup.value;
-    }
-  } else if (showPopup.value === false) {
-    showPopup.value = !showPopup.value;
+  } else {
+    toggleOn(isWrongLength);
   }
 };
 </script>
 <template>
   <div class="add-wrapper">
-    <ToolTip v-if="text.length < 2 && showPopup" :msg="toolTipEnum.LENGTH" />
+    <ToolTip
+      v-if="text.length < 2 && isWrongLength"
+      :msg="toolTipEnum.LENGTH"
+    />
+    <ToolTip v-else-if="isDuplicate" :msg="toolTipEnum.DUPLICATE" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
       <input

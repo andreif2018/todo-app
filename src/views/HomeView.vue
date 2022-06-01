@@ -42,6 +42,5 @@ export default {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  border: 1px solid cyan;
 }
 </style>

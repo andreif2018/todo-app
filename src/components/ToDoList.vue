@@ -3,6 +3,7 @@ import { ref } from "vue";
 import AddToDo from "@/components/AddToDo.vue";
 import ToDoItem from "@/components/ToDoItem.vue";
 import ToolTip from "@/components/ToolTip.vue";
+import toolTipEnum from "@/utils.ts";
 
 let id = 0;
 const todoList = ref([]);
@@ -42,7 +43,7 @@ const showTip = (status) => {
 <template>
   <AddToDo @response="(msg) => addTodo(msg)" />
   <div class="list-wrapper">
-    <ToolTip v-if="isTip" />
+    <ToolTip v-if="isTip" :msg="toolTipEnum.LENGTH" />
     <ol class="list-container">
       <ToDoItem
         v-for="item in todoList"
@@ -73,10 +74,11 @@ const showTip = (status) => {
 }
 
 .list-wrapper {
-  height: 63vh;
+  height: 64vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
+  gap: 1vh;
 }
 </style>
