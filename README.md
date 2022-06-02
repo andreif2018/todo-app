@@ -2,7 +2,13 @@
 
 ##  [Demo site](https://andreif2018.github.io/todo-app/)
 
-This template should help get you started developing with Vue 3 in Vite.
+## Available features
+  - Add ToDo item
+  - Update ToDo item
+  - Delete ToDo item
+  - Complete ToDo item
+   
+## Template below should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
