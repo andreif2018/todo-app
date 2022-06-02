@@ -18,6 +18,7 @@ export default {
           <li>Add ToDo item</li>
           <li>Update ToDo item</li>
           <li>Delete ToDo item</li>
+          <li>Complete ToDo item</li>
         </ul>
       </div>
     </main>
