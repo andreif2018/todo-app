@@ -18,15 +18,14 @@ const addTodo = (newTodo) => {
   });
 };
 
-const update = (id, message) => {
-  const tempo = todoList.value[id];
-  todoList.value[id] = {
-    id: id,
-    text: message,
-    createdTime: tempo.createdTime,
-    modifiedTime: new Date().toLocaleString(),
-    isDone: tempo.isDone,
-  };
+const update = (todoID, message) => {
+  todoList.value.forEach((item) => {
+    const { id: id1 } = item;
+    if (id1 === todoID) {
+      item.text = message;
+      item.modifiedTime = new Date().toLocaleString();
+    }
+  });
 };
 
 const remove = (todoID) => {
