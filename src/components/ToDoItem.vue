@@ -10,13 +10,11 @@ const props = defineProps<{
 const emit = defineEmits(["update", "remove", "hint", "check"]);
 import { ref } from "vue";
 import CustomCheckbox from "@/components/CustomCheckbox.vue";
+import TodoText from "@/components/TodoText.vue";
+
 const text = ref(props.title);
 let isToDoDisabled = ref(true);
 const isChecked = ref(props.isDone);
-let vFocus: { updated: (el: HTMLInputElement) => void };
-vFocus = {
-  updated: (el: HTMLInputElement) => el.focus(),
-};
 
 const removeTodo = () => {
   emit("remove");
@@ -44,14 +42,6 @@ const getInfo = () => {
   alert(info);
 };
 
-const handleTip = () => {
-  if (text.value && text.value.length >= 2) {
-    emit("hint", false);
-  } else {
-    emit("hint", true);
-  }
-};
-
 const handleCheck = () => {
   isChecked.value ? toggleOff(isChecked) : toggleOn(isChecked);
   emit("check", isChecked.value);
@@ -61,16 +51,10 @@ const handleCheck = () => {
 <template>
   <li class="todo-item">
     <CustomCheckbox :is-checked="isChecked" @check="handleCheck" />
-    <input
-      class="item-title"
-      :class="{ done: isChecked }"
-      type="text"
-      v-model="text"
-      :disabled="isToDoDisabled"
-      v-focus
-      maxlength="48"
-      minlength="2"
-      @input="handleTip"
+    <TodoText
+      :title="text"
+      :is-done="isChecked"
+      :is-disabled="isToDoDisabled"
     />
     <div class="button-wrapper">
       <button class="edit" v-if="isToDoDisabled" @click="editTodo" />
@@ -92,7 +76,6 @@ const handleCheck = () => {
   background-image: url("./../assets/delete.png");
 }
 
-.done,
 .save,
 .info,
 .edit,
@@ -155,26 +138,5 @@ const handleCheck = () => {
   justify-content: flex-end;
   align-items: center;
   gap: 1vw;
-}
-
-.item-title {
-  width: 70%;
-  background: none;
-  border: none;
-  color: var(--color-text);
-  font-size: 1.5rem;
-}
-
-.item-title:focus {
-  background: cadetblue;
-  border: blue;
-}
-
-.item-title:invalid {
-  border: 2px dashed red;
-}
-
-.done {
-  text-decoration: line-through;
 }
 </style>
