@@ -1,6 +1,7 @@
-export const toolTipEnum = Object.freeze({
-  LENGTH: "Text length should be at least 2 characters",
-});
+export enum enumScope {
+  LENGTH_HINT = "Text length should be at least 3 characters",
+  MIN_TEXT_LENGTH = 3,
+}
 
 export interface ITodo {
   _id?: number;
