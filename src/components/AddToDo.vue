@@ -2,36 +2,47 @@
 import { ref } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
 import { toggleOn, toggleOff } from "@/utils";
-import { toolTipEnum } from "@/model";
+import { enumScope } from "@/model";
+import TodoText from "@/components/TodoText.vue";
 
 const text = ref("");
 const emit = defineEmits(["response"]);
-let isWrongLength = ref(false);
+let isValidText = ref(false);
+let isTriggeredButton = ref(false);
+let isReset = ref(false);
 
 const addItem = () => {
-  if (text.value.length >= 2) {
-    toggleOff(isWrongLength);
+  if (!isTriggeredButton.value) {
+    toggleOn(isTriggeredButton);
+  }
+  if (isValidText.value) {
     emit("response", text.value);
-    text.value = "";
+    toggleOn(isReset);
+  }
+};
+
+const validateText = ([status, inputText]: [boolean, string]) => {
+  if (status) {
+    toggleOn(isValidText);
+    text.value = inputText;
   } else {
-    toggleOn(isWrongLength);
+    toggleOff(isValidText);
+    toggleOff(isReset);
   }
 };
 </script>
 <template>
   <div class="add-wrapper">
     <ToolTip
-      v-if="text.length < 2 && isWrongLength"
-      :msg="toolTipEnum.LENGTH"
+      v-if="isTriggeredButton && !isValidText"
+      :msg="enumScope.LENGTH_HINT"
     />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
-      <input
-        v-model="text"
-        class="todo"
-        maxlength="48"
-        minlength="2"
-        placeholder="Type ToDo name..."
+      <TodoText
+        :reset="isReset"
+        place-holder="Type Todo here..."
+        @response="(msg) => validateText(msg)"
       />
     </div>
   </div>
@@ -74,25 +85,6 @@ const addItem = () => {
 .add-button:hover {
   box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   cursor: pointer;
-}
-
-.todo {
-  padding-left: 15px;
-  cursor: pointer;
-  width: 50vw;
-  height: 6vh;
-  background-color: azure;
-  font-weight: bold;
-  font-size: medium;
-  border-radius: 5px;
-  box-shadow: 0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19);
-}
-
-.todo:invalid {
-  border: 2px dashed red;
 }
 
 .add-wrapper {
