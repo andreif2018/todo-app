@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
-import { toolTipEnum, toggleOn, toggleOff } from "@/utils";
+import { toggleOn, toggleOff } from "@/utils";
+import { toolTipEnum } from "@/model";
 
 const text = ref("");
 const emit = defineEmits(["response"]);
@@ -10,7 +11,7 @@ let isWrongLength = ref(false);
 const addItem = () => {
   if (text.value.length >= 2) {
     toggleOff(isWrongLength);
-    emit("response", text);
+    emit("response", text.value);
     text.value = "";
   } else {
     toggleOn(isWrongLength);
