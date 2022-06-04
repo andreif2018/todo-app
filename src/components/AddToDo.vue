@@ -1,48 +1,44 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
-import { toggleOn, toggleOff } from "@/utils";
-import { enumScope } from "@/model";
-import TodoText from "@/components/TodoText.vue";
+import { toggleOn, validateInput } from "@/utils";
+import { Response, TextEnum } from "@/model";
 
 const text = ref("");
-const emit = defineEmits(["response"]);
-let isValidText = ref(false);
-let isTriggeredButton = ref(false);
-let isReset = ref(false);
+const emit = defineEmits([Response.VALIDATE, Response.SAVE]);
+const isOverMax = ref(true);
+const isBelowMin = ref(true);
+const isNotified = ref(false);
 
 const addItem = () => {
-  if (!isTriggeredButton.value) {
-    toggleOn(isTriggeredButton);
+  if (!isNotified.value) {
+    toggleOn(isNotified);
   }
-  if (isValidText.value) {
-    emit("response", text.value);
-    toggleOn(isReset);
+  if (!isBelowMin.value && !isOverMax.value) {
+    emit(Response.SAVE, text.value);
+    text.value = "";
   }
 };
 
-const validateText = ([status, inputText]: [boolean, string]) => {
-  if (status) {
-    toggleOn(isValidText);
-    text.value = inputText;
-  } else {
-    toggleOff(isValidText);
-    toggleOff(isReset);
+watch(
+  () => text.value,
+  (text) => {
+    validateInput(text, isBelowMin, isOverMax);
+    console.log(`handling ${text}`);
   }
-};
+);
 </script>
 <template>
   <div class="add-wrapper">
-    <ToolTip
-      v-if="isTriggeredButton && !isValidText"
-      :msg="enumScope.LENGTH_HINT"
-    />
+    <ToolTip v-if="isNotified && isOverMax" :msg="TextEnum.MAX_HINT" />
+    <ToolTip v-else-if="isNotified && isBelowMin" :msg="TextEnum.MIN_HINT" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
-      <TodoText
-        :reset="isReset"
-        place-holder="Type Todo here..."
-        @response="(msg) => validateText(msg)"
+      <input
+        class="title"
+        placeholder="Type Todo here..."
+        type="text"
+        v-model="text"
       />
     </div>
   </div>
@@ -68,10 +64,7 @@ const validateText = ([status, inputText]: [boolean, string]) => {
   font-weight: bold;
   font-size: x-large;
   border-radius: 5px;
-  box-shadow: 0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19);
+  box-shadow: var(--box-shadow);
   text-shadow: 2px 1px 2px azure;
   display: flex;
   justify-content: center;
@@ -93,5 +86,26 @@ const validateText = ([status, inputText]: [boolean, string]) => {
   flex-direction: column;
   justify-content: end;
   align-items: center;
+}
+
+.title {
+  border: none;
+  font-size: 1.2vw;
+  padding-left: 15px;
+  cursor: pointer;
+  width: 50vw;
+  height: 6vh;
+  background-color: azure;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+
+.title:focus {
+  border: blue;
+}
+
+.title:invalid {
+  border: 2px dashed red;
 }
 </style>
