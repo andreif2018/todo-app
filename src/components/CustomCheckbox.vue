@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { toggleOff, toggleOn } from "@/utils";
+import { ref } from "vue";
 const props = defineProps<{
   isChecked?: boolean;
 }>();
 const emit = defineEmits(["check"]);
-import { ref } from "vue";
 const isCheckedRef = ref(props.isChecked);
 const handleCheck = () => {
   isCheckedRef.value ? toggleOff(isCheckedRef) : toggleOn(isCheckedRef);
@@ -34,11 +34,8 @@ const handleCheck = () => {
 
 .customCheck:checked {
   appearance: none;
-  background-color: lightgray;
-  background-size: contain;
-  background-image: url("./../assets/tick.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
+  background: url("./../assets/tick.svg") lightgray no-repeat center center /
+    contain;
 }
 
 .customCheck:active {
