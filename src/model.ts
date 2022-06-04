@@ -1,6 +1,16 @@
-export enum enumScope {
-  LENGTH_HINT = "Text length should be at least 3 characters",
-  MIN_TEXT_LENGTH = 3,
+export enum TextEnum {
+  MIN_HINT = "Text length should be at least 3 characters",
+  MAX_HINT = "Text length should be maximum 32 characters",
+  MIN_LENGTH = 3,
+  MAX_LENGTH = 32,
+}
+
+export enum Response {
+  VALIDATE = "validate",
+  SAVE = "save",
+  REMOVE = "remove",
+  HINT = "hint",
+  CHECK = "check",
 }
 
 export interface ITodo {
