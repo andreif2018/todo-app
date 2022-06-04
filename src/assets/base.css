@@ -37,6 +37,7 @@
 :root {
   --width-main: 100vw;
   --height-main: 83vh;
+  --todo-font-size: 1.5vw;
   --color-background-dark: var(--vt-c-background-dark);
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);

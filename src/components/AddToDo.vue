@@ -1,37 +1,31 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
-import { toggleOn, validateInput } from "@/utils";
-import { Response, TextEnum } from "@/model";
+import { toggleOff, toggleOn, validateInput } from "@/utils";
+import { Response } from "@/model";
 
 const text = ref("");
-const emit = defineEmits([Response.VALIDATE, Response.SAVE]);
-const isOverMax = ref(true);
-const isBelowMin = ref(true);
+const emit = defineEmits([Response.VALIDATE, Response.SAVE, Response.HINT]);
+const hintMessage = ref();
 const isNotified = ref(false);
 
 const addItem = () => {
-  if (!isNotified.value) {
-    toggleOn(isNotified);
-  }
-  if (!isBelowMin.value && !isOverMax.value) {
+  toggleOn(isNotified);
+  if (!hintMessage.value) {
     emit(Response.SAVE, text.value);
     text.value = "";
+    toggleOff(isNotified);
   }
 };
 
 watch(
   () => text.value,
-  (text) => {
-    validateInput(text, isBelowMin, isOverMax);
-    console.log(`handling ${text}`);
-  }
+  (text) => (hintMessage.value = validateInput(text))
 );
 </script>
 <template>
   <div class="add-wrapper">
-    <ToolTip v-if="isNotified && isOverMax" :msg="TextEnum.MAX_HINT" />
-    <ToolTip v-else-if="isNotified && isBelowMin" :msg="TextEnum.MIN_HINT" />
+    <ToolTip v-if="isNotified && hintMessage" :msg="hintMessage" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
       <input
@@ -90,7 +84,7 @@ watch(
 
 .title {
   border: none;
-  font-size: 1.2vw;
+  font-size: var(--todo-font-size);
   padding-left: 15px;
   cursor: pointer;
   width: 50vw;
