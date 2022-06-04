@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { toggleOff, toggleOn } from "@/utils";
+import { toggleOff, toggleOn, validateInput } from "@/utils";
+import { Response } from "@/model";
+import CustomCheckbox from "@/components/CustomCheckbox.vue";
+import { ref, watch } from "vue";
 
 const props = defineProps<{
   title?: string;
@@ -7,60 +10,73 @@ const props = defineProps<{
   modified?: string;
   isDone?: boolean;
 }>();
-const emit = defineEmits(["update", "remove", "hint", "check"]);
-import { ref } from "vue";
-import CustomCheckbox from "@/components/CustomCheckbox.vue";
-import TodoText from "@/components/TodoText.vue";
+const emit = defineEmits([
+  Response.SAVE,
+  Response.REMOVE,
+  Response.HINT,
+  Response.CHECK,
+]);
 
 const text = ref(props.title);
-let isToDoDisabled = ref(true);
+const isToDoDisabled = ref(true);
 const isChecked = ref(props.isDone);
-
-const removeTodo = () => {
-  emit("remove");
+const hintMessage = ref();
+let vFocus: { updated: (el: HTMLInputElement) => void };
+vFocus = {
+  updated: (el: HTMLInputElement) => el.focus(),
 };
 
-const editTodo = () => {
+const edit = () => {
   toggleOff(isToDoDisabled);
 };
 
-const updateTodo = () => {
-  if (text.value && text.value.length >= 2) {
+const save = () => {
+  if (!hintMessage.value) {
+    emit(Response.SAVE, text.value);
     toggleOn(isToDoDisabled);
-    emit("update", text.value);
   }
 };
 
 const getInfo = () => {
   let info;
   if (props.modified) {
-    info =
-      "Created at: " + props.created + "\n" + "Modified at: " + props.modified;
+    info = `Created at: ${props.created}\nModified at: ${props.modified}`;
   } else {
-    info = "Created at: " + props.created;
+    info = `Created at: ${props.created}`;
   }
   alert(info);
 };
 
 const handleCheck = () => {
   isChecked.value ? toggleOff(isChecked) : toggleOn(isChecked);
-  emit("check", isChecked.value);
+  emit(Response.CHECK, isChecked.value);
 };
+
+watch(
+  () => text.value,
+  (text) => {
+    hintMessage.value = validateInput(text);
+    emit(Response.HINT, hintMessage.value);
+  }
+);
 </script>
 
 <template>
-  <li class="todo-item">
+  <li class="todo-item" draggable="true">
     <CustomCheckbox :is-checked="isChecked" @check="handleCheck" />
-    <TodoText
-      :title="text"
-      :is-done="isChecked"
-      :is-disabled="isToDoDisabled"
+    <input
+      :class="{ done: isChecked }"
+      class="regular"
+      type="text"
+      v-model="text"
+      :disabled="isToDoDisabled"
+      v-focus
     />
     <div class="button-wrapper">
-      <button class="edit" v-if="isToDoDisabled" @click="editTodo" />
-      <button class="save" v-else @click="updateTodo">save</button>
+      <button class="edit" v-if="isToDoDisabled" @click="edit" />
+      <button class="save" v-else @click="save">save</button>
       <button class="info" @click="getInfo">?</button>
-      <button class="remove" @click="removeTodo" />
+      <button class="remove" @click="$emit(Response.REMOVE)" />
     </div>
   </li>
 </template>
@@ -83,10 +99,7 @@ const handleCheck = () => {
   font-weight: bold;
   font-size: large;
   border-radius: 5px;
-  box-shadow: 0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19),
-    0 2px 3px 1px rgba(255, 255, 255, 0.19);
+  box-shadow: var(--box-shadow);
   text-shadow: 2px 1px 2px azure;
   background-repeat: no-repeat;
   background-position: center;
@@ -94,8 +107,11 @@ const handleCheck = () => {
 }
 
 .save {
-  font-size: 1.2rem;
+  font-size: 1vw;
   background-color: lightskyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .save,
@@ -107,14 +123,14 @@ const handleCheck = () => {
   font-weight: bold;
 }
 
-.save:active,
+.save:not(:disabled):active,
 .info:active,
 .edit:not(:disabled):active,
 .remove:active {
   cursor: pointer;
 }
 
-.save:hover,
+.save:not(:disabled):hover,
 .info:hover,
 .edit:not(:disabled):hover,
 .remove:hover {
@@ -138,5 +154,39 @@ const handleCheck = () => {
   justify-content: flex-end;
   align-items: center;
   gap: 1vw;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.regular {
+  border: none;
+  font-size: var(--todo-font-size);
+  padding-left: 15px;
+  cursor: pointer;
+  width: 50vw;
+  height: 6vh;
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  color: var(--color-text);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.regular:focus {
+  background: cadetblue;
+  border: blue;
+}
+
+.regular:invalid {
+  border: 2px dashed red;
 }
 </style>
