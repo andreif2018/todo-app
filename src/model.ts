@@ -1,4 +1,4 @@
-export enum TextEnum {
+export enum InputEnum {
   MIN_HINT = "Text length should be at least 3 characters",
   MAX_HINT = "Text length should be maximum 32 characters",
   MIN_LENGTH = 3,
@@ -13,10 +13,10 @@ export enum Response {
   CHECK = "check",
 }
 
-export interface ITodo {
+export type ITodo = {
   _id?: number;
   text: string;
   createdTime: string;
   modifiedTime?: string;
   isDone: boolean;
-}
+};

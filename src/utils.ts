@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import { TextEnum } from "@/model";
+import { InputEnum } from "@/model";
 
 export const toggleOn = (element: Ref) => {
   if (element.value === false) {
@@ -13,19 +13,14 @@ export const toggleOff = (element: Ref) => {
   }
 };
 
-export const validateInput = (
-  inputText: string | undefined,
-  minHint: Ref,
-  MaxHint: Ref
-) => {
-  if (inputText && inputText.length > TextEnum.MAX_LENGTH) {
-    toggleOff(minHint);
-    toggleOn(MaxHint);
-  } else if (inputText && inputText.length >= TextEnum.MIN_LENGTH) {
-    toggleOff(MaxHint);
-    toggleOff(minHint);
+export const validateInput = (inputText: string | undefined) => {
+  if (inputText && inputText.length > InputEnum.MAX_LENGTH) {
+    return InputEnum.MAX_HINT;
+  } else if (inputText && inputText.length < InputEnum.MIN_LENGTH) {
+    return InputEnum.MIN_HINT;
+  } else if (inputText?.length === 0) {
+    return InputEnum.MIN_HINT;
   } else {
-    toggleOff(MaxHint);
-    toggleOn(minHint);
+    return;
   }
 };

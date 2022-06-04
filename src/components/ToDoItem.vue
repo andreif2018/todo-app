@@ -49,7 +49,7 @@ const getInfo = () => {
 
 const handleCheck = () => {
   isChecked.value ? toggleOff(isChecked) : toggleOn(isChecked);
-  emit(Response.CHECK, isChecked.value);
+  emit(Response.CHECK);
 };
 
 watch(
@@ -65,12 +65,13 @@ watch(
   <li class="todo-item" draggable="true">
     <CustomCheckbox :is-checked="isChecked" @check="handleCheck" />
     <input
-      :class="{ done: isChecked }"
+      :class="{ done: isChecked, attention: hintMessage }"
       class="regular"
       type="text"
       v-model="text"
       :disabled="isToDoDisabled"
       v-focus
+      ref="field"
     />
     <div class="button-wrapper">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
@@ -188,5 +189,10 @@ watch(
 
 .regular:invalid {
   border: 2px dashed red;
+}
+
+.attention {
+  border: 2px dashed red;
+  border-spacing: 1px;
 }
 </style>
