@@ -4,6 +4,7 @@ import AddToDo from "@/components/AddToDo.vue";
 import ToDoItem from "@/components/ToDoItem.vue";
 import ToolTip from "@/components/ToolTip.vue";
 import type { ITodo } from "@/model";
+import { onDrop, onDragStart } from "@/utils";
 
 let id = 0;
 let todoList = ref([]);
@@ -22,7 +23,7 @@ const addTodo = (newTodo: string) => {
 };
 
 const saveTodo = (todoID: number, message: string) => {
-  todoList.value.forEach((item: ITodo) => {
+  list.forEach((item: ITodo) => {
     if (item._id === todoID) {
       item.text = message;
       item.modifiedTime = new Date().toLocaleString();
@@ -31,51 +32,16 @@ const saveTodo = (todoID: number, message: string) => {
 };
 
 const removeTodo = (index: number) => {
-  todoList.value.splice(index, 1);
+  list.splice(index, 1);
 };
 
 const checkTodo = (id: number) => {
-  todoList.value.forEach((item: ITodo) => {
+  list.forEach((item: ITodo) => {
     if (item._id === id) {
       item.modifiedTime = new Date().toLocaleString();
       item.isDone = !item.isDone;
     }
   });
-};
-
-const startDrag = (event: DragEvent, item?: ITodo) => {
-  console.log(item);
-  console.log(event);
-  if (event.dataTransfer) {
-    event.dataTransfer.dropEffect = "move";
-    event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.setData("offsetY", event.offsetY.toString());
-  } else throw Error("drag event error occurs");
-};
-
-const onDrop = (event: DragEvent) => {
-  console.log(typeof event);
-  //const itemID = event.dataTransfer.getData("itemID");
-  console.log("drop event", event.offsetY);
-  // console.log(event.dataTransfer.getData("offsetY"), event.offsetY);
-};
-// const applyDrag = (arr, dragResult) => {
-//   console.log(dragResult);
-//   const { removedIndex, addedIndex, payload } = dragResult;
-//   if (removedIndex === null && addedIndex === null) return arr;
-//   const result = [...arr];
-//   let itemToAdd = payload;
-//   if (removedIndex !== null) {
-//     [itemToAdd] = result.splice(removedIndex, 1);
-//   }
-//   if (addedIndex !== null) {
-//     result.splice(addedIndex, 0, itemToAdd);
-//   }
-//   return result;
-// };
-
-const current = (event: DragEvent, ID: number) => {
-  console.log("overlay event", event.offsetY, "item.id: ", ID);
 };
 
 const handleTip = (result: string) => {
@@ -87,12 +53,7 @@ const handleTip = (result: string) => {
   <AddToDo @save="(msg) => addTodo(msg)" />
   <div class="list-wrapper">
     <ToolTip v-if="tipContent" :msg="tipContent" />
-    <ol
-      class="list-container"
-      @drop="onDrop($event)"
-      @dragenter.prevent
-      @dragover.prevent
-    >
+    <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <ToDoItem
         v-for="(item, index) in todoList"
         :key="item._id"
@@ -104,8 +65,8 @@ const handleTip = (result: string) => {
         @remove="removeTodo(index)"
         @hint="(msg) => handleTip(msg)"
         @check="checkTodo(item._id)"
-        @dragstart="startDrag($event, index)"
-        @dragenter="current($event, index)"
+        @dragstart="onDragStart($event, index)"
+        @drop="onDrop($event, index, list)"
       />
     </ol>
   </div>

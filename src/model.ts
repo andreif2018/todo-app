@@ -20,3 +20,7 @@ export type ITodo = {
   modifiedTime?: string;
   isDone: boolean;
 };
+
+export enum DragAndDropEnum {
+  ITEM_INDEX = "ITEM_INDEX",
+}
