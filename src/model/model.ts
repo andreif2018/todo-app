@@ -24,3 +24,13 @@ export type ITodo = {
 export enum DragAndDropEnum {
   ITEM_INDEX = "ITEM_INDEX",
 }
+
+export const regular = {
+  borderColor: "cadetblue",
+  borderStyle: "solid",
+};
+
+export const target = {
+  borderColor: "azure",
+  borderStyle: "dashed",
+};

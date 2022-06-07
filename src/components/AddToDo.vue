@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
-import { toggleOff, toggleOn, validateInput } from "@/utils";
-import { Response } from "@/model";
+import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
+import { Response } from "@/model/model";
 
 const text = ref("");
 const emit = defineEmits([Response.VALIDATE, Response.SAVE, Response.HINT]);

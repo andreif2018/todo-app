@@ -7,6 +7,7 @@
   - Update ToDo item
   - Delete ToDo item
   - Complete ToDo item
+  - Drag and Drop Todo item in list
    
 ## Template below should help get you started developing with Vue 3 in Vite.
 

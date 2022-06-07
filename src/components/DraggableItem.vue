@@ -3,6 +3,8 @@ import { ref } from "vue";
 import type { ITodo } from "@/model/model";
 import ToDoItem from "@/components/ToDoItem.vue";
 import { Response } from "@/model/model";
+import { toggleOn, toggleOff } from "@/utils/utils";
+import { regular, target } from "@/model/model";
 
 const props = defineProps<{
   item?: ITodo;
@@ -10,6 +12,22 @@ const props = defineProps<{
 defineEmits([Response.SAVE, Response.REMOVE, Response.HINT, Response.CHECK]);
 const isCurrentDragged = ref(false);
 const isTargetItem = ref(false);
+const activeStyle = ref(regular);
+
+const onDragEnter = () => {
+  toggleOn(isTargetItem);
+  activeStyle.value = target;
+};
+
+const onDragLeave = () => {
+  toggleOff(isTargetItem);
+  activeStyle.value = regular;
+};
+
+const onDrop = () => {
+  toggleOff(isTargetItem);
+  activeStyle.value = regular;
+};
 </script>
 
 <template>
@@ -17,12 +35,15 @@ const isTargetItem = ref(false);
     draggable="true"
     class="draggable-item"
     :class="{ current: isCurrentDragged, target: isTargetItem }"
+    :style="{
+      borderColor: activeStyle.borderColor,
+      borderStyle: activeStyle.borderStyle,
+    }"
     @dragstart="isCurrentDragged = true"
     @dragend="isCurrentDragged = false"
-    @dragenter="isTargetItem = true"
-    @dragover.prevent
-    @dragleave="isTargetItem = false"
-    @drop.stop="isTargetItem = false"
+    @dragenter="onDragEnter"
+    @dragleave="onDragLeave"
+    @drop.stop="onDrop"
   >
     <ToDoItem
       :data="props.item"
@@ -36,13 +57,14 @@ const isTargetItem = ref(false);
 
 <style scoped>
 .draggable-item {
-  min-height: 7vh;
-  border: 2px solid cadetblue;
+  min-height: 7.5vh;
+  border-width: 2px;
   width: 64vw;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  background-color: transparent;
 }
 
 .current {
@@ -50,7 +72,6 @@ const isTargetItem = ref(false);
 }
 
 .target {
-  border: 2px dashed azure;
   transform: scaleY(1.07);
 }
 

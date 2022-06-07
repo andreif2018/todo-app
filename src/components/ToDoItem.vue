@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { toggleOff, toggleOn, validateInput } from "@/utils";
-import { Response } from "@/model";
+import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
+import { Response } from "@/model/model";
+import type { ITodo } from "@/model/model";
 import CustomCheckbox from "@/components/CustomCheckbox.vue";
 import { ref, watch } from "vue";
 
 const props = defineProps<{
-  title?: string;
-  created?: string;
-  modified?: string;
-  isDone?: boolean;
+  data: ITodo;
 }>();
 const emit = defineEmits([
   Response.SAVE,
@@ -17,13 +15,15 @@ const emit = defineEmits([
   Response.CHECK,
 ]);
 
-const text = ref(props.title);
+const text = ref(props.data.text);
 const isToDoDisabled = ref(true);
-const isChecked = ref(props.isDone);
+const isChecked = ref(props.data?.isDone);
 const hintMessage = ref();
 let vFocus: { updated: (el: HTMLInputElement) => void };
 vFocus = {
-  updated: (el: HTMLInputElement) => el.focus(),
+  updated: (el: HTMLInputElement) => {
+    el.focus();
+  },
 };
 
 const edit = () => {
@@ -39,10 +39,10 @@ const save = () => {
 
 const getInfo = () => {
   let info;
-  if (props.modified) {
-    info = `Created at: ${props.created}\nModified at: ${props.modified}`;
+  if (props.data?.modifiedTime) {
+    info = `Created at: ${props.data?.createdTime}\nModified at: ${props.data?.modifiedTime}`;
   } else {
-    info = `Created at: ${props.created}`;
+    info = `Created at: ${props.data?.createdTime}`;
   }
   alert(info);
 };
@@ -62,7 +62,7 @@ watch(
 </script>
 
 <template>
-  <li class="todo-item" draggable="true">
+  <li class="todo-item">
     <CustomCheckbox :is-checked="isChecked" @check="handleCheck" />
     <input
       :class="{ done: isChecked, attention: hintMessage }"
@@ -71,7 +71,6 @@ watch(
       v-model="text"
       :disabled="isToDoDisabled"
       v-focus
-      ref="field"
     />
     <div class="button-wrapper">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
@@ -140,8 +139,9 @@ watch(
 }
 
 .todo-item {
-  border: 1px solid cadetblue;
-  width: 100%;
+  border: none;
+  height: 4.5vh;
+  width: 96%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -162,16 +162,15 @@ watch(
 }
 
 .regular {
-  border: none;
+  border: 1px solid var(--color-border-custom);
   font-size: var(--todo-font-size);
   padding-left: 15px;
   cursor: pointer;
-  width: 50vw;
-  height: 6vh;
+  width: 65%;
+  height: 4vh;
   background-color: transparent;
   font-weight: bold;
   border-radius: 5px;
-  box-shadow: var(--box-shadow);
   color: var(--color-text);
   background-repeat: no-repeat;
   background-position: center;

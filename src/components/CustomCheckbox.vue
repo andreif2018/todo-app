@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toggleOff, toggleOn } from "@/utils";
+import { toggleOff, toggleOn } from "@/utils/utils";
 import { ref } from "vue";
 const props = defineProps<{
   isChecked?: boolean;

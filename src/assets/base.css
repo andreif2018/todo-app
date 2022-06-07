@@ -37,7 +37,7 @@
 :root {
   --width-main: 100vw;
   --height-main: 83vh;
-  --todo-font-size: 1.5vw;
+  --todo-font-size: 1.25vw;
   --color-background-dark: var(--vt-c-background-dark);
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -45,7 +45,7 @@
 
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
-
+  --color-border-custom: slategray;
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 

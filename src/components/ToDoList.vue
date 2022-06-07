@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import AddToDo from "@/components/AddToDo.vue";
-import ToDoItem from "@/components/ToDoItem.vue";
 import ToolTip from "@/components/ToolTip.vue";
-import type { ITodo } from "@/model";
-import { onDrop, onDragStart } from "@/utils";
+import type { ITodo } from "@/model/model";
+import { onDrop, onDragStart } from "@/utils/drag-and-drop-util";
+import DraggableItem from "@/components/DraggableItem.vue";
 
 let id = 0;
 let todoList = ref([]);
@@ -54,36 +54,34 @@ const handleTip = (result: string) => {
   <div class="list-wrapper">
     <ToolTip v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
-      <ToDoItem
+      <DraggableItem
         v-for="(item, index) in todoList"
         :key="item._id"
-        :title="item.text"
-        :created="item.createdTime"
-        :modified="item.modifiedTime"
-        :isDone="item.isDone"
+        :item="item"
+        @dragstart="onDragStart($event, index)"
+        @drop.stop="onDrop($event, index, list)"
         @save="(msg) => saveTodo(item._id, msg)"
         @remove="removeTodo(index)"
         @hint="(msg) => handleTip(msg)"
         @check="checkTodo(item._id)"
-        @dragstart="onDragStart($event, index)"
-        @drop="onDrop($event, index, list)"
       />
     </ol>
   </div>
 </template>
 
 <style scoped>
+@import "./../assets/base.css";
 .list-container {
   padding: 2vh;
   border-radius: 10px;
-  border: 1px solid slategray;
+  border: 1px solid var(--color-border-custom);
   width: 70vw;
   height: 59vh;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 2vh;
+  row-gap: 3vh;
   overflow-y: scroll;
 }
 
