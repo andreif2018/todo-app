@@ -57,7 +57,7 @@ const onDrop = () => {
 
 <style scoped>
 .draggable-item {
-  min-height: 7.5vh;
+  min-height: 9vh;
   border-width: 2px;
   width: 64vw;
   display: flex;

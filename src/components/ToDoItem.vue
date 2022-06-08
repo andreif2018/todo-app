@@ -99,7 +99,7 @@ watch(
   font-weight: bold;
   font-size: large;
   border-radius: 5px;
-  box-shadow: var(--box-shadow);
+  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   text-shadow: 2px 1px 2px azure;
   background-repeat: no-repeat;
   background-position: center;
@@ -134,7 +134,7 @@ watch(
 .info:hover,
 .edit:not(:disabled):hover,
 .remove:hover {
-  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
+  box-shadow: var(--box-shadow);
   cursor: pointer;
 }
 
