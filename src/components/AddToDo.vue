@@ -33,6 +33,8 @@ watch(
         placeholder="Type Todo here..."
         type="text"
         v-model="text"
+        @keydown.esc="$event.target.blur()"
+        @keyup.enter="$event.target.blur()"
       />
     </div>
   </div>
