@@ -18,6 +18,7 @@ export type ITodo = {
   text: string;
   createdTime: string;
   modifiedTime?: string;
+  completedTime?: string;
   isDone: boolean;
 };
 

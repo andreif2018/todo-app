@@ -17,6 +17,7 @@ const addTodo = (newTodo: string) => {
     text: newTodo,
     createdTime: new Date().toLocaleString(),
     modifiedTime: undefined,
+    completedTime: undefined,
     isDone: false,
   };
   list.push(newItem);
@@ -38,7 +39,7 @@ const removeTodo = (index: number) => {
 const checkTodo = (id: number) => {
   list.forEach((item: ITodo) => {
     if (item._id === id) {
-      item.modifiedTime = new Date().toLocaleString();
+      item.completedTime = new Date().toLocaleString();
       item.isDone = !item.isDone;
     }
   });
@@ -58,12 +59,12 @@ const handleTip = (result: string) => {
         v-for="(item, index) in todoList"
         :key="item._id"
         :item="item"
-        @dragstart="onDragStart($event, index)"
-        @drop.stop="onDrop($event, index, list)"
-        @save="(msg) => saveTodo(item._id, msg)"
-        @remove="removeTodo(index)"
-        @hint="(msg) => handleTip(msg)"
         @check="checkTodo(item._id)"
+        @dragstart="onDragStart($event, index)"
+        @hint="(msg) => handleTip(msg)"
+        @remove="removeTodo(index)"
+        @save="(msg) => saveTodo(item._id, msg)"
+        @drop.stop="onDrop($event, index, list)"
       />
     </ol>
   </div>

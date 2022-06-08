@@ -38,13 +38,17 @@ const save = () => {
 };
 
 const getInfo = () => {
-  let info;
-  if (props.data?.modifiedTime) {
-    info = `Created at: ${props.data?.createdTime}\nModified at: ${props.data?.modifiedTime}`;
-  } else {
-    info = `Created at: ${props.data?.createdTime}`;
-  }
-  alert(info);
+  let line0 = `Todo:  ${text.value}\n`;
+  const line1 = props.data?.createdTime
+    ? `Created at: ${props.data?.createdTime}\n`
+    : "";
+  const line2 = props.data?.modifiedTime
+    ? `Modified at: ${props.data?.modifiedTime}\n`
+    : "";
+  const line3 = props.data?.completedTime
+    ? `Completed at: ${props.data?.completedTime}\n`
+    : "";
+  alert(line0 + line1 + line2 + line3);
 };
 
 const handleCheck = () => {
