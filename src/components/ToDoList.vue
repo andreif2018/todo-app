@@ -48,10 +48,25 @@ const checkTodo = (id: number) => {
 const handleTip = (result: string) => {
   tipContent.value = result;
 };
+
+const handleClearAll = () => {
+  list.splice(0, list.length);
+};
 </script>
 
 <template>
-  <AddToDo @save="(msg) => addTodo(msg)" />
+  <div class="top-bar">
+    <AddToDo @save="(msg) => addTodo(msg)" />
+    <div class="clear-all-wrapper">
+      <button
+        class="clear-all"
+        @click="handleClearAll"
+        :disabled="todoList.length <= 0"
+      >
+        Delete All
+      </button>
+    </div>
+  </div>
   <div class="list-wrapper">
     <ToolTip v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
@@ -72,11 +87,24 @@ const handleTip = (result: string) => {
 
 <style scoped>
 @import "./../assets/base.css";
+.top-bar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  width: 64vw;
+}
+
+.clear-all-wrapper {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
 .list-container {
   padding: 2vh;
   border-radius: 10px;
   border: 1px solid var(--color-border-custom);
-  width: 70vw;
+  width: var(--work-field-width);
   height: 59vh;
   min-height: 10vh;
   display: flex;
@@ -94,5 +122,36 @@ const handleTip = (result: string) => {
   align-items: center;
   gap: 1vh;
   overflow-y: scroll;
+}
+
+.clear-all {
+  cursor: pointer;
+  width: calc(2 * var(--button-width));
+  height: var(--button-height);
+  background-color: lightcoral;
+  font-weight: bold;
+  font-size: 1vw;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
+  text-shadow: 2px 1px 2px azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-all:active,
+.clear-all:hover {
+  cursor: pointer;
+}
+.clear-all:disabled {
+  cursor: default;
+}
+
+.clear-all:disabled:hover {
+  box-shadow: none;
+}
+
+.clear-all:hover {
+  box-shadow: var(--box-shadow);
 }
 </style>
