@@ -7,7 +7,9 @@
   - Update ToDo item
   - Delete ToDo item
   - Complete ToDo item
-  - Drag and Drop Todo item in list
+  - Drag and Drop ToDo item in list
+  - Delete All ToDo items in list
+  - Note: Adding ToDo feature is available by `+` button click or by `ENTER` key pressing 
    
 ## Template below should help get you started developing with Vue 3 in Vite.
 
