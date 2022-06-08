@@ -24,7 +24,7 @@ watch(
 );
 </script>
 <template>
-  <div class="add-wrapper">
+  <div class="add-wrapper" @keyup.enter="addItem">
     <ToolTip v-if="isNotified && hintMessage" :msg="hintMessage" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
