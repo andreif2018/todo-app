@@ -44,11 +44,11 @@ watch(
 @import "./../assets/base.css";
 
 .add-container {
-  width: 60vw;
+  width: 55.4vw;
   height: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -60,7 +60,7 @@ watch(
   font-weight: bold;
   font-size: x-large;
   border-radius: 5px;
-  box-shadow: var(--box-shadow);
+  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   text-shadow: 2px 1px 2px azure;
   display: flex;
   justify-content: center;
@@ -72,7 +72,7 @@ watch(
 }
 
 .add-button:hover {
-  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
+  box-shadow: var(--box-shadow);
   cursor: pointer;
 }
 

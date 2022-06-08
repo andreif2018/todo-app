@@ -127,16 +127,16 @@ watch(
   font-weight: bold;
 }
 
-.save:not(:disabled):active,
+.save:active,
 .info:active,
-.edit:not(:disabled):active,
+.edit:active,
 .remove:active {
   cursor: pointer;
 }
 
-.save:not(:disabled):hover,
+.save:hover,
 .info:hover,
-.edit:not(:disabled):hover,
+.edit:hover,
 .remove:hover {
   box-shadow: var(--box-shadow);
   cursor: pointer;
