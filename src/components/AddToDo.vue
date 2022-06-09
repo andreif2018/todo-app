@@ -10,8 +10,10 @@ const hintMessage = ref();
 const isNotified = ref(false);
 
 const addItem = () => {
-  toggleOn(isNotified);
-  if (!hintMessage.value) {
+  if (!isNotified.value) {
+    toggleOn(isNotified);
+  }
+  if (!hintMessage.value && text.value.length !== 0) {
     emit(Response.SAVE, text.value);
     text.value = "";
     toggleOff(isNotified);
