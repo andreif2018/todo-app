@@ -9,7 +9,9 @@
   - Complete ToDo item
   - Drag and Drop ToDo item in list
   - Delete All ToDo items in list
-  - Note: Adding ToDo feature is available by `+` button click or by `ENTER` key pressing 
+
+
+Note: Adding ToDo is available by `+` button click or by `ENTER` key pressing 
    
 ## Template below should help get you started developing with Vue 3 in Vite.
 
