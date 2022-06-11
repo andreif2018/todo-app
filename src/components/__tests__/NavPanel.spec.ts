@@ -14,9 +14,14 @@ describe("NavPanel", async () => {
   });
   const homeLinkElement = wrapper.find('[to="/"]');
   const aboutLinkElement = wrapper.find('[to="/about"]');
+  const tagName = "ROUTERLINK";
 
   it("renders proper component tag name", () => {
     expect(wrapper.element.children[0].tagName).toEqual("NAV");
+  });
+
+  it("assign proper css class name", () => {
+    expect(wrapper.classes()).include("nav-wrapper");
   });
 
   it("renders proper child components amount", () => {
@@ -27,12 +32,8 @@ describe("NavPanel", async () => {
     expect(wrapper.classes().length).toBe(1);
   });
 
-  it("assign proper css class name", () => {
-    expect(wrapper.classes()).include("nav-wrapper");
-  });
-
   it("Home link tag name", () => {
-    expect(homeLinkElement.element.tagName).toEqual("ROUTERLINK");
+    expect(homeLinkElement.element.tagName).toEqual(tagName);
   });
 
   it("Home link text", () => {
@@ -40,7 +41,7 @@ describe("NavPanel", async () => {
   });
 
   it("About link tag name", () => {
-    expect(aboutLinkElement.element.tagName).toEqual("ROUTERLINK");
+    expect(aboutLinkElement.element.tagName).toEqual(tagName);
   });
 
   it("About link text", () => {
