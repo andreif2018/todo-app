@@ -31,7 +31,7 @@ describe("HeaderItem", () => {
     expect(wrapper.findComponent("LogoItem")).toBeTruthy();
   });
 
-  it("renders child element LogoItem", () => {
+  it("renders child element NavPanel", () => {
     expect(wrapper.findComponent("NavPanel")).toBeTruthy();
   });
 });
