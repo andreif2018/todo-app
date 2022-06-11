@@ -6,6 +6,9 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  test: {
+    environment: "happy-dom",
+  },
   base: "/todo-app/",
   plugins: [vue(), vueJsx()],
   resolve: {
