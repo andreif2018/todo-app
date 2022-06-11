@@ -2,7 +2,7 @@
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
 import { Response } from "@/model/model";
 import type { ITodo } from "@/model/model";
-import CustomCheckbox from "@/components/CustomCheckbox.vue";
+import CustomCheckbox from "@/components/CheckBox.vue";
 import { ref, watch } from "vue";
 
 const props = defineProps<{
