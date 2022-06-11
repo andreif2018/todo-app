@@ -3,22 +3,52 @@ import { mount } from "@vue/test-utils";
 import FooterItem from "../FooterItem.vue";
 
 describe("FooterItem", () => {
-  const testProps = "test tooltip";
-  const wrapper = mount(FooterItem, { props: { msg: testProps } });
+  const wrapper = mount(FooterItem);
+  const link = wrapper.find(".github");
 
   it("renders proper component tag name", () => {
     expect(wrapper.element.tagName).toEqual("FOOTER");
   });
 
-  it("assign proper css class amount", () => {
-    expect(wrapper.classes().length).toBe(1);
-  });
-
-  it("assign proper css class name", () => {
-    expect(wrapper.classes()).include("footer");
+  it("assigns proper css class name", () => {
+    expect(wrapper.classes()).toEqual(["footer"]);
   });
 
   it("renders proper component structure", () => {
-    expect(wrapper.element.children.length).toBe(3);
+    expect(wrapper.element.childElementCount).toBe(3);
+  });
+
+  it("renders child element LogoItem", () => {
+    expect(wrapper.findComponent("LogoItem")).toBeTruthy();
+  });
+
+  it("renders child element LogoItem", () => {
+    expect(wrapper.findComponent("NavPanel")).toBeTruthy();
+  });
+
+  it("renders proper child link element", () => {
+    expect(link.element.tagName).toEqual("A");
+  });
+
+  it("assigns proper css class for link", () => {
+    expect(link.classes()).toEqual(["github"]);
+  });
+
+  it("assigns proper href attribute for link", () => {
+    expect(link.attributes("href")).toEqual(
+      "https://github.com/andreif2018/todo-app"
+    );
+  });
+
+  it("assigns proper target attribute for link", () => {
+    expect(link.attributes("target")).toEqual("_blank");
+  });
+
+  it("assigns proper target attribute for link", () => {
+    expect(link.attributes("rel")).toEqual("noopener noreferrer");
+  });
+
+  it("renders proper text value for link", () => {
+    expect(link.text()).toEqual("View in GitHub");
   });
 });

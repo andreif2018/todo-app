@@ -5,15 +5,11 @@ import LogoItem from "../LogoItem.vue";
 describe("LogoItem", () => {
   const wrapper = shallowMount(LogoItem);
 
-  it("assign proper css class amount", () => {
-    expect(wrapper.classes().length).toBe(1);
+  it("assigns proper css class", () => {
+    expect(wrapper.classes()).toEqual(["logo"]);
   });
 
-  it("assign proper css class name", () => {
-    expect(wrapper.classes()).include("logo");
-  });
-
-  it("assign proper css class", () => {
+  it("assigns proper style for css class", () => {
     expect(wrapper.element).toMatchSnapshot("snapshot");
   });
 });

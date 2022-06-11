@@ -11,18 +11,14 @@ describe("ToolTip", () => {
   });
 
   it("renders proper component structure", () => {
-    expect(wrapper.element.children.length).toBe(0);
+    expect(wrapper.element.childElementCount).toBe(0);
   });
 
-  it("assign proper css class amount", () => {
-    expect(wrapper.classes().length).toBe(1);
+  it("assigns proper css class", () => {
+    expect(wrapper.classes()).toEqual(["popup"]);
   });
 
-  it("assign proper css class name", () => {
-    expect(wrapper.classes()).include("popup");
-  });
-
-  it("contains proper props", () => {
+  it("renders proper props", () => {
     expect(wrapper.find(".popup").text()).toEqual(testProps);
   });
 });

@@ -20,16 +20,12 @@ describe("NavPanel", async () => {
     expect(wrapper.element.children[0].tagName).toEqual("NAV");
   });
 
-  it("assign proper css class name", () => {
-    expect(wrapper.classes()).include("nav-wrapper");
+  it("assigns proper css class", () => {
+    expect(wrapper.classes()).toEqual(["nav-wrapper"]);
   });
 
   it("renders proper child components amount", () => {
-    expect(wrapper.find("nav").element.children.length).toBe(2);
-  });
-
-  it("assign proper css class amount", () => {
-    expect(wrapper.classes().length).toBe(1);
+    expect(wrapper.find("nav").element.childElementCount).toBe(2);
   });
 
   it("Home link tag name", () => {
