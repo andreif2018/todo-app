@@ -16,12 +16,8 @@ describe("NavPanel", async () => {
   const aboutLinkElement = wrapper.find('[to="/about"]');
   const tagName = "ROUTERLINK";
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.children[0].tagName).toEqual("NAV");
-  });
-
   it("assigns proper css class", () => {
-    expect(wrapper.classes()).toEqual(["nav-wrapper"]);
+    expect(wrapper.find("nav").classes()).toEqual(["nav-wrapper"]);
   });
 
   it("renders proper child components amount", () => {

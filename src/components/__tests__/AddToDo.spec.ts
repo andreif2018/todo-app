@@ -52,11 +52,14 @@ describe("CheckAddToDoBox", () => {
     expect(textField.attributes("placeholder")).toEqual("Type Todo here...");
   });
 
-  // it("sensitive to input text", async () => {
-  //   const data = "test data";
-  //   await textField.setValue(data);
-  //   // await button.trigger("click");
-  //   console.log(textField.text());
-  //   expect(textField.text()).toBe("qwe");
-  // });
+  it("render default value in input text", async () => {
+    expect(textField.text()).toBe("");
+  });
+
+  it("sensitive to input text", async () => {
+    const data = "test data";
+    await textField.setValue(data);
+    console.log(textField.element.textContent);
+    // expect(textField.text()).toBe(data);
+  });
 });
