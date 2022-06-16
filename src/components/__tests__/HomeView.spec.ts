@@ -33,6 +33,6 @@ describe("Check HomeView page", async () => {
   });
 
   it("renders proper child element count", () => {
-    expect(wrapper.element.childElementCount).toEqual(3);
+    expect(wrapper.element.childElementCount).toBe(3);
   });
 });

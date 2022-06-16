@@ -30,7 +30,7 @@ describe("Check Error404View page", async () => {
   });
 
   it("renders proper child element count", () => {
-    expect(wrapper.element.childElementCount).toEqual(3);
+    expect(wrapper.element.childElementCount).toBe(3);
   });
 
   it("check title of h2 element", () => {

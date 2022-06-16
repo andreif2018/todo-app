@@ -23,7 +23,7 @@ export default {
           <li>Delete All ToDo items in list</li>
           <li>
             <p>
-              Adding ToDo feature is available by `+` button click<br />
+              Adding ToDo feature is available by button click<br />
               or by `ENTER` key pressing
             </p>
           </li>
