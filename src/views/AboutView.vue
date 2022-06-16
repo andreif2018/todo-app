@@ -21,13 +21,11 @@ export default {
           <li>Complete ToDo item</li>
           <li>Drag and Drop ToDo item in list</li>
           <li>Delete All ToDo items in list</li>
-          <li>
-            <p>
-              Adding ToDo feature is available by button click<br />
-              or by `ENTER` key pressing
-            </p>
-          </li>
         </ul>
+        <p>
+          Adding ToDo feature is available by button click<br />
+          or by `ENTER` key pressing
+        </p>
       </div>
     </main>
     <FooterItem />
