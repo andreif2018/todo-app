@@ -37,6 +37,7 @@ watch(
         v-model="text"
         @keydown.esc="$event.target.blur()"
         @keyup.enter="$event.target.blur()"
+        ref="qwe"
       />
     </div>
   </div>

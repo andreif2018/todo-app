@@ -1,12 +1,15 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import AddToDo from "../AddToDo.vue";
+import { TestEnum } from "./test-model";
+import ToolTip from "../ToolTip.vue";
 
-describe("CheckAddToDoBox", () => {
+describe("CheckAddToDoBox", async () => {
   const wrapper = mount(AddToDo);
   const container = wrapper.find(".add-container");
   const button = wrapper.find(".add-button");
   const textField = wrapper.find(".title");
+  const data = "test data";
 
   it("renders proper component tag name", () => {
     expect(wrapper.element.tagName).toEqual("DIV");
@@ -17,7 +20,7 @@ describe("CheckAddToDoBox", () => {
   });
 
   it("renders child element ToolTip", () => {
-    expect(wrapper.findComponent("ToolTip")).toBeTruthy();
+    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
   });
 
   it("renders proper child container structure", () => {
@@ -57,9 +60,32 @@ describe("CheckAddToDoBox", () => {
   });
 
   it("sensitive to input text", async () => {
-    const data = "test data";
     await textField.setValue(data);
-    console.log(textField.element.textContent);
-    // expect(textField.text()).toBe(data);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(textField.element.value).toBe(data);
+  });
+
+  it("reset text value after button click", async () => {
+    await button.trigger(TestEnum.CLICK);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(textField.element.value).toBe("");
+  });
+
+  it("renders tooltip in case invalid input", async () => {
+    await button.trigger(TestEnum.CLICK);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(textField.element.value).toBe("");
+    expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
+  });
+
+  it("tooltip is hidden in case valid input", async () => {
+    await textField.setValue(data);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(textField.element.value).toBe(data);
+    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
   });
 });

@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import HeaderItem from "../HeaderItem.vue";
+import LogoItem from "../LogoItem.vue";
+import NavPanel from "../NavPanel.vue";
 
 describe("HeaderItem", () => {
   const testProps = "test header";
@@ -28,10 +30,10 @@ describe("HeaderItem", () => {
   });
 
   it("renders child element LogoItem", () => {
-    expect(wrapper.findComponent("LogoItem")).toBeTruthy();
+    expect(wrapper.findComponent(LogoItem).exists()).toBe(true);
   });
 
   it("renders child element NavPanel", () => {
-    expect(wrapper.findComponent("NavPanel")).toBeTruthy();
+    expect(wrapper.findComponent(NavPanel).exists()).toBe(true);
   });
 });
