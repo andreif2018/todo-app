@@ -9,7 +9,6 @@ describe("CheckAddToDoBox", async () => {
   const container = wrapper.find(".add-container");
   const button = wrapper.find(".add-button");
   const textField = wrapper.find(".title");
-  const data = "test data";
 
   it("renders proper component tag name", () => {
     expect(wrapper.element.tagName).toEqual("DIV");
@@ -60,32 +59,45 @@ describe("CheckAddToDoBox", async () => {
   });
 
   it("sensitive to input text", async () => {
-    await textField.setValue(data);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(textField.element.value).toBe(data);
+    await textField.setValue(TestEnum.CHARS_3);
+    expect(textField.element.value).toBe(TestEnum.CHARS_3);
   });
 
   it("reset text value after button click", async () => {
     await button.trigger(TestEnum.CLICK);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(textField.element.value).toBe("");
   });
 
   it("renders tooltip in case invalid input", async () => {
+    await textField.setValue(TestEnum.CHARS_2); // 2 chars is invalid input
     await button.trigger(TestEnum.CLICK);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(textField.element.value).toBe("");
+    expect(textField.element.value).toBe(TestEnum.CHARS_2);
     expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
   });
 
   it("tooltip is hidden in case valid input", async () => {
-    await textField.setValue(data);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(textField.element.value).toBe(data);
+    await textField.setValue(TestEnum.CHARS_3); // 3 chars is valid input
+    expect(textField.element.value).toBe(TestEnum.CHARS_3);
     expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
+  });
+
+  it("renders tooltip in case invalid input upper bound", async () => {
+    await textField.setValue(TestEnum.CHARS_33); // 33 chars is invalid input
+    await button.trigger(TestEnum.CLICK);
+    expect(textField.element.value).toBe(TestEnum.CHARS_33);
+    expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
+  });
+
+  it("tooltip is hidden in case valid input", async () => {
+    await textField.setValue(TestEnum.CHARS_32);
+    expect(textField.element.value).toBe(TestEnum.CHARS_32);
+    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
+  });
+
+  it("renders tooltip in case submit empty text", async () => {
+    await textField.setValue("");
+    await button.trigger(TestEnum.CLICK);
+    expect(textField.element.value).toBe("");
+    expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
   });
 });
