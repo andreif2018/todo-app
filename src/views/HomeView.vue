@@ -1,18 +1,16 @@
 <script>
 import HeaderItem from "../components/HeaderItem.vue";
 import FooterItem from "../components/FooterItem.vue";
-import ToDoList from "@/components/ToDoList.vue";
+import MainItem from "@/components/MainItem.vue";
 export default {
-  components: { ToDoList, FooterItem, HeaderItem },
+  components: { MainItem, FooterItem, HeaderItem },
 };
 </script>
 
 <template>
   <div class="home">
     <HeaderItem msg="ToDo list" />
-    <main class="main">
-      <ToDoList />
-    </main>
+    <MainItem />
     <FooterItem />
   </div>
 </template>
@@ -31,16 +29,5 @@ export default {
     "header"
     "main"
     "footer";
-}
-
-.main {
-  grid-area: main;
-  width: var(--width-main);
-  height: var(--height-main);
-  background: var(--color-background-dark);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
 }
 </style>
