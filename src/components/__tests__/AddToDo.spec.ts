@@ -4,7 +4,7 @@ import AddToDo from "../AddToDo.vue";
 import { TestEnum } from "./test-model";
 import ToolTip from "../ToolTip.vue";
 
-describe("CheckAddToDoBox", async () => {
+describe("Check AddToDo Component", async () => {
   const wrapper = mount(AddToDo);
   const container = wrapper.find(".add-container");
   const button = wrapper.find(".add-button");
@@ -18,7 +18,7 @@ describe("CheckAddToDoBox", async () => {
     expect(wrapper.classes()).toEqual(["add-wrapper"]);
   });
 
-  it("renders child element ToolTip", () => {
+  it("no render child element ToolTip by default", () => {
     expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
   });
 
