@@ -77,6 +77,7 @@ const handleClearAll = () => {
 .clear-all:hover {
   cursor: pointer;
 }
+
 .clear-all:disabled {
   cursor: default;
 }
