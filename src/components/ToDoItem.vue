@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
-import { Response } from "@/model/model";
 import type { ITodo } from "@/model/model";
+import { Response, StyleEnum } from "@/model/model";
 import CustomCheckbox from "@/components/CustomCheckbox.vue";
 import { ref, watch } from "vue";
+import ModalPopup from "@/components/ModalPopup.vue";
 
 const props = defineProps<{
   data: ITodo;
@@ -19,6 +20,10 @@ const text = ref(props.data.text);
 const isToDoDisabled = ref(true);
 const isChecked = ref(props.data?.isDone);
 const hintMessage = ref();
+const popupMessage = ref({});
+const rowStyle = ref(StyleEnum.FLEX);
+const modalStyle = ref(StyleEnum.NONE);
+const isModal = ref(false);
 let vFocus: { updated: (el: HTMLInputElement) => void };
 vFocus = {
   updated: (el: HTMLInputElement) => {
@@ -38,17 +43,21 @@ const save = () => {
 };
 
 const getInfo = () => {
-  let line0 = `Todo:  ${text.value}\n`;
-  const line1 = props.data?.createdTime
-    ? `Created at: ${props.data?.createdTime}\n`
-    : "";
-  const line2 = props.data?.modifiedTime
-    ? `Modified at: ${props.data?.modifiedTime}\n`
-    : "";
-  const line3 = props.data?.completedTime
-    ? `Completed at: ${props.data?.completedTime}\n`
-    : "";
-  alert(line0 + line1 + line2 + line3);
+  popupMessage.value = {
+    todo: text.value,
+    created: props.data?.createdTime,
+    modified: props.data?.modifiedTime,
+    completed: props.data?.completedTime,
+  };
+  rowStyle.value = StyleEnum.NONE;
+  modalStyle.value = StyleEnum.FLEX;
+  toggleOn(isModal);
+};
+
+const closeModal = () => {
+  modalStyle.value = StyleEnum.NONE;
+  rowStyle.value = StyleEnum.FLEX;
+  toggleOff(isModal);
 };
 
 const handleCheck = () => {
@@ -67,7 +76,11 @@ watch(
 
 <template>
   <li class="todo-item">
-    <CustomCheckbox :is-checked="isChecked" @check="handleCheck" />
+    <CustomCheckbox
+      :is-checked="isChecked"
+      @check="handleCheck"
+      :style="{ display: rowStyle }"
+    />
     <input
       :class="{ done: isChecked, attention: hintMessage }"
       class="regular"
@@ -75,13 +88,20 @@ watch(
       v-model="text"
       :disabled="isToDoDisabled"
       v-focus
+      :style="{ display: rowStyle }"
     />
-    <div class="button-container">
+    <div class="button-container" :style="{ display: rowStyle }">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
       <button class="save" v-else @click="save">save</button>
       <button class="info" @click="getInfo">?</button>
       <button class="remove" @click="$emit(Response.REMOVE)" />
     </div>
+    <ModalPopup
+      v-if="isModal"
+      :msg="popupMessage"
+      :style="{ display: modalStyle }"
+      @hide="closeModal"
+    />
   </li>
 </template>
 
