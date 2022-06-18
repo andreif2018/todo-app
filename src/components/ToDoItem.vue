@@ -2,7 +2,7 @@
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
 import { Response } from "@/model/model";
 import type { ITodo } from "@/model/model";
-import CustomCheckbox from "@/components/CheckBox.vue";
+import CustomCheckbox from "@/components/CustomCheckbox.vue";
 import { ref, watch } from "vue";
 
 const props = defineProps<{
@@ -76,7 +76,7 @@ watch(
       :disabled="isToDoDisabled"
       v-focus
     />
-    <div class="button-wrapper">
+    <div class="button-container">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
       <button class="save" v-else @click="save">save</button>
       <button class="info" @click="getInfo">?</button>
@@ -153,7 +153,7 @@ watch(
   padding: 10px 10px;
 }
 
-.button-wrapper {
+.button-container {
   width: max-content;
   display: flex;
   justify-content: flex-end;
