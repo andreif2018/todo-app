@@ -3,6 +3,7 @@ import { mount } from "@vue/test-utils";
 import AboutView from "../../views/AboutView.vue";
 import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
+import { TestEnum } from "./test-model";
 
 describe("Check Error404View page", async () => {
   const wrapper = mount(AboutView);

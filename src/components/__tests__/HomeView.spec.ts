@@ -4,6 +4,7 @@ import HomeView from "../../views/HomeView.vue";
 import ToDoList from "../ToDoList.vue";
 import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
+import { TestEnum } from "./test-model";
 
 describe("Check HomeView page", async () => {
   const wrapper = mount(HomeView);

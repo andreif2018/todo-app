@@ -4,6 +4,7 @@ import ToDoList from "../../components/ToDoList.vue";
 import DraggableItem from "../../components/DraggableItem.vue";
 import ToolTip from "../../components/ToolTip.vue";
 import type { ITodo } from "../../model/model";
+import { TestEnum } from "./test-model";
 
 describe("Check ToDoList", async () => {
   const testToDo: ITodo = {

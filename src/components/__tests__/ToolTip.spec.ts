@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import ToolTip from "../ToolTip.vue";
+import { TestEnum } from "./test-model";
 
 describe("ToolTip", () => {
   const testProps = "test tooltip";

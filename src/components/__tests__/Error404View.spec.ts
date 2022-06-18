@@ -3,8 +3,9 @@ import { mount } from "@vue/test-utils";
 import Error404View from "../../views/Error404View.vue";
 import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
+import { TestEnum } from "./test-model";
 
-describe("Check Error404View page", async () => {
+describe("check Error404View", async () => {
   const wrapper = mount(Error404View);
   const title = wrapper.find("h2");
   const link = wrapper.find("a");
