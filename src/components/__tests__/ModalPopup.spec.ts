@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import ModalPopup from "../ModalPopup.vue";
 import { TestEnum } from "./test-model";
 
-describe("Check ToDoItem Component", async () => {
+describe("Check Modal Popup Component", async () => {
   const wrapper = mount(ModalPopup, {
     props: {
       msg: {
