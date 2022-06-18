@@ -1,5 +1,6 @@
 export enum TestEnum {
   CLICK = "click",
+  CHECK = "check",
   SAVE = "save",
   CHARS_33 = "this is a upper bound test char33",
   CHARS_32 = "This is value with 32 characters",

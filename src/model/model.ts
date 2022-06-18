@@ -11,6 +11,7 @@ export enum Response {
   REMOVE = "remove",
   HINT = "hint",
   CHECK = "check",
+  HIDE = "hide",
 }
 
 export type ITodo = {
@@ -20,6 +21,13 @@ export type ITodo = {
   modifiedTime?: string;
   completedTime?: string;
   isDone: boolean;
+};
+
+export type IModal = {
+  todo: string;
+  createdTime: string;
+  modifiedTime?: string;
+  completedTime?: string;
 };
 
 export enum DragAndDropEnum {
@@ -35,3 +43,8 @@ export const target = {
   borderColor: "azure",
   borderStyle: "dashed",
 };
+
+export enum StyleEnum {
+  NONE = "none",
+  FLEX = "flex",
+}
