@@ -33,7 +33,7 @@ describe("CheckBox", () => {
 
   it("sensitive to checking checkbox", async () => {
     await checkBox.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty("check");
+    expect(wrapper.emitted()).toHaveProperty(TestEnum.CHECK);
   });
 
   it("renders updated props", async () => {
@@ -43,6 +43,6 @@ describe("CheckBox", () => {
 
   it("sensitive to unchecking checkbox", async () => {
     await checkBox.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty("check", [[true], [false]]);
+    expect(wrapper.emitted()).toHaveProperty(TestEnum.CHECK, [[true], [false]]);
   });
 });
