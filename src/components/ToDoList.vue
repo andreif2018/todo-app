@@ -6,9 +6,9 @@ import { onDrop, onDragStart } from "@/utils/drag-and-drop-util";
 import DraggableItem from "@/components/DraggableItem.vue";
 
 const props = defineProps<{
-  dataList: ITodo[];
+  list: ITodo[];
 }>();
-const todoList = ref(props.dataList);
+const todoList = ref(props.list);
 let list: ITodo[] = todoList.value;
 const tipContent = ref("");
 

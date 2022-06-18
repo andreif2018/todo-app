@@ -4,7 +4,7 @@ import CheckBox from "../CheckBox.vue";
 import { TestEnum } from "./test-model";
 
 describe("CheckBox", () => {
-  const wrapper = mount(CheckBox, { props: { msg: false } });
+  const wrapper = mount(CheckBox, { props: { isChecked: false } });
   const checkBox = wrapper.find(".customCheck");
 
   it("renders proper component tag name", () => {

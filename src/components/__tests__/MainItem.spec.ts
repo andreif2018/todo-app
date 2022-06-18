@@ -3,6 +3,7 @@ import { mount } from "@vue/test-utils";
 import MainItem from "../../components/MainItem.vue";
 import ToDoList from "../ToDoList.vue";
 import AddToDo from "../AddToDo.vue";
+import { TestEnum } from "./test-model";
 
 describe("Check MainItem", async () => {
   const wrapper = mount(MainItem);
@@ -28,6 +29,7 @@ describe("Check MainItem", async () => {
 
   it("renders child element ToDoList", () => {
     expect(wrapper.findComponent(ToDoList).exists()).toBeTruthy();
+    expect(wrapper.findComponent(ToDoList).props()).toEqual({ list: [] });
   });
 
   it("renders child elements count correct", () => {
@@ -56,5 +58,33 @@ describe("Check MainItem", async () => {
 
   it("renders button text", () => {
     expect(button.text()).toEqual("Delete All");
+  });
+
+  it("updated according to emitted event by child component", async () => {
+    const item = "new ToDo";
+    await wrapper.findComponent(AddToDo).vm.$emit(TestEnum.SAVE, item);
+    expect(wrapper.findComponent(ToDoList).props().list[0].text).toEqual(item);
+    expect(wrapper.findComponent(ToDoList).props().list.length).toBe(1);
+  });
+
+  it("updated according to emitted additional event by child component", async () => {
+    const item = "new ToDo";
+    await wrapper.findComponent(AddToDo).vm.$emit(TestEnum.SAVE, item + item);
+    expect(wrapper.findComponent(ToDoList).props().list[0].text).toEqual(item);
+    expect(wrapper.findComponent(ToDoList).props().list[1].text).toEqual(
+      item + item
+    );
+    expect(wrapper.findComponent(ToDoList).props().list.length).toBe(2);
+  });
+
+  it("updated according to emitted delete all event", async () => {
+    await button.trigger(TestEnum.CLICK);
+    expect(wrapper.findComponent(ToDoList).props().list.length).toBe(0);
+  });
+
+  it("updated according to emitted delete all event", async () => {
+    await wrapper.findComponent(AddToDo).vm.$emit(TestEnum.SAVE, "some text");
+    await wrapper.vm.handleClearAll();
+    expect(wrapper.findComponent(ToDoList).props().list.length).toBe(0);
   });
 });

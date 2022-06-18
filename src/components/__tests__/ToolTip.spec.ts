@@ -4,6 +4,7 @@ import ToolTip from "../ToolTip.vue";
 
 describe("ToolTip", () => {
   const testProps = "test tooltip";
+  const updatedProps = "updated tooltip";
   const wrapper = mount(ToolTip, { props: { msg: testProps } });
 
   it("renders proper component tag name", () => {
@@ -20,5 +21,10 @@ describe("ToolTip", () => {
 
   it("renders proper props", () => {
     expect(wrapper.find(".popup").text()).toEqual(testProps);
+  });
+
+  it("renders updated props", async () => {
+    await wrapper.setProps({ msg: updatedProps });
+    expect(wrapper.find(".popup").text()).toEqual(updatedProps);
   });
 });

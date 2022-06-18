@@ -39,7 +39,7 @@ const handleClearAll = () => {
         </button>
       </div>
     </div>
-    <ToDoList :data-list="todoList" />
+    <ToDoList :list="todoList" />
   </main>
 </template>
 
