@@ -9,11 +9,11 @@ describe("Check Error404View page", async () => {
   const title = wrapper.find("h2");
   const link = wrapper.find("a");
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.tagName).toEqual("DIV");
+  it("renders component tag name", () => {
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["error404"]);
   });
 
@@ -29,7 +29,7 @@ describe("Check Error404View page", async () => {
     expect(wrapper.find("main").classes()).toEqual(["main"]);
   });
 
-  it("renders proper child element count", () => {
+  it("renders child element count", () => {
     expect(wrapper.element.childElementCount).toBe(3);
   });
 

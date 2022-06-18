@@ -5,4 +5,8 @@ export enum TestEnum {
   CHARS_32 = "This is value with 32 characters",
   CHARS_3 = "ch3",
   CHARS_2 = "c2",
+  DIV = "DIV",
+  BUTTON = "BUTTON",
+  INPUT = "INPUT",
+  LI = "LI",
 }

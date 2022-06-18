@@ -9,23 +9,23 @@ describe("HeaderItem", () => {
   const wrapper = mount(HeaderItem, { props: { msg: testProps } });
   const childDiv = wrapper.find(".title");
 
-  it("renders proper component tag name", () => {
+  it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual("HEADER");
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["header"]);
   });
 
-  it("renders proper props", () => {
+  it("renders props", () => {
     expect(childDiv.find("H1").text()).toEqual(testProps);
   });
 
-  it("renders proper child element tag name", () => {
-    expect(childDiv.element.tagName).toEqual("DIV");
+  it("renders child element tag name", () => {
+    expect(childDiv.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("renders proper component structure", () => {
+  it("renders component structure", () => {
     expect(wrapper.element.childElementCount).toBe(3);
   });
 

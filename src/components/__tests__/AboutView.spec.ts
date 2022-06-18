@@ -10,11 +10,11 @@ describe("Check Error404View page", async () => {
   const feature = wrapper.find(".feature-container");
   const list = feature.element.children[1];
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.tagName).toEqual("DIV");
+  it("renders component tag name", () => {
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["about"]);
   });
 
@@ -30,11 +30,11 @@ describe("Check Error404View page", async () => {
     expect(main.classes()).toEqual(["main"]);
   });
 
-  it("renders proper child element count", () => {
+  it("renders child element count", () => {
     expect(wrapper.element.childElementCount).toBe(3);
   });
 
-  it("renders proper child element count in main element", () => {
+  it("renders child element count in main element", () => {
     expect(main.element.childElementCount).toBe(3);
   });
 
@@ -59,7 +59,7 @@ describe("Check Error404View page", async () => {
   });
 
   it("div feature tag name", () => {
-    expect(feature.element.tagName).toEqual("DIV");
+    expect(feature.element.tagName).toEqual(TestEnum.DIV);
   });
 
   it("div feature child elements count", () => {
@@ -85,27 +85,27 @@ describe("Check Error404View page", async () => {
   });
 
   it("features list 1st child element", () => {
-    expect(list.firstElementChild?.tagName).toEqual("LI");
+    expect(list.firstElementChild?.tagName).toEqual(TestEnum.LI);
   });
 
   it("features list 2nd child element", () => {
-    expect(list.children[1]?.tagName).toEqual("LI");
+    expect(list.children[1]?.tagName).toEqual(TestEnum.LI);
   });
 
   it("features list 3rd child element", () => {
-    expect(list.children[2]?.tagName).toEqual("LI");
+    expect(list.children[2]?.tagName).toEqual(TestEnum.LI);
   });
 
   it("features list 4th child element", () => {
-    expect(list.children[3]?.tagName).toEqual("LI");
+    expect(list.children[3]?.tagName).toEqual(TestEnum.LI);
   });
 
   it("features list 5th child element", () => {
-    expect(list.children[4]?.tagName).toEqual("LI");
+    expect(list.children[4]?.tagName).toEqual(TestEnum.LI);
   });
 
   it("features list 6th child element", () => {
-    expect(list.children[5]?.tagName).toEqual("LI");
+    expect(list.children[5]?.tagName).toEqual(TestEnum.LI);
   });
 
   it("div feature 3rd child element", () => {

@@ -8,11 +8,11 @@ import HeaderItem from "../HeaderItem.vue";
 describe("Check HomeView page", async () => {
   const wrapper = mount(HomeView);
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.tagName).toEqual("DIV");
+  it("renders component tag name", () => {
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["home"]);
   });
 
@@ -32,7 +32,7 @@ describe("Check HomeView page", async () => {
     expect(wrapper.find("main").classes()).toEqual(["main"]);
   });
 
-  it("renders proper child element count", () => {
+  it("renders child element count", () => {
     expect(wrapper.element.childElementCount).toBe(3);
   });
 });

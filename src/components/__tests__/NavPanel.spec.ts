@@ -16,11 +16,11 @@ describe("NavPanel", async () => {
   const aboutLinkElement = wrapper.find('[to="/about"]');
   const tagName = "ROUTERLINK";
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.find("nav").classes()).toEqual(["nav-wrapper"]);
   });
 
-  it("renders proper child components amount", () => {
+  it("renders child components amount", () => {
     expect(wrapper.find("nav").element.childElementCount).toBe(2);
   });
 

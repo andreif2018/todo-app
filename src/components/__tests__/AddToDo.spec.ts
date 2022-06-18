@@ -11,11 +11,11 @@ describe("Check AddToDo Component", async () => {
   const button = wrapper.find(".add-button");
   const textField = wrapper.find(".title");
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.tagName).toEqual("DIV");
+  it("renders component tag name", () => {
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["add-wrapper"]);
   });
 
@@ -23,35 +23,35 @@ describe("Check AddToDo Component", async () => {
     expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
   });
 
-  it("renders proper child container structure", () => {
+  it("renders child container structure", () => {
     expect(container.element.childElementCount).toBe(2);
   });
 
-  it("renders proper child container tag name", () => {
-    expect(container.element.tagName).toEqual("DIV");
+  it("renders child container tag name", () => {
+    expect(container.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("renders proper button tag name", () => {
-    expect(button.element.tagName).toEqual("BUTTON");
+  it("renders button tag name", () => {
+    expect(button.element.tagName).toEqual(TestEnum.BUTTON);
   });
 
-  it("assigns proper css class to button element", () => {
+  it("assigns css class to button element", () => {
     expect(button.classes()).toEqual(["add-button"]);
   });
 
-  it("renders proper input text tag name", () => {
-    expect(textField.element.tagName).toEqual("INPUT");
+  it("renders input text tag name", () => {
+    expect(textField.element.tagName).toEqual(TestEnum.INPUT);
   });
 
-  it("assigns proper css class to input text element", () => {
+  it("assigns css class to input text element", () => {
     expect(textField.classes()).toEqual(["title"]);
   });
 
-  it("assigns proper attribute to input text element", () => {
+  it("assigns attribute to input text element", () => {
     expect(textField.attributes("type")).toEqual("text");
   });
 
-  it("assigns proper attribute to input text element", () => {
+  it("assigns attribute to input text element", () => {
     expect(textField.attributes("placeholder")).toEqual("Type Todo here...");
   });
 

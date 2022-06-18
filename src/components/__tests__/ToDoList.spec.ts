@@ -17,11 +17,11 @@ describe("Check ToDoList", async () => {
   const wrapper = mount(ToDoList, { props: { list: [] } });
   const container = wrapper.find(".list-container");
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.tagName).toEqual("DIV");
+  it("renders component tag name", () => {
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["list-wrapper"]);
   });
 

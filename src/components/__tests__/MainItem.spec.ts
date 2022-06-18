@@ -11,11 +11,11 @@ describe("Check MainItem", async () => {
   const buttonWrapper = wrapper.find(".clear-all-wrapper");
   const button = wrapper.find(".clear-all");
 
-  it("renders proper component tag name", () => {
+  it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual("MAIN");
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["main"]);
   });
 
@@ -24,7 +24,7 @@ describe("Check MainItem", async () => {
   });
 
   it("renders child element div top bar tag name", () => {
-    expect(bar.element.tagName).toEqual("DIV");
+    expect(bar.element.tagName).toEqual(TestEnum.DIV);
   });
 
   it("renders child element ToDoList", () => {
@@ -44,16 +44,16 @@ describe("Check MainItem", async () => {
     expect(wrapper.findComponent(AddToDo).exists()).toBeTruthy();
   });
 
-  it("renders proper element count in button wrapper", () => {
+  it("renders element count in button wrapper", () => {
     expect(buttonWrapper.element.childElementCount).toBe(1);
   });
 
   it("renders button wrapper tag name", () => {
-    expect(buttonWrapper.element.tagName).toEqual("DIV");
+    expect(buttonWrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
   it("renders button element", () => {
-    expect(button.element.tagName).toEqual("BUTTON");
+    expect(button.element.tagName).toEqual(TestEnum.BUTTON);
   });
 
   it("renders button text", () => {

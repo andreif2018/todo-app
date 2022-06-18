@@ -8,15 +8,15 @@ describe("FooterItem", () => {
   const wrapper = mount(FooterItem);
   const link = wrapper.find(".github");
 
-  it("renders proper component tag name", () => {
+  it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual("FOOTER");
   });
 
-  it("assigns proper css class name", () => {
+  it("assigns css class name", () => {
     expect(wrapper.classes()).toEqual(["footer"]);
   });
 
-  it("renders proper component structure", () => {
+  it("renders component structure", () => {
     expect(wrapper.element.childElementCount).toBe(3);
   });
 
@@ -28,29 +28,29 @@ describe("FooterItem", () => {
     expect(wrapper.findComponent(NavPanel).exists()).toBe(true);
   });
 
-  it("renders proper child link element", () => {
+  it("renders child link element", () => {
     expect(link.element.tagName).toEqual("A");
   });
 
-  it("assigns proper css class for link", () => {
+  it("assigns css class for link", () => {
     expect(link.classes()).toEqual(["github"]);
   });
 
-  it("assigns proper href attribute for link", () => {
+  it("assigns href attribute for link", () => {
     expect(link.attributes("href")).toEqual(
       "https://github.com/andreif2018/todo-app"
     );
   });
 
-  it("assigns proper target attribute for link", () => {
+  it("assigns target attribute for link", () => {
     expect(link.attributes("target")).toEqual("_blank");
   });
 
-  it("assigns proper target attribute for link", () => {
+  it("assigns target attribute for link", () => {
     expect(link.attributes("rel")).toEqual("noopener noreferrer");
   });
 
-  it("renders proper text value for link", () => {
+  it("renders text value for link", () => {
     expect(link.text()).toEqual("View in GitHub");
   });
 });

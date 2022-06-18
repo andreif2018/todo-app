@@ -7,19 +7,19 @@ describe("ToolTip", () => {
   const updatedProps = "updated tooltip";
   const wrapper = mount(ToolTip, { props: { msg: testProps } });
 
-  it("renders proper component tag name", () => {
-    expect(wrapper.element.tagName).toEqual("DIV");
+  it("renders component tag name", () => {
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("renders proper component structure", () => {
+  it("renders component structure", () => {
     expect(wrapper.element.childElementCount).toBe(0);
   });
 
-  it("assigns proper css class", () => {
+  it("assigns css class", () => {
     expect(wrapper.classes()).toEqual(["popup"]);
   });
 
-  it("renders proper props", () => {
+  it("renders props", () => {
     expect(wrapper.find(".popup").text()).toEqual(testProps);
   });
 
