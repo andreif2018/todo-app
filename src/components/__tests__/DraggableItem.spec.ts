@@ -49,4 +49,14 @@ describe("DraggableItem", () => {
     await wrapper.vm.onDrop();
     expect(wrapper.vm.isTargetItem).toBe(false);
   });
+
+  it("check start method", async () => {
+    await wrapper.vm.start();
+    expect(wrapper.vm.isCurrentDragged).toBe(true);
+  });
+
+  it("check stop method", async () => {
+    await wrapper.vm.stop();
+    expect(wrapper.vm.isCurrentDragged).toBe(false);
+  });
 });
