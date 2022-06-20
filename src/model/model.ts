@@ -12,6 +12,8 @@ export enum Response {
   HINT = "hint",
   CHECK = "check",
   HIDE = "hide",
+  ON_DRAG_START = "ondragstart",
+  ON_DRAG_END = "ondragend",
 }
 
 export type ITodo = {

@@ -9,7 +9,14 @@ import { regular, target } from "@/model/model";
 const props = defineProps<{
   item?: ITodo;
 }>();
-defineEmits([Response.SAVE, Response.REMOVE, Response.HINT, Response.CHECK]);
+defineEmits([
+  Response.SAVE,
+  Response.REMOVE,
+  Response.HINT,
+  Response.CHECK,
+  Response.ON_DRAG_START,
+  Response.ON_DRAG_END,
+]);
 const isCurrentDragged = ref(false);
 const isTargetItem = ref(false);
 const activeStyle = ref(regular);
@@ -28,6 +35,14 @@ const onDrop = () => {
   toggleOff(isTargetItem);
   activeStyle.value = regular;
 };
+
+const start = () => {
+  toggleOn(isCurrentDragged);
+};
+
+const stop = () => {
+  toggleOff(isCurrentDragged);
+};
 </script>
 
 <template>
@@ -39,8 +54,8 @@ const onDrop = () => {
       borderColor: activeStyle.borderColor,
       borderStyle: activeStyle.borderStyle,
     }"
-    @dragstart="isCurrentDragged = true"
-    @dragend="isCurrentDragged = false"
+    @dragstart="start"
+    @dragend="stop"
     @dragenter="onDragEnter"
     @dragleave="onDragLeave"
     @drop.stop="onDrop"
