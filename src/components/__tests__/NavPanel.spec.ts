@@ -14,14 +14,15 @@ describe("NavPanel", async () => {
   });
   const homeLinkElement = wrapper.find('[to="/"]');
   const aboutLinkElement = wrapper.find('[to="/about"]');
+  const panel = wrapper.find("nav");
   const tagName = "ROUTERLINK";
 
   it("assigns css class", () => {
-    expect(wrapper.find("nav").classes()).toEqual(["nav-wrapper"]);
+    expect(panel.element.className).toEqual("nav-wrapper");
   });
 
   it("renders child components amount", () => {
-    expect(wrapper.find("nav").element.childElementCount).toBe(2);
+    expect(panel.element.childElementCount).toBe(2);
   });
 
   it("Home link tag name", () => {

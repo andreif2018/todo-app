@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import CheckBox from "../CustomCheckbox.vue";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
 
 describe("CheckBox", () => {
   const wrapper = mount(CheckBox, { props: { isChecked: false } });

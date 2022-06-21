@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import HeaderItem from "../HeaderItem.vue";
 import LogoItem from "../LogoItem.vue";
 import NavPanel from "../NavPanel.vue";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
 
 describe("HeaderItem", () => {
   const testProps = "test header";

@@ -1,14 +1,15 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import DraggableItem from "../DraggableItem.vue";
 import type { ITodo } from "../../model/model";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
 import ToDoItem from "../ToDoItem.vue";
+import { createTestingPinia } from "@pinia/testing";
 
 describe("DraggableItem", () => {
   const testToDo: ITodo = {
-    _id: 0,
-    text: "I am test ToDo",
+    _id: TestEnum.TEST_ID,
+    todoName: "I am test ToDo",
     createdTime: new Date().toLocaleString(),
     modifiedTime: undefined,
     completedTime: undefined,
@@ -16,6 +17,13 @@ describe("DraggableItem", () => {
   };
   const wrapper = mount(DraggableItem, {
     props: { item: testToDo },
+    global: {
+      plugins: [
+        createTestingPinia({
+          createSpy: vitest.fn,
+        }),
+      ],
+    },
     emits: ["ondragenter"],
   });
 
@@ -33,30 +41,5 @@ describe("DraggableItem", () => {
 
   it("renders child component", () => {
     expect(wrapper.findComponent(ToDoItem).exists()).toBeTruthy();
-  });
-
-  it("check onDragEnter method", async () => {
-    await wrapper.vm.onDragEnter();
-    expect(wrapper.vm.isTargetItem).toBe(true);
-  });
-
-  it("check onDragLeave method", async () => {
-    await wrapper.vm.onDragLeave();
-    expect(wrapper.vm.isTargetItem).toBe(false);
-  });
-
-  it("check onDrop method", async () => {
-    await wrapper.vm.onDrop();
-    expect(wrapper.vm.isTargetItem).toBe(false);
-  });
-
-  it("check start method", async () => {
-    await wrapper.vm.start();
-    expect(wrapper.vm.isCurrentDragged).toBe(true);
-  });
-
-  it("check stop method", async () => {
-    await wrapper.vm.stop();
-    expect(wrapper.vm.isCurrentDragged).toBe(false);
   });
 });

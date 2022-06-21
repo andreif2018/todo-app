@@ -1,15 +1,24 @@
-// @ts-nocheck
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import AddToDo from "../AddToDo.vue";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
 import ToolTip from "../ToolTip.vue";
+import { createTestingPinia } from "@pinia/testing";
 
 describe("Check AddToDo Component", async () => {
-  const wrapper = mount(AddToDo);
+  const wrapper = mount(AddToDo, {
+    global: {
+      plugins: [
+        createTestingPinia({
+          createSpy: vitest.fn,
+        }),
+      ],
+    },
+  });
+
   const container = wrapper.find(".add-container");
   const button = wrapper.find(".add-button");
-  const textField = wrapper.find(".title");
+  const textField = wrapper.find("input");
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
@@ -36,15 +45,11 @@ describe("Check AddToDo Component", async () => {
   });
 
   it("assigns css class to button element", () => {
-    expect(button.classes()).toEqual(["add-button"]);
+    expect(button.element.className).toEqual("add-button");
   });
 
-  it("renders input text tag name", () => {
-    expect(textField.element.tagName).toEqual(TestEnum.INPUT);
-  });
-
-  it("assigns css class to input text element", () => {
-    expect(textField.classes()).toEqual(["title"]);
+  it("renders input text classname", () => {
+    expect(textField.element.className).toEqual("title");
   });
 
   it("assigns attribute to input text element", () => {

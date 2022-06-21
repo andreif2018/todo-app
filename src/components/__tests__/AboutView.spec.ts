@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import AboutView from "../../views/AboutView.vue";
 import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
 
 describe("Check Error404View page", async () => {
   const wrapper = mount(AboutView);
@@ -28,7 +28,7 @@ describe("Check Error404View page", async () => {
   });
 
   it("renders child element main", () => {
-    expect(main.classes()).toEqual(["main"]);
+    expect(main.element.className).toEqual("main");
   });
 
   it("renders child element count", () => {

@@ -1,13 +1,22 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import HomeView from "../../views/HomeView.vue";
 import ToDoList from "../ToDoList.vue";
 import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
+import { createTestingPinia } from "@pinia/testing";
 
 describe("Check HomeView page", async () => {
-  const wrapper = mount(HomeView);
+  const wrapper = mount(HomeView, {
+    global: {
+      plugins: [
+        createTestingPinia({
+          createSpy: vitest.fn,
+        }),
+      ],
+    },
+  });
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
@@ -30,7 +39,7 @@ describe("Check HomeView page", async () => {
   });
 
   it("renders child element main", () => {
-    expect(wrapper.find("main").classes()).toEqual(["main"]);
+    expect(wrapper.find("main").element.className).toEqual("main");
   });
 
   it("renders child element count", () => {

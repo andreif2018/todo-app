@@ -33,7 +33,7 @@ describe("FooterItem", () => {
   });
 
   it("assigns css class for link", () => {
-    expect(link.classes()).toEqual(["github"]);
+    expect(link.element.className).toEqual("github");
   });
 
   it("assigns href attribute for link", () => {

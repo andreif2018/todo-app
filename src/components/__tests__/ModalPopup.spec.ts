@@ -1,21 +1,30 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import ModalPopup from "../ModalPopup.vue";
-import { TestEnum } from "./test-model";
+import { TestEnum } from "./model/test-model";
+import { createTestingPinia } from "@pinia/testing";
+import type { ITodo } from "../../model/model";
 
 describe("Check Modal Popup Component", async () => {
+  const testToDo: ITodo = {
+    _id: TestEnum.TEST_ID,
+    todoName: "I am test ToDo",
+    createdTime: "123",
+    modifiedTime: "456",
+    completedTime: "789",
+    isDone: false,
+  };
   const wrapper = mount(ModalPopup, {
-    props: {
-      msg: {
-        todo: "item",
-        created: "time",
-        modified: "time 2",
-        completed: "time 3",
-      },
+    props: { msg: testToDo },
+    global: {
+      plugins: [
+        createTestingPinia({
+          createSpy: vitest.fn,
+        }),
+      ],
     },
   });
   const messageContainer = wrapper.find(".message-wrapper");
-
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
@@ -34,7 +43,7 @@ describe("Check Modal Popup Component", async () => {
 
   it("render message-wrapper text", () => {
     expect(messageContainer.element.textContent).toEqual(
-      "Todo: itemCreated: timeModified: time 2Completed: time 3"
+      "Todo: I am test ToDoCreated: 123Modified: 456Completed: 789"
     );
   });
 });
