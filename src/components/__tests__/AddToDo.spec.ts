@@ -1,4 +1,4 @@
-import { describe, it, expect, vitest } from "vitest";
+import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import AddToDo from "../AddToDo.vue";
 import { TestEnum } from "./model/test-model";
@@ -105,5 +105,12 @@ describe("Check AddToDo Component", async () => {
     await button.trigger(TestEnum.CLICK);
     expect(textField.element.value).toBe("");
     expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
+  });
+
+  it("method handleBlur is sensitive by esc key pressing", async () => {
+    const spy = (wrapper.vm.handleBlur = vi.fn());
+    wrapper.vm.handleBlur();
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenLastCalledWith();
   });
 });

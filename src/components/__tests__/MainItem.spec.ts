@@ -71,7 +71,7 @@ describe("Check MainItem", async () => {
     expect(button.text()).toEqual("Delete All");
   });
 
-  it("button delete all is sensitive", async () => {
+  it("method delete all is sensitive by button click", async () => {
     setActivePinia(createPinia());
     await store.createNewItem(TestEnum.TEST_NAME);
     await wrapper.vm.handleClearAll();
