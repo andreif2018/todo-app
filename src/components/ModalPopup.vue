@@ -1,18 +1,31 @@
 <script setup lang="ts">
-import type { IModal } from "@/model/model";
 import { Response } from "@/model/model";
+import type { ITodo } from "@/model/model";
 
 const props = defineProps<{
-  msg: IModal;
+  msg: ITodo;
 }>();
 </script>
 <template>
   <div class="modal">
     <div class="message-wrapper">
-      <div>Todo: {{ props.msg.todo }}</div>
-      <div v-if="props.msg.created">Created: {{ props.msg.created }}</div>
-      <div v-if="props.msg.modified">Modified: {{ props.msg.modified }}</div>
-      <div v-if="props.msg.completed">Completed: {{ props.msg.completed }}</div>
+      <div class="popup-name">
+        <span class="popup-title">Todo: </span>{{ props.msg.todoName }}
+      </div>
+      <div class="cells-bar">
+        <div v-if="props.msg.createdTime" class="cell">
+          <span class="popup-title">Created: </span>{{ props.msg.createdTime }}
+        </div>
+        <div v-if="props.msg.modifiedTime" class="cell">
+          <span class="popup-title">Modified: </span
+          >{{ props.msg.modifiedTime }}
+        </div>
+        <div v-if="props.msg.completedTime" class="cell">
+          <span class="popup-title">Completed: </span
+          >{{ props.msg.completedTime }}
+        </div>
+        <div v-else class="popup-title cell">Not Completed</div>
+      </div>
     </div>
     <div class="hide-wrapper">
       <button class="hide" @click="$emit(Response.HIDE)">X</button>
@@ -33,11 +46,11 @@ const props = defineProps<{
   cursor: default;
   border: 1px solid rgba(118, 118, 118, 0.3);
   background-color: rgb(239, 239, 239);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  padding-left: 1vw;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hide {
@@ -49,11 +62,12 @@ const props = defineProps<{
 }
 
 .message-wrapper {
-  width: 75%;
+  width: 95%;
   height: 75%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .hide-wrapper {
@@ -67,5 +81,22 @@ const props = defineProps<{
 .hide:hover {
   box-shadow: 0 2px 3px 1px rgba(12, 12, 12, 0.5);
   cursor: pointer;
+}
+
+.popup-title {
+  font-weight: bold;
+}
+
+.cells-bar {
+  width: 100%;
+  font-size: 0.75vw;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 33% 33% auto;
+}
+
+.cell {
+  grid-row: 1;
+  text-align: left;
 }
 </style>

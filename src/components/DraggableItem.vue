@@ -7,16 +7,10 @@ import { toggleOn, toggleOff } from "@/utils/utils";
 import { regular, target } from "@/model/model";
 
 const props = defineProps<{
-  item?: ITodo;
+  item: ITodo;
 }>();
-defineEmits([
-  Response.SAVE,
-  Response.REMOVE,
-  Response.HINT,
-  Response.CHECK,
-  Response.ON_DRAG_START,
-  Response.ON_DRAG_END,
-]);
+defineEmits([Response.HINT]);
+
 const isCurrentDragged = ref(false);
 const isTargetItem = ref(false);
 const activeStyle = ref(regular);
@@ -60,13 +54,7 @@ const stop = () => {
     @dragleave="onDragLeave"
     @drop.stop="onDrop"
   >
-    <ToDoItem
-      :data="props.item"
-      @save="(msg) => $emit(Response.SAVE, msg)"
-      @remove="$emit(Response.REMOVE)"
-      @hint="(msg) => $emit(Response.HINT, msg)"
-      @check="(msg) => $emit(Response.CHECK, msg)"
-    />
+    <ToDoItem :item="props.item" @hint="(msg) => $emit(Response.HINT, msg)" />
   </li>
 </template>
 

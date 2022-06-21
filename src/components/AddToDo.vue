@@ -2,22 +2,28 @@
 import { ref, watch } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
-import { Response } from "@/model/model";
+import { useToDoStore } from "@/stores/todos";
 
 const text = ref("");
-const emit = defineEmits([Response.VALIDATE, Response.SAVE, Response.HINT]);
 const hintMessage = ref();
 const isNotified = ref(false);
+const store = useToDoStore();
 
 const addItem = () => {
   if (!isNotified.value) {
     toggleOn(isNotified);
+    hintMessage.value = validateInput(text.value);
   }
-  if (!hintMessage.value && text.value.length !== 0) {
-    emit(Response.SAVE, text.value);
+  if (!hintMessage.value) {
+    store.createNewItem(text.value);
     text.value = "";
     toggleOff(isNotified);
   }
+};
+
+const handleBlur = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  target?.blur();
 };
 
 watch(
@@ -35,9 +41,8 @@ watch(
         placeholder="Type Todo here..."
         type="text"
         v-model="text"
-        @keydown.esc="$event.target.blur()"
-        @keyup.enter="$event.target.blur()"
-        ref="qwe"
+        @keydown.esc="handleBlur($event)"
+        @keyup.enter="handleBlur($event)"
       />
     </div>
   </div>

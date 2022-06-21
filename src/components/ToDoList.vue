@@ -4,39 +4,12 @@ import ToolTip from "@/components/ToolTip.vue";
 import type { ITodo } from "@/model/model";
 import { onDrop, onDragStart } from "@/utils/drag-and-drop-util";
 import DraggableItem from "@/components/DraggableItem.vue";
+import { useToDoStore } from "@/stores/todos";
 
-const props = defineProps<{
-  list: ITodo[];
-}>();
-const todoList = ref(props.list);
+const store = useToDoStore();
+const todoList = ref(store.todos);
 let list: ITodo[] = todoList.value;
 const tipContent = ref("");
-
-const saveTodo = (todoID: number, message: string) => {
-  list.forEach((item: ITodo) => {
-    if (item._id === todoID) {
-      item.text = message;
-      item.modifiedTime = new Date().toLocaleString();
-    }
-  });
-};
-
-const removeTodo = (index: number) => {
-  list.splice(index, 1);
-};
-
-const checkTodo = (id: number) => {
-  list.forEach((item: ITodo) => {
-    if (item._id === id) {
-      if (item.isDone) {
-        item.completedTime = "";
-      } else {
-        item.completedTime = new Date().toLocaleString();
-      }
-      item.isDone = !item.isDone;
-    }
-  });
-};
 
 const handleTip = (result: string) => {
   tipContent.value = result;
@@ -48,14 +21,11 @@ const handleTip = (result: string) => {
     <ToolTip v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
-        v-for="(item, index) in todoList"
+        v-for="(item, index) in store.todos"
         :key="item._id"
         :item="item"
-        @check="checkTodo(item._id)"
         @dragstart="onDragStart($event, index)"
         @hint="(msg) => handleTip(msg)"
-        @remove="removeTodo(index)"
-        @save="(msg) => saveTodo(item._id, msg)"
         @drop.stop="onDrop($event, index, list)"
       />
     </ol>

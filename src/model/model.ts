@@ -6,30 +6,17 @@ export enum InputEnum {
 }
 
 export enum Response {
-  VALIDATE = "validate",
-  SAVE = "save",
-  REMOVE = "remove",
   HINT = "hint",
-  CHECK = "check",
   HIDE = "hide",
-  ON_DRAG_START = "ondragstart",
-  ON_DRAG_END = "ondragend",
 }
 
 export type ITodo = {
-  _id?: number;
-  text: string;
+  _id: string;
+  todoName: string;
   createdTime: string;
   modifiedTime?: string;
   completedTime?: string;
   isDone: boolean;
-};
-
-export type IModal = {
-  todo: string;
-  createdTime: string;
-  modifiedTime?: string;
-  completedTime?: string;
 };
 
 export enum DragAndDropEnum {
@@ -50,3 +37,7 @@ export enum StyleEnum {
   NONE = "none",
   FLEX = "flex",
 }
+
+export type IStore = {
+  todos: ITodo[];
+};

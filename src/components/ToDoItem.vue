@@ -5,22 +5,18 @@ import { Response, StyleEnum } from "@/model/model";
 import CustomCheckbox from "@/components/CustomCheckbox.vue";
 import { ref, watch } from "vue";
 import ModalPopup from "@/components/ModalPopup.vue";
+import { useToDoStore } from "@/stores/todos";
 
 const props = defineProps<{
-  data: ITodo;
+  item: ITodo;
 }>();
-const emit = defineEmits([
-  Response.SAVE,
-  Response.REMOVE,
-  Response.HINT,
-  Response.CHECK,
-]);
+const emit = defineEmits([Response.HINT]);
 
-const text = ref(props.data.text);
+const store = useToDoStore();
+const text = ref(props.item.todoName);
 const isToDoDisabled = ref(true);
-const isChecked = ref(props.data?.isDone);
+const isChecked = ref(props.item.isDone);
 const hintMessage = ref();
-const popupMessage = ref({});
 const rowStyle = ref(StyleEnum.FLEX);
 const modalStyle = ref(StyleEnum.NONE);
 const isModal = ref(false);
@@ -37,18 +33,16 @@ const edit = () => {
 
 const save = () => {
   if (!hintMessage.value) {
-    emit(Response.SAVE, text.value);
+    store.updateItem(props.item._id, text.value);
     toggleOn(isToDoDisabled);
   }
 };
 
+const remove = () => {
+  store.deleteItem(props.item._id);
+};
+
 const getInfo = () => {
-  popupMessage.value = {
-    todo: text.value,
-    created: props.data?.createdTime,
-    modified: props.data?.modifiedTime,
-    completed: props.data?.completedTime,
-  };
   rowStyle.value = StyleEnum.NONE;
   modalStyle.value = StyleEnum.FLEX;
   toggleOn(isModal);
@@ -62,7 +56,7 @@ const closeModal = () => {
 
 const handleCheck = () => {
   isChecked.value ? toggleOff(isChecked) : toggleOn(isChecked);
-  emit(Response.CHECK);
+  store.checkToDo(props.item._id);
 };
 
 watch(
@@ -94,11 +88,11 @@ watch(
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
       <button class="save" v-else @click="save">save</button>
       <button class="info" @click="getInfo">?</button>
-      <button class="remove" @click="$emit(Response.REMOVE)" />
+      <button class="remove" @click="remove" />
     </div>
     <ModalPopup
       v-if="isModal"
-      :msg="popupMessage"
+      :msg="props.item"
       :style="{ display: modalStyle }"
       @hide="closeModal"
     />

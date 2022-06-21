@@ -1,45 +1,29 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import AddToDo from "@/components/AddToDo.vue";
-import type { ITodo } from "@/model/model";
 import ToDoList from "@/components/ToDoList.vue";
+import { useToDoStore } from "@/stores/todos";
 
-let id = 0;
-let todoList = ref([]);
-let list: ITodo[] = todoList.value;
-
-const addTodo = (newTodo: string) => {
-  const newItem: ITodo = {
-    _id: id++,
-    text: newTodo,
-    createdTime: new Date().toLocaleString(),
-    modifiedTime: undefined,
-    completedTime: undefined,
-    isDone: false,
-  };
-  list.push(newItem);
-};
-
+const store = useToDoStore();
 const handleClearAll = () => {
-  list.splice(0, list.length);
+  store.clearAll();
 };
 </script>
 
 <template>
   <main class="main">
     <div class="top-bar">
-      <AddToDo @save="(msg) => addTodo(msg)" />
+      <AddToDo />
       <div class="clear-all-wrapper">
         <button
           class="clear-all"
           @click="handleClearAll"
-          :disabled="todoList.length <= 0"
+          :disabled="store.todos.length <= 0"
         >
           Delete All
         </button>
       </div>
     </div>
-    <ToDoList :list="todoList" />
+    <ToDoList />
   </main>
 </template>
 
