@@ -1,4 +1,4 @@
-import { describe, it, expect, vitest } from "vitest";
+import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import ToDoItem from "../ToDoItem.vue";
 import CustomCheckbox from "../CustomCheckbox.vue";
@@ -6,6 +6,8 @@ import ModalPopup from "../ModalPopup.vue";
 import { TestEnum } from "./model/test-model";
 import { InputEnum } from "../../model/model";
 import { createTestingPinia } from "@pinia/testing";
+import { createPinia, setActivePinia } from "pinia";
+import { useToDoStore } from "../../stores/todos";
 
 describe("Check ToDoItem Component", async () => {
   const wrapper = mount(ToDoItem, {
@@ -118,5 +120,14 @@ describe("Check ToDoItem Component", async () => {
     await editButton.trigger(TestEnum.CLICK);
     await input[1].setValue(TestEnum.CHARS_2);
     expect(wrapper.vm.hintMessage).toEqual(InputEnum.MIN_HINT);
+  });
+
+  it("handle remove method", async () => {
+    const store = useToDoStore();
+    setActivePinia(createPinia());
+    await store.createNewItem(TestEnum.TEST_NAME);
+    const spy = (store.deleteItem = vi.fn());
+    await wrapper.vm.remove();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

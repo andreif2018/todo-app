@@ -40,4 +40,10 @@ describe("Check ToDoList", async () => {
   it("renders container default child elements count", () => {
     expect(container.element.childElementCount).toBe(0);
   });
+
+  it("handle tip content", async () => {
+    const message = "this is tip content";
+    await wrapper.vm.handleTip(message);
+    expect(wrapper.vm.tipContent).toEqual(message);
+  });
 });

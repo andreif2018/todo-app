@@ -109,7 +109,7 @@ describe("Check AddToDo Component", async () => {
 
   it("method handleBlur is sensitive by esc key pressing", async () => {
     const spy = (wrapper.vm.handleBlur = vi.fn());
-    wrapper.vm.handleBlur();
+    await wrapper.vm.handleBlur();
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenLastCalledWith();
   });
