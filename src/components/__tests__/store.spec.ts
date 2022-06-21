@@ -1,12 +1,12 @@
 import { setActivePinia, createPinia } from "pinia";
 import { describe, it, expect, beforeEach } from "vitest";
 import { useToDoStore } from "@/stores/todos";
+import { TestEnum } from "./model/test-model";
 
 describe("Todo Store", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
-  const testTodoName = "I am test ToDo";
 
   it("check default state", () => {
     const store = useToDoStore();
@@ -15,9 +15,9 @@ describe("Todo Store", () => {
 
   it("adding new item", () => {
     const store = useToDoStore();
-    store.createNewItem(testTodoName);
+    store.createNewItem(TestEnum.TEST_NAME);
     expect(store.todos.length).toBe(1);
-    expect(store.todos[0].todoName).toEqual(testTodoName);
+    expect(store.todos[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos[0].modifiedTime).toBeFalsy();
     expect(store.todos[0].completedTime).toBeFalsy();
     expect(store.todos[0].isDone).toBeFalsy();
@@ -40,9 +40,9 @@ describe("Todo Store", () => {
     const store = useToDoStore();
     store.createNewItem("1st item");
     const todoID = store.todos[0]._id;
-    store.updateItem(todoID, testTodoName);
+    store.updateItem(todoID, TestEnum.TEST_NAME);
     expect(store.todos.length).toBe(1);
-    expect(store.todos[0].todoName).toEqual(testTodoName);
+    expect(store.todos[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos[0].modifiedTime).toBeTruthy();
     expect(store.todos[0].completedTime).toBeFalsy();
     expect(store.todos[0].isDone).toBeFalsy();
@@ -50,11 +50,11 @@ describe("Todo Store", () => {
 
   it("check item", () => {
     const store = useToDoStore();
-    store.createNewItem(testTodoName);
+    store.createNewItem(TestEnum.TEST_NAME);
     const todoID = store.todos[0]._id;
     store.checkToDo(todoID);
     expect(store.todos.length).toBe(1);
-    expect(store.todos[0].todoName).toEqual(testTodoName);
+    expect(store.todos[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos[0].modifiedTime).toBeFalsy();
     expect(store.todos[0].completedTime).toBeTruthy();
     expect(store.todos[0].isDone).toBeTruthy();
@@ -62,7 +62,7 @@ describe("Todo Store", () => {
 
   it("uncheck item", () => {
     const store = useToDoStore();
-    store.createNewItem(testTodoName);
+    store.createNewItem(TestEnum.TEST_NAME);
     const todoID = store.todos[0]._id;
     store.checkToDo(todoID);
     expect(store.todos[0].completedTime).toBeTruthy();
@@ -74,7 +74,7 @@ describe("Todo Store", () => {
 
   it("delete item", () => {
     const store = useToDoStore();
-    store.createNewItem(testTodoName);
+    store.createNewItem(TestEnum.TEST_NAME);
     const todoID = store.todos[0]._id;
     store.deleteItem(todoID);
     expect(store.todos.length).toBe(0);
@@ -88,7 +88,7 @@ describe("Todo Store", () => {
 
   it("method delete with incorrect argument", () => {
     const store = useToDoStore();
-    store.createNewItem(testTodoName);
+    store.createNewItem(TestEnum.TEST_NAME);
     expect(store.todos.length).toBe(1);
     const todoID = store.todos[0]._id;
     store.deleteItem(todoID.slice(-1));
@@ -97,20 +97,20 @@ describe("Todo Store", () => {
 
   it("method updateItem with incorrect argument", () => {
     const store = useToDoStore();
-    store.createNewItem(testTodoName);
-    expect(store.todos[0].todoName).toEqual(testTodoName);
+    store.createNewItem(TestEnum.TEST_NAME);
+    expect(store.todos[0].todoName).toEqual(TestEnum.TEST_NAME);
     const todoID = store.todos[0]._id;
     store.updateItem(todoID.slice(-1), "new todo name");
     expect(store.todos[store.findIndexById(todoID)].todoName).toEqual(
-      testTodoName
+      TestEnum.TEST_NAME
     );
     store.updateItem(todoID, "");
     expect(store.todos[store.findIndexById(todoID)].todoName).toEqual(
-      testTodoName
+      TestEnum.TEST_NAME
     );
     store.updateItem(todoID.slice(-1), "");
     expect(store.todos[store.findIndexById(todoID)].todoName).toEqual(
-      testTodoName
+      TestEnum.TEST_NAME
     );
   });
 });

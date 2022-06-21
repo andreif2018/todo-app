@@ -5,12 +5,15 @@ import ToDoList from "../ToDoList.vue";
 import AddToDo from "../AddToDo.vue";
 import { TestEnum } from "./model/test-model";
 import { createTestingPinia } from "@pinia/testing";
+import { useToDoStore } from "../../stores/todos";
+import { createPinia, setActivePinia } from "pinia";
 
 describe("Check MainItem", async () => {
   const wrapper = mount(MainItem, {
     global: {
       plugins: [
         createTestingPinia({
+          stubActions: false,
           createSpy: vitest.fn,
         }),
       ],
@@ -19,7 +22,7 @@ describe("Check MainItem", async () => {
   const bar = wrapper.find(".top-bar");
   const buttonWrapper = wrapper.find(".clear-all-wrapper");
   const button = wrapper.find(".clear-all");
-
+  const store = useToDoStore();
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual("MAIN");
   });
@@ -66,5 +69,13 @@ describe("Check MainItem", async () => {
 
   it("renders button text", () => {
     expect(button.text()).toEqual("Delete All");
+  });
+
+  it("button delete all is sensitive", async () => {
+    setActivePinia(createPinia());
+    await store.createNewItem(TestEnum.TEST_NAME);
+    await wrapper.vm.handleClearAll();
+    expect(store.clearAll).toHaveBeenCalledTimes(1);
+    expect(store.clearAll).toHaveBeenLastCalledWith();
   });
 });
