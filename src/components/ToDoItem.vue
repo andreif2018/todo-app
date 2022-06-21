@@ -15,7 +15,6 @@ const emit = defineEmits([Response.HINT]);
 const store = useToDoStore();
 const text = ref(props.item.todoName);
 const isToDoDisabled = ref(true);
-const isChecked = ref(props.item.isDone);
 const hintMessage = ref();
 const rowStyle = ref(StyleEnum.FLEX);
 const modalStyle = ref(StyleEnum.NONE);
@@ -55,7 +54,6 @@ const closeModal = () => {
 };
 
 const handleCheck = () => {
-  isChecked.value ? toggleOff(isChecked) : toggleOn(isChecked);
   store.checkToDo(props.item._id);
 };
 
@@ -71,12 +69,12 @@ watch(
 <template>
   <li class="todo-item">
     <CustomCheckbox
-      :is-checked="isChecked"
+      :is-checked="props.item.isDone"
       @check="handleCheck"
       :style="{ display: rowStyle }"
     />
     <input
-      :class="{ done: isChecked, attention: hintMessage }"
+      :class="{ done: props.item.isDone, attention: hintMessage }"
       class="regular"
       type="text"
       v-model="text"
