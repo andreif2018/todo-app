@@ -34,16 +34,6 @@ export default {
     "footer";
 }
 
-.main {
-  grid-area: main;
-  width: var(--width-main);
-  height: var(--height-main);
-  background: var(--color-background-dark);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
 .main p a {
   color: mediumaquamarine;
   text-decoration: underline;

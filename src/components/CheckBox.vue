@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { toggleOff, toggleOn } from "@/utils/utils";
 import { ref } from "vue";
+import { Response } from "@/model/model";
 const props = defineProps<{
   isChecked?: boolean;
 }>();
-const emit = defineEmits(["check"]);
+const emit = defineEmits([Response.CHECK]);
 const isCheckedRef = ref(props.isChecked);
 const handleCheck = () => {
   isCheckedRef.value ? toggleOff(isCheckedRef) : toggleOn(isCheckedRef);
-  emit("check", isCheckedRef.value);
+  emit(Response.CHECK, isCheckedRef.value);
 };
 </script>
 
 <template>
   <input
-    class="customCheck"
+    class="custom-check"
     type="checkbox"
     @click="handleCheck"
     :checked="isCheckedRef"
@@ -23,7 +24,7 @@ const handleCheck = () => {
 
 <style scoped>
 @import "./../assets/base.css";
-.customCheck {
+.custom-check {
   appearance: none;
   width: calc(var(--button-width) / 2);
   height: calc(var(--button-height) / 2);
@@ -32,18 +33,14 @@ const handleCheck = () => {
   background-color: snow;
 }
 
-.customCheck:checked {
+.custom-check:checked {
   appearance: none;
   background: url("./../assets/tick.svg") lightgray no-repeat center center /
     contain;
 }
 
-.customCheck:active {
-  cursor: pointer;
-  box-shadow: 1px 1px 1px 1px mediumaquamarine;
-}
-
-.customCheck:hover {
+.custom-check:hover,
+.custom-check:active {
   box-shadow: 1px 1px 1px 1px mediumaquamarine;
   cursor: pointer;
 }

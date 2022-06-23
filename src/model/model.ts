@@ -8,6 +8,7 @@ export enum InputEnum {
 export enum Response {
   HINT = "hint",
   HIDE = "hide",
+  CHECK = "check",
 }
 
 export type ITodo = {

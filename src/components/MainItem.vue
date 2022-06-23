@@ -2,6 +2,7 @@
 import AddToDo from "@/components/AddToDo.vue";
 import ToDoList from "@/components/ToDoList.vue";
 import { useToDoStore } from "@/stores/todos";
+import FilterItem from "@/components/FilterItem.vue";
 
 const store = useToDoStore();
 const handleClearAll = () => {
@@ -23,6 +24,7 @@ const handleClearAll = () => {
         </button>
       </div>
     </div>
+    <FilterItem />
     <ToDoList />
   </main>
 </template>
@@ -60,6 +62,7 @@ const handleClearAll = () => {
 .clear-all:active,
 .clear-all:hover {
   cursor: pointer;
+  box-shadow: var(--box-shadow);
 }
 
 .clear-all:disabled {
@@ -68,20 +71,5 @@ const handleClearAll = () => {
 
 .clear-all:disabled:hover {
   box-shadow: none;
-}
-
-.clear-all:hover {
-  box-shadow: var(--box-shadow);
-}
-
-.main {
-  grid-area: main;
-  width: var(--width-main);
-  height: var(--height-main);
-  background: var(--color-background-dark);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
 }
 </style>

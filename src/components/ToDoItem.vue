@@ -2,7 +2,7 @@
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
 import type { ITodo } from "@/model/model";
 import { Response, StyleEnum } from "@/model/model";
-import CustomCheckbox from "@/components/CustomCheckbox.vue";
+import CheckBox from "@/components/CheckBox.vue";
 import { ref, watch } from "vue";
 import ModalPopup from "@/components/ModalPopup.vue";
 import { useToDoStore } from "@/stores/todos";
@@ -68,7 +68,7 @@ watch(
 
 <template>
   <li class="todo-item">
-    <CustomCheckbox
+    <CheckBox
       :is-checked="props.item.isDone"
       @check="handleCheck"
       :style="{ display: rowStyle }"
@@ -142,10 +142,7 @@ watch(
 .save:active,
 .info:active,
 .edit:active,
-.remove:active {
-  cursor: pointer;
-}
-
+.remove:active,
 .save:hover,
 .info:hover,
 .edit:hover,

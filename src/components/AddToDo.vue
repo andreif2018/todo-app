@@ -75,11 +75,8 @@ watch(
   align-items: center;
 }
 
+.add-button:hover,
 .add-button:active {
-  cursor: pointer;
-}
-
-.add-button:hover {
   box-shadow: var(--box-shadow);
   cursor: pointer;
 }

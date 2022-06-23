@@ -89,3 +89,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.main {
+  grid-area: main;
+  width: var(--width-main);
+  height: var(--height-main);
+  background: var(--color-background-dark);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
