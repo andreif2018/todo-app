@@ -1,7 +1,7 @@
 import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import ToDoItem from "../ToDoItem.vue";
-import CustomCheckbox from "../CustomCheckbox.vue";
+import CustomCheckbox from "../CheckBox.vue";
 import ModalPopup from "../ModalPopup.vue";
 import { TestEnum } from "./model/test-model";
 import { InputEnum } from "../../model/model";

@@ -3,6 +3,7 @@ import { mount } from "@vue/test-utils";
 import MainItem from "../../components/MainItem.vue";
 import ToDoList from "../ToDoList.vue";
 import AddToDo from "../AddToDo.vue";
+import FilterItem from "../FilterItem.vue";
 import { TestEnum } from "./model/test-model";
 import { createTestingPinia } from "@pinia/testing";
 import { useToDoStore } from "../../stores/todos";
@@ -44,7 +45,7 @@ describe("Check MainItem", async () => {
   });
 
   it("renders child elements count correct", () => {
-    expect(wrapper.element.childElementCount).toBe(2);
+    expect(wrapper.element.childElementCount).toBe(3);
   });
 
   it("renders child element children elements count", () => {
@@ -53,6 +54,10 @@ describe("Check MainItem", async () => {
 
   it("renders grand child element AddToDo", () => {
     expect(wrapper.findComponent(AddToDo).exists()).toBeTruthy();
+  });
+
+  it("renders grand child element FilterItem", () => {
+    expect(wrapper.findComponent(FilterItem).exists()).toBeTruthy();
   });
 
   it("renders element count in button wrapper", () => {

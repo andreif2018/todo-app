@@ -1,18 +1,14 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import CheckBox from "../CustomCheckbox.vue";
+import CheckBox from "../CheckBox.vue";
 import { TestEnum } from "./model/test-model";
 
 describe("CheckBox", () => {
   const wrapper = mount(CheckBox, { props: { isChecked: false } });
-  const checkBox = wrapper.find(".customCheck");
+  const checkBox = wrapper.find(".custom-check");
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.INPUT);
-  });
-
-  it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["customCheck"]);
   });
 
   it("renders attribute type", () => {
