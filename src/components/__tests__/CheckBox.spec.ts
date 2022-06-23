@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import CheckBox from "../CheckBox.vue";
 import { TestEnum } from "./model/test-model";
+import { Response } from "@/model/model";
 
 describe("CheckBox", () => {
   const wrapper = mount(CheckBox, { props: { isChecked: false } });
@@ -29,7 +30,7 @@ describe("CheckBox", () => {
 
   it("sensitive to checking checkbox", async () => {
     await checkBox.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty(TestEnum.CHECK);
+    expect(wrapper.emitted()).toHaveProperty(Response.CHECK);
   });
 
   it("renders updated props", async () => {
@@ -39,6 +40,6 @@ describe("CheckBox", () => {
 
   it("sensitive to unchecking checkbox", async () => {
     await checkBox.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty(TestEnum.CHECK, [[true], [false]]);
+    expect(wrapper.emitted()).toHaveProperty(Response.CHECK, [[true], [false]]);
   });
 });
