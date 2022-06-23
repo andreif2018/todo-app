@@ -2,10 +2,10 @@
 import TabItem from "@/components/TabItem.vue";
 import { ref } from "vue";
 
-const isAll = ref(true);
+const isModified = ref(false);
 const isDone = ref(false);
 const isUndone = ref(false);
-const labelAll = "All";
+const labelModified = "Modified";
 const labelDone = "Done";
 const labelUndone = "Not done";
 </script>
@@ -13,8 +13,8 @@ const labelUndone = "Not done";
   <div class="filter-container">
     <p class="status-filters-title">Status Filters:</p>
     <div class="box-wrapper">
-      <TabItem :msg="labelAll" :is-checked="isAll" :left="true" />
-      <TabItem :msg="labelDone" :is-checked="isDone" :middle="true" />
+      <TabItem :msg="labelModified" :is-checked="isModified" :left="true" />
+      <TabItem :msg="labelDone" :is-checked="isDone" />
       <TabItem :msg="labelUndone" :is-checked="isUndone" :right="true" />
     </div>
   </div>
