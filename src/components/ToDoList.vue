@@ -7,7 +7,7 @@ import DraggableItem from "@/components/DraggableItem.vue";
 import { useToDoStore } from "@/stores/todos";
 
 const store = useToDoStore();
-const todoList = ref(store.todos);
+const todoList = ref(store.todos.list);
 let list: ITodo[] = todoList.value;
 const tipContent = ref("");
 
@@ -21,7 +21,7 @@ const handleTip = (result: string) => {
     <ToolTip v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
-        v-for="(item, index) in store.todos"
+        v-for="(item, index) in store.todos.list"
         :key="item._id"
         :item="item"
         @dragstart="onDragStart($event, index)"

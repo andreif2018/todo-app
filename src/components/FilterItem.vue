@@ -1,21 +1,14 @@
 <script setup lang="ts">
 import TabItem from "@/components/TabItem.vue";
-import { ref } from "vue";
-
-const isModified = ref(false);
-const isDone = ref(false);
-const isUndone = ref(false);
-const labelModified = "Modified";
-const labelDone = "Done";
-const labelUndone = "Not done";
+import { FilterEnum } from "@/model/model";
 </script>
 <template>
   <div class="filter-container">
     <p class="status-filters-title">Status Filters:</p>
     <div class="box-wrapper">
-      <TabItem :msg="labelModified" :is-checked="isModified" :left="true" />
-      <TabItem :msg="labelDone" :is-checked="isDone" />
-      <TabItem :msg="labelUndone" :is-checked="isUndone" :right="true" />
+      <TabItem :msg="FilterEnum.MODIFIED" :is-checked="true" :left="true" />
+      <TabItem :msg="FilterEnum.DONE" :is-checked="true" />
+      <TabItem :msg="FilterEnum.NOT_DONE" :is-checked="true" :right="true" />
     </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toggleOff, toggleOn } from "@/utils/utils";
 import { ref } from "vue";
+import { useToDoStore } from "@/stores/todos";
 
 const props = defineProps<{
   msg: string;
@@ -9,10 +10,16 @@ const props = defineProps<{
   right?: boolean;
 }>();
 
+const store = useToDoStore();
 const isCheckedRef = ref(props.isChecked);
 
 const handleCheck = () => {
   isCheckedRef.value ? toggleOff(isCheckedRef) : toggleOn(isCheckedRef);
+  if (isCheckedRef.value) {
+    store.setTab(props.msg, props.isChecked);
+  } else {
+    store.resetTab(props.msg, props.isChecked);
+  }
 };
 </script>
 
@@ -26,7 +33,7 @@ const handleCheck = () => {
     <input
       class="custom-tab"
       type="checkbox"
-      :checked="isCheckedRef"
+      :checked="props.isChecked"
       name="tab"
     />
   </div>
@@ -36,7 +43,7 @@ const handleCheck = () => {
 .tab-wrapper {
   border: 1px solid var(--color-border-custom);
   width: 7vw;
-  height: 100%;
+  height: 70%;
   display: flex;
   flex-direction: row;
   justify-content: center;

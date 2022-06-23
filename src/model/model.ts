@@ -39,6 +39,18 @@ export enum StyleEnum {
   FLEX = "flex",
 }
 
+export enum FilterEnum {
+  MODIFIED = "Modified",
+  DONE = "Done",
+  NOT_DONE = "Not Done",
+}
+
+export type IFilter = {
+  done: boolean;
+  notDone: boolean;
+  modified: boolean;
+};
+
 export type IStore = {
-  todos: ITodo[];
+  todos: { list: ITodo[]; tabs: string[] };
 };
