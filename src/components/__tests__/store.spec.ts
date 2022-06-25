@@ -139,14 +139,14 @@ describe("store", () => {
   it("set filter hide priority true", () => {
     const store = useToDoStore();
     store.setFilter(FilterEnum.PRIORITY);
-    expect(store.todos.hidePriority).toBe(true);
+    expect(store.todos.hideLowPriority).toBe(true);
   });
 
   it("set filter hide priority false", () => {
     const store = useToDoStore();
     store.setFilter(FilterEnum.PRIORITY);
     store.setFilter(FilterEnum.PRIORITY);
-    expect(store.todos.hidePriority).toBe(false);
+    expect(store.todos.hideLowPriority).toBe(false);
   });
 
   it("set priority", () => {
