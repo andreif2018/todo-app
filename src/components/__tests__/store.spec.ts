@@ -21,7 +21,7 @@ describe("Todo Store", () => {
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos.list[0].modifiedTime).toBeFalsy();
     expect(store.todos.list[0].completedTime).toBeFalsy();
-    expect(store.todos.list[0].isDone).toBeFalsy();
+    expect(store.todos.list[0].isCompleted).toBeFalsy();
   });
 
   it("clear all", () => {
@@ -46,7 +46,7 @@ describe("Todo Store", () => {
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos.list[0].modifiedTime).toBeTruthy();
     expect(store.todos.list[0].completedTime).toBeFalsy();
-    expect(store.todos.list[0].isDone).toBeFalsy();
+    expect(store.todos.list[0].isCompleted).toBeFalsy();
   });
 
   it("check item", () => {
@@ -58,7 +58,7 @@ describe("Todo Store", () => {
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos.list[0].modifiedTime).toBeFalsy();
     expect(store.todos.list[0].completedTime).toBeTruthy();
-    expect(store.todos.list[0].isDone).toBeTruthy();
+    expect(store.todos.list[0].isCompleted).toBeTruthy();
   });
 
   it("uncheck item", () => {
@@ -68,7 +68,7 @@ describe("Todo Store", () => {
     store.checkToDo(todoID);
     store.checkToDo(todoID);
     expect(store.todos.list[0].completedTime).toBeFalsy();
-    expect(store.todos.list[0].isDone).toBeFalsy();
+    expect(store.todos.list[0].isCompleted).toBeFalsy();
   });
 
   it("delete item", () => {

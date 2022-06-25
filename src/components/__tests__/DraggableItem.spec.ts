@@ -14,7 +14,7 @@ describe("DraggableItem", () => {
     createdTime: new Date().toLocaleString(),
     modifiedTime: undefined,
     completedTime: undefined,
-    isDone: false,
+    isCompleted: false,
     isHigh: false,
   };
   const wrapper = mount(DraggableItem, {
