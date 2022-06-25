@@ -9,6 +9,7 @@ export enum Response {
   HINT = "hint",
   HIDE = "hide",
   CHECK = "check",
+  TOGGLE = "toggle",
 }
 
 export type ITodo = {
@@ -42,7 +43,7 @@ export enum StyleEnum {
 
 export enum FilterEnum {
   COMPLETED = "Completed",
-  PRIORITY = "Priority",
+  PRIORITY = "Low Priority",
 }
 
 export type IStore = {

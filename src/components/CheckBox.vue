@@ -9,13 +9,13 @@ const emit = defineEmits([Response.CHECK]);
 const isCheckedRef = ref(props.isChecked);
 const handleCheck = () => {
   isCheckedRef.value ? toggleOff(isCheckedRef) : toggleOn(isCheckedRef);
-  emit(Response.CHECK, isCheckedRef.value);
+  emit(Response.CHECK);
 };
 </script>
 
 <template>
   <input
-    class="custom-check"
+    class="checkbox"
     type="checkbox"
     @click="handleCheck"
     :checked="isCheckedRef"
@@ -24,7 +24,7 @@ const handleCheck = () => {
 
 <style scoped>
 @import "./../assets/base.css";
-.custom-check {
+.checkbox {
   appearance: none;
   width: calc(var(--button-width) / 2);
   height: calc(var(--button-height) / 2);
@@ -33,14 +33,14 @@ const handleCheck = () => {
   background-color: snow;
 }
 
-.custom-check:checked {
+.checkbox:checked {
   appearance: none;
   background: url("./../assets/tick.svg") lightgray no-repeat center center /
     contain;
 }
 
-.custom-check:hover,
-.custom-check:active {
+.checkbox:hover,
+.checkbox:active {
   box-shadow: 1px 1px 1px 1px mediumaquamarine;
   cursor: pointer;
 }

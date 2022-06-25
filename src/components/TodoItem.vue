@@ -6,6 +6,7 @@ import CheckBox from "@/components/CheckBox.vue";
 import { ref, watch } from "vue";
 import ModalPopup from "@/components/ModalPopup.vue";
 import { useToDoStore } from "@/stores/todos";
+import ToggleButton from "@/components/ToggleButton.vue";
 
 const props = defineProps<{
   item: ITodo;
@@ -57,7 +58,7 @@ const handleCheck = () => {
   store.checkToDo(props.item._id);
 };
 
-const handlePriority = () => {
+const handleToggle = () => {
   store.setPriority(props.item._id);
 };
 
@@ -72,16 +73,8 @@ watch(
 
 <template>
   <li class="todo-item">
-    <CheckBox
-      :is-checked="props.item.isCompleted"
-      @check="handleCheck"
-      :style="{ display: rowStyle }"
-    />
-    <CheckBox
-      :is-checked="props.item.isHigh"
-      @check="handlePriority"
-      :style="{ display: rowStyle }"
-    />
+    <ToggleButton :is-checked="props.item.isHigh" @toggle="handleToggle" />
+    <CheckBox :is-checked="props.item.isCompleted" @check="handleCheck" />
     <input
       :class="{ done: props.item.isCompleted, attention: hintMessage }"
       class="regular"
