@@ -23,7 +23,7 @@ export const useToDoStore = defineStore({
         createdTime: new Date().toLocaleString(),
         modifiedTime: undefined,
         completedTime: undefined,
-        isDone: false,
+        isCompleted: false,
         isHigh: false,
       });
     },
@@ -40,8 +40,9 @@ export const useToDoStore = defineStore({
     checkToDo(todoID: string) {
       const index = this.findIndexById(todoID);
       if (index !== -1) {
-        this.todos.list[index].isDone = !this.todos.list[index].isDone;
-        if (this.todos.list[index].isDone) {
+        this.todos.list[index].isCompleted =
+          !this.todos.list[index].isCompleted;
+        if (this.todos.list[index].isCompleted) {
           this.todos.list[index].completedTime = new Date().toLocaleString();
         } else {
           this.todos.list[index].completedTime = undefined;

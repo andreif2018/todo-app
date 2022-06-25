@@ -17,7 +17,7 @@ export type ITodo = {
   createdTime: string;
   modifiedTime?: string;
   completedTime?: string;
-  isDone: boolean;
+  isCompleted: boolean;
   isHigh: boolean;
 };
 

@@ -15,7 +15,7 @@ const handleTip = (result: string) => {
 const filteredList = computed(() => {
   let tempo;
   if (store.todos.hideCompleted) {
-    tempo = store.todos.list.filter((item) => !item.isDone);
+    tempo = store.todos.list.filter((item) => !item.isCompleted);
   } else {
     tempo = store.todos.list;
   }

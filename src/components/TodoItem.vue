@@ -73,7 +73,7 @@ watch(
 <template>
   <li class="todo-item">
     <CheckBox
-      :is-checked="props.item.isDone"
+      :is-checked="props.item.isCompleted"
       @check="handleCheck"
       :style="{ display: rowStyle }"
     />
@@ -83,7 +83,7 @@ watch(
       :style="{ display: rowStyle }"
     />
     <input
-      :class="{ done: props.item.isDone, attention: hintMessage }"
+      :class="{ done: props.item.isCompleted, attention: hintMessage }"
       class="regular"
       type="text"
       v-model="text"
