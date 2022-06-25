@@ -34,7 +34,7 @@ describe("TabItem", () => {
   });
 
   it("renders 1st child element linked text", () => {
-    expect(wrapper.element.firstElementChild?.textContent).toEqual("Hide");
+    expect(wrapper.element.firstElementChild?.textContent).toEqual("Show");
   });
 
   it("renders 2nd child element label", () => {
@@ -61,5 +61,10 @@ describe("TabItem", () => {
   it("set to default check status of checkbox by click", async () => {
     await wrapper.trigger(TestEnum.CLICK);
     expect(wrapper.vm.isCheckedRef).toBe(false);
+  });
+
+  it("renders 1st child element linked text if checked", async () => {
+    await wrapper.trigger(TestEnum.CLICK);
+    expect(wrapper.element.firstElementChild?.textContent).toEqual("Hide");
   });
 });
