@@ -9,6 +9,7 @@
   - Complete ToDo item
   - Drag and Drop ToDo item in list
   - Delete All ToDo items in list
+  - Filtering items in list
 
 
 Note: Adding ToDo is available by `+` button click or by `ENTER` key pressing 
