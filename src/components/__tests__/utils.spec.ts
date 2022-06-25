@@ -4,7 +4,7 @@ import { TestEnum } from "./model/test-model";
 import { InputEnum } from "../../model/model";
 import { ref } from "vue";
 
-describe("Todo Store", () => {
+describe("utils", () => {
   it("input over max allowed value", () => {
     expect(validateInput(TestEnum.CHARS_33)).toStrictEqual(InputEnum.MAX_HINT);
   });
@@ -18,21 +18,29 @@ describe("Todo Store", () => {
   });
 
   it("input of valid string", () => {
-    expect(validateInput(TestEnum.CHARS_3)).toBeFalsy();
+    expect(validateInput(TestEnum.CHARS_3)).not.exist;
   });
 
-  it("input of valid string", () => {
-    expect(validateInput(TestEnum.CHARS_3)).toBeFalsy();
-  });
-
-  it("toggle false value to true", () => {
+  it("toggleOn false value to true", () => {
     const data = ref(false);
     toggleOn(data);
     expect(data.value).toBe(true);
   });
 
-  it("toggle true value to false", () => {
+  it("ignore toggleOn in case value is true", () => {
     const data = ref(true);
+    toggleOn(data);
+    expect(data.value).toBe(true);
+  });
+
+  it("toggleOff true value to false", () => {
+    const data = ref(true);
+    toggleOff(data);
+    expect(data.value).toBe(false);
+  });
+
+  it("ignore toggleOff in case value is false", () => {
+    const data = ref(false);
     toggleOff(data);
     expect(data.value).toBe(false);
   });

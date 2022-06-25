@@ -10,7 +10,11 @@ export const onDragStart = (event: DragEvent, index: number) => {
   } else throw Error("drag event error occurs");
 };
 
-const swapItems = (startIndex: number, dropIndex: number, list: ITodo[]) => {
+export const swapItems = (
+  startIndex: number,
+  dropIndex: number,
+  list: ITodo[]
+) => {
   const tempoStart = list[startIndex];
   list[startIndex] = list[dropIndex];
   list[dropIndex] = tempoStart;

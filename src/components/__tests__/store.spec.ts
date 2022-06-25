@@ -4,7 +4,7 @@ import { useToDoStore } from "@/stores/todos";
 import { TestEnum } from "./model/test-model";
 import { FilterEnum } from "../../model/model";
 
-describe("Todo Store", () => {
+describe("store", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
