@@ -1,6 +1,6 @@
 import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
-import ToDoItem from "../ToDoItem.vue";
+import TodoItem from "../TodoItem.vue";
 import CustomCheckbox from "../CheckBox.vue";
 import ModalPopup from "../ModalPopup.vue";
 import { TestEnum } from "./model/test-model";
@@ -9,8 +9,8 @@ import { createTestingPinia } from "@pinia/testing";
 import { createPinia, setActivePinia } from "pinia";
 import { useToDoStore } from "../../stores/todos";
 
-describe("Check ToDoItem Component", async () => {
-  const wrapper = mount(ToDoItem, {
+describe("Check TodoItem Component", async () => {
+  const wrapper = mount(TodoItem, {
     props: { item: [] },
     global: {
       plugins: [

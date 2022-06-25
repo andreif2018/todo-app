@@ -1,8 +1,8 @@
 import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import MainItem from "../../components/MainItem.vue";
-import ToDoList from "../ToDoList.vue";
-import AddToDo from "../AddToDo.vue";
+import TodoList from "../TodoList.vue";
+import AddTodo from "../AddTodo.vue";
 import FilterItem from "../FilterItem.vue";
 import { TestEnum } from "./model/test-model";
 import { createTestingPinia } from "@pinia/testing";
@@ -40,8 +40,8 @@ describe("Check MainItem", async () => {
     expect(bar.element.tagName).toEqual(TestEnum.DIV);
   });
 
-  it("renders child element ToDoList", () => {
-    expect(wrapper.findComponent(ToDoList).exists()).toBeTruthy();
+  it("renders child element TodoList", () => {
+    expect(wrapper.findComponent(TodoList).exists()).toBeTruthy();
   });
 
   it("renders child elements count correct", () => {
@@ -52,8 +52,8 @@ describe("Check MainItem", async () => {
     expect(bar.element.childElementCount).toBe(2);
   });
 
-  it("renders grand child element AddToDo", () => {
-    expect(wrapper.findComponent(AddToDo).exists()).toBeTruthy();
+  it("renders grand child element AddTodo", () => {
+    expect(wrapper.findComponent(AddTodo).exists()).toBeTruthy();
   });
 
   it("renders grand child element FilterItem", () => {

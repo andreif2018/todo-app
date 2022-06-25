@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import DraggableItem from "../DraggableItem.vue";
 import type { ITodo } from "../../model/model";
 import { TestEnum } from "./model/test-model";
-import ToDoItem from "../ToDoItem.vue";
+import TodoItem from "../TodoItem.vue";
 import { createTestingPinia } from "@pinia/testing";
 import { regular, target } from "../../model/model";
 
@@ -43,7 +43,7 @@ describe("DraggableItem", () => {
   });
 
   it("renders child component", () => {
-    expect(wrapper.findComponent(ToDoItem).exists()).toBeTruthy();
+    expect(wrapper.findComponent(TodoItem).exists()).toBeTruthy();
   });
 
   it("handle method onDragEnter", async () => {

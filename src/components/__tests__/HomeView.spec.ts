@@ -1,7 +1,7 @@
 import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import HomeView from "../../views/HomeView.vue";
-import ToDoList from "../ToDoList.vue";
+import TodoList from "../TodoList.vue";
 import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
 import { TestEnum } from "./model/test-model";
@@ -30,8 +30,8 @@ describe("Check HomeView page", async () => {
     expect(wrapper.findComponent(HeaderItem).exists()).toBeTruthy();
   });
 
-  it("renders child element ToDoList", () => {
-    expect(wrapper.findComponent(ToDoList).exists()).toBeTruthy();
+  it("renders child element TodoList", () => {
+    expect(wrapper.findComponent(TodoList).exists()).toBeTruthy();
   });
 
   it("renders child element FooterItem", () => {

@@ -1,12 +1,12 @@
 import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
-import AddToDo from "../AddToDo.vue";
+import AddTodo from "../AddTodo.vue";
 import { TestEnum } from "./model/test-model";
 import ToolTip from "../ToolTip.vue";
 import { createTestingPinia } from "@pinia/testing";
 
-describe("Check AddToDo Component", async () => {
-  const wrapper = mount(AddToDo, {
+describe("Check AddTodo Component", async () => {
+  const wrapper = mount(AddTodo, {
     global: {
       plugins: [
         createTestingPinia({
