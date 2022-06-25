@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import type { IStore, ITodo } from "@/model/model";
 import { v4 as uuid } from "uuid";
+import { FilterEnum } from "@/model/model";
 
 export const useToDoStore = defineStore({
   id: "mainStore",
@@ -8,7 +9,8 @@ export const useToDoStore = defineStore({
     ({
       todos: {
         list: [],
-        tabs: [],
+        hideCompleted: false,
+        hidePriority: false,
       },
     } as IStore),
 
@@ -60,22 +62,11 @@ export const useToDoStore = defineStore({
       return this.todos.list.findIndex((item: ITodo) => item._id === todoID);
     },
 
-    setTab(filterName: string, status: boolean) {
-      if (!filterName || !status) {
-        return;
-      }
-      if (status && !this.todos.tabs.includes(filterName)) {
-        this.todos.tabs.push(filterName);
-      }
-    },
-
-    resetTab(filterName: string, status: boolean) {
-      if (!filterName || !status) {
-        return;
-      }
-      if (!status && this.todos.tabs.includes(filterName)) {
-        this.todos.tabs.push(filterName);
-        this.todos.tabs.filter((item) => item === filterName);
+    setFilter(filterName: string) {
+      if (filterName === FilterEnum.COMPLETED) {
+        this.todos.hideCompleted = !this.todos.hideCompleted;
+      } else {
+        this.todos.hidePriority = !this.todos.hidePriority;
       }
     },
   },

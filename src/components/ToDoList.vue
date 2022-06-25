@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
-import type { ITodo } from "@/model/model";
 import { onDrop, onDragStart } from "@/utils/drag-and-drop-util";
 import DraggableItem from "@/components/DraggableItem.vue";
 import { useToDoStore } from "@/stores/todos";
 
 const store = useToDoStore();
-const todoList = ref(store.todos.list);
-let list: ITodo[] = todoList.value;
 const tipContent = ref("");
 
 const handleTip = (result: string) => {
   tipContent.value = result;
 };
+
+const filteredList = computed(() => {
+  if (store.todos.hideDone) {
+    return store.todos.list.filter((item) => !item.isDone);
+  } else {
+    return store.todos.list;
+  }
+});
 </script>
 
 <template>
@@ -21,12 +26,12 @@ const handleTip = (result: string) => {
     <ToolTip v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
-        v-for="(item, index) in store.todos.list"
+        v-for="(item, index) in filteredList"
         :key="item._id"
         :item="item"
         @dragstart="onDragStart($event, index)"
         @hint="(msg) => handleTip(msg)"
-        @drop.stop="onDrop($event, index, list)"
+        @drop.stop="onDrop($event, index, filteredList)"
       />
     </ol>
   </div>

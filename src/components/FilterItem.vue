@@ -6,9 +6,8 @@ import { FilterEnum } from "@/model/model";
   <div class="filter-container">
     <p class="status-filters-title">Status Filters:</p>
     <div class="box-wrapper">
-      <TabItem :msg="FilterEnum.MODIFIED" :is-checked="true" :left="true" />
-      <TabItem :msg="FilterEnum.DONE" :is-checked="true" />
-      <TabItem :msg="FilterEnum.NOT_DONE" :is-checked="true" :right="true" />
+      <TabItem :msg="FilterEnum.COMPLETED" :is-checked="false" :left="true" />
+      <TabItem :msg="FilterEnum.PRIORITY" :is-checked="false" :right="true" />
     </div>
   </div>
 </template>
@@ -19,7 +18,7 @@ import { FilterEnum } from "@/model/model";
   height: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   font-size: large;
 }

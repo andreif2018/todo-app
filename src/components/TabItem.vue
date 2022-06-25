@@ -15,11 +15,7 @@ const isCheckedRef = ref(props.isChecked);
 
 const handleCheck = () => {
   isCheckedRef.value ? toggleOff(isCheckedRef) : toggleOn(isCheckedRef);
-  if (isCheckedRef.value) {
-    store.setTab(props.msg, props.isChecked);
-  } else {
-    store.resetTab(props.msg, props.isChecked);
-  }
+  store.setFilter(props.msg);
 };
 </script>
 
@@ -29,7 +25,8 @@ const handleCheck = () => {
     :class="{ checked: isCheckedRef, left: props.left, right: props.right }"
     @click="handleCheck"
   >
-    <label for="tab">{{ props.msg }}</label>
+    <label v-if="!isCheckedRef" for="tab">Hide<br />{{ props.msg }}</label>
+    <label v-else for="tab">Show<br />{{ props.msg }}</label>
     <input
       class="custom-tab"
       type="checkbox"
@@ -49,6 +46,7 @@ const handleCheck = () => {
   justify-content: center;
   align-items: center;
   font-size: smaller;
+  text-align: center;
 }
 
 .tab-wrapper.checked {

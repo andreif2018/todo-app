@@ -81,6 +81,8 @@ watch(
       :disabled="isToDoDisabled"
       v-focus
       :style="{ display: rowStyle }"
+      @keyup.enter="save"
+      @keyup.esc="save"
     />
     <div class="button-container" :style="{ display: rowStyle }">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />

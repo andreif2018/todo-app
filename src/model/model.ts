@@ -40,17 +40,10 @@ export enum StyleEnum {
 }
 
 export enum FilterEnum {
-  MODIFIED = "Modified",
-  DONE = "Done",
-  NOT_DONE = "Not Done",
+  COMPLETED = "Completed",
+  PRIORITY = "Priority",
 }
 
-export type IFilter = {
-  done: boolean;
-  notDone: boolean;
-  modified: boolean;
-};
-
 export type IStore = {
-  todos: { list: ITodo[]; tabs: string[] };
+  todos: { list: ITodo[]; hideCompleted: boolean; hidePriority: boolean };
 };
