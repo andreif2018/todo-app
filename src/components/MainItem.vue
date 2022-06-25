@@ -18,7 +18,7 @@ const handleClearAll = () => {
         <button
           class="clear-all"
           @click="handleClearAll"
-          :disabled="store.todos.length <= 0"
+          :disabled="store.todos.list.length <= 0"
         >
           Delete All
         </button>

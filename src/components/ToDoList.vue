@@ -13,7 +13,7 @@ const handleTip = (result: string) => {
 };
 
 const filteredList = computed(() => {
-  if (store.todos.hideDone) {
+  if (store.todos.hideCompleted) {
     return store.todos.list.filter((item) => !item.isDone);
   } else {
     return store.todos.list;
