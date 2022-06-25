@@ -10,4 +10,5 @@ export enum TestEnum {
   LI = "LI",
   TEST_ID = "test-id-123",
   TEST_NAME = "I am test ToDo",
+  LABEL = "LABEL",
 }

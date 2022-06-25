@@ -6,8 +6,8 @@ import { FilterEnum } from "@/model/model";
   <div class="filter-container">
     <p class="status-filters-title">Status Filters:</p>
     <div class="box-wrapper">
-      <TabItem :msg="FilterEnum.COMPLETED" :is-checked="false" :left="true" />
-      <TabItem :msg="FilterEnum.PRIORITY" :is-checked="false" :right="true" />
+      <TabItem :msg="FilterEnum.COMPLETED" :left="true" />
+      <TabItem :msg="FilterEnum.PRIORITY" :right="true" />
     </div>
   </div>
 </template>

@@ -5,13 +5,12 @@ import { useToDoStore } from "@/stores/todos";
 
 const props = defineProps<{
   msg: string;
-  isChecked: boolean;
   left?: boolean;
   right?: boolean;
 }>();
 
 const store = useToDoStore();
-const isCheckedRef = ref(props.isChecked);
+const isCheckedRef = ref(false);
 
 const handleCheck = () => {
   isCheckedRef.value ? toggleOff(isCheckedRef) : toggleOn(isCheckedRef);
@@ -30,7 +29,7 @@ const handleCheck = () => {
     <input
       class="custom-tab"
       type="checkbox"
-      :checked="props.isChecked"
+      :checked="isCheckedRef"
       name="tab"
     />
   </div>
