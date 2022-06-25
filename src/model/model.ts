@@ -18,6 +18,7 @@ export type ITodo = {
   modifiedTime?: string;
   completedTime?: string;
   isDone: boolean;
+  isHigh: boolean;
 };
 
 export enum DragAndDropEnum {

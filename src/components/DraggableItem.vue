@@ -62,7 +62,7 @@ const stop = () => {
 .draggable-item {
   min-height: 9vh;
   border-width: 2px;
-  width: 64vw;
+  width: 67vw;
   display: flex;
   justify-content: center;
   align-items: center;

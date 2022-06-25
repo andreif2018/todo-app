@@ -57,6 +57,10 @@ const handleCheck = () => {
   store.checkToDo(props.item._id);
 };
 
+const handlePriority = () => {
+  store.setPriority(props.item._id);
+};
+
 watch(
   () => text.value,
   (text) => {
@@ -71,6 +75,11 @@ watch(
     <CheckBox
       :is-checked="props.item.isDone"
       @check="handleCheck"
+      :style="{ display: rowStyle }"
+    />
+    <CheckBox
+      :is-checked="props.item.isHigh"
+      @check="handlePriority"
       :style="{ display: rowStyle }"
     />
     <input
