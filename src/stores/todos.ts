@@ -10,7 +10,7 @@ export const useToDoStore = defineStore({
       todos: {
         list: [],
         hideCompleted: false,
-        hidePriority: false,
+        hideLowPriority: false,
       },
     } as IStore),
 
@@ -76,7 +76,7 @@ export const useToDoStore = defineStore({
       if (filterName === FilterEnum.COMPLETED) {
         this.todos.hideCompleted = !this.todos.hideCompleted;
       } else {
-        this.todos.hidePriority = !this.todos.hidePriority;
+        this.todos.hideLowPriority = !this.todos.hideLowPriority;
       }
     },
   },

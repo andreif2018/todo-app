@@ -19,8 +19,8 @@ const filteredList = computed(() => {
   } else {
     tempo = store.todos.list;
   }
-  if (store.todos.hidePriority) {
-    tempo = tempo.filter((item) => !item.isHigh);
+  if (store.todos.hideLowPriority) {
+    tempo = tempo.filter((item) => item.isHigh);
   }
   return tempo;
 });

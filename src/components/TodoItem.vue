@@ -73,8 +73,16 @@ watch(
 
 <template>
   <li class="todo-item">
-    <ToggleButton :is-checked="props.item.isHigh" @toggle="handleToggle" />
-    <CheckBox :is-checked="props.item.isCompleted" @check="handleCheck" />
+    <ToggleButton
+      :is-checked="props.item.isHigh"
+      @toggle="handleToggle"
+      :style="{ display: rowStyle }"
+    />
+    <CheckBox
+      :is-checked="props.item.isCompleted"
+      @check="handleCheck"
+      :style="{ display: rowStyle }"
+    />
     <input
       :class="{ done: props.item.isCompleted, attention: hintMessage }"
       class="regular"

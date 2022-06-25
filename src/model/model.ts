@@ -47,5 +47,5 @@ export enum FilterEnum {
 }
 
 export type IStore = {
-  todos: { list: ITodo[]; hideCompleted: boolean; hidePriority: boolean };
+  todos: { list: ITodo[]; hideCompleted: boolean; hideLowPriority: boolean };
 };
