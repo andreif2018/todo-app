@@ -5,13 +5,23 @@ import CustomCheckbox from "../CheckBox.vue";
 import ModalPopup from "../ModalPopup.vue";
 import { TestEnum } from "./model/test-model";
 import { InputEnum } from "../../model/model";
+import type { ITodo } from "../../model/model";
 import { createTestingPinia } from "@pinia/testing";
 import { createPinia, setActivePinia } from "pinia";
 import { useToDoStore } from "../../stores/todos";
 
 describe("Check TodoItem Component", async () => {
+  const testToDo: ITodo = {
+    _id: TestEnum.TEST_ID,
+    todoName: "I am test ToDo",
+    createdTime: new Date().toLocaleString(),
+    modifiedTime: undefined,
+    completedTime: undefined,
+    isCompleted: false,
+    isHigh: false,
+  };
   const wrapper = mount(TodoItem, {
-    props: { item: [] },
+    props: { item: testToDo },
     global: {
       plugins: [
         createTestingPinia({
