@@ -35,7 +35,7 @@ describe("Check ToDoItem Component", async () => {
   });
 
   it("render child elements count", () => {
-    expect(wrapper.element.childElementCount).toBe(3);
+    expect(wrapper.element.childElementCount).toBe(4);
   });
 
   it("render child CustomCheckbox", () => {
@@ -46,8 +46,12 @@ describe("Check ToDoItem Component", async () => {
     expect(wrapper.findComponent(ModalPopup).exists()).toBeFalsy();
   });
 
+  it("render input child element count", () => {
+    expect(input.length).toBe(3);
+  });
+
   it("render child element classname", () => {
-    expect(input[1].element.className).toEqual("regular");
+    expect(input[2].element.className).toEqual("regular");
   });
 
   it("render child element button", () => {
@@ -83,9 +87,9 @@ describe("Check ToDoItem Component", async () => {
   it("update todo item", async () => {
     const testData = "update string";
     await editButton.trigger(TestEnum.CLICK);
-    await input[1].setValue(testData);
+    await input[2].setValue(testData);
     await wrapper.find(".save").trigger(TestEnum.CLICK);
-    expect(input[1].element.value).toEqual(testData);
+    expect(input[2].element.value).toEqual(testData);
   });
 
   it("render child ModalPopup", async () => {
@@ -98,27 +102,32 @@ describe("Check ToDoItem Component", async () => {
     expect(wrapper.findComponent(ModalPopup).exists()).toBeFalsy();
   });
 
-  it("check trigger", async () => {
-    await wrapper.findComponent(CustomCheckbox).trigger(TestEnum.CLICK);
+  it("check trigger 1st checkbox", async () => {
+    await wrapper.findAllComponents(CustomCheckbox)[0].trigger(TestEnum.CLICK);
     expect(input[0].element.checked).toBe(true);
+  });
+
+  it("check trigger 2nd checkbox", async () => {
+    await wrapper.findAllComponents(CustomCheckbox)[1].trigger(TestEnum.CLICK);
+    expect(input[1].element.checked).toBe(true);
   });
 
   it("check saving value", async () => {
     await editButton.trigger(TestEnum.CLICK);
-    await input[1].setValue(TestEnum.CHARS_2);
+    await input[2].setValue(TestEnum.CHARS_2);
     await wrapper.find(".save").trigger(TestEnum.CLICK);
-    expect(input[1].element.value).toEqual(TestEnum.CHARS_2);
+    expect(input[2].element.value).toEqual(TestEnum.CHARS_2);
   });
 
   it("set over max allowed value", async () => {
     await editButton.trigger(TestEnum.CLICK);
-    await input[1].setValue(TestEnum.CHARS_33);
+    await input[2].setValue(TestEnum.CHARS_33);
     expect(wrapper.vm.hintMessage).toEqual(InputEnum.MAX_HINT);
   });
 
   it("set below min allowed value", async () => {
     await editButton.trigger(TestEnum.CLICK);
-    await input[1].setValue(TestEnum.CHARS_2);
+    await input[2].setValue(TestEnum.CHARS_2);
     expect(wrapper.vm.hintMessage).toEqual(InputEnum.MIN_HINT);
   });
 
