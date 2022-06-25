@@ -24,8 +24,8 @@ const handleCheck = () => {
     :class="{ checked: isCheckedRef, left: props.left, right: props.right }"
     @click="handleCheck"
   >
-    <label v-if="!isCheckedRef" for="tab">Hide<br />{{ props.msg }}</label>
-    <label v-else for="tab">Show<br />{{ props.msg }}</label>
+    <label v-if="!isCheckedRef" for="tab">Show<br />{{ props.msg }}</label>
+    <label v-else for="tab">Hide<br />{{ props.msg }}</label>
     <input
       class="custom-tab"
       type="checkbox"
