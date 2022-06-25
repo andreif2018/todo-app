@@ -1,7 +1,8 @@
 import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import TodoItem from "../TodoItem.vue";
-import CustomCheckbox from "../CheckBox.vue";
+import CheckBox from "../CheckBox.vue";
+import ToggleButton from "../ToggleButton.vue";
 import ModalPopup from "../ModalPopup.vue";
 import { TestEnum } from "./model/test-model";
 import { InputEnum } from "../../model/model";
@@ -48,11 +49,11 @@ describe("Check TodoItem Component", async () => {
     expect(wrapper.element.childElementCount).toBe(4);
   });
 
-  it("render child CustomCheckbox", () => {
-    expect(wrapper.findComponent(CustomCheckbox).exists()).toBeTruthy();
+  it("render child CheckBox", () => {
+    expect(wrapper.findComponent(CheckBox).exists()).toBeTruthy();
   });
 
-  it("render child CustomCheckbox", () => {
+  it("render child ModalPopup", () => {
     expect(wrapper.findComponent(ModalPopup).exists()).toBeFalsy();
   });
 
@@ -112,13 +113,13 @@ describe("Check TodoItem Component", async () => {
     expect(wrapper.findComponent(ModalPopup).exists()).toBeFalsy();
   });
 
-  it("check trigger 1st checkbox", async () => {
-    await wrapper.findAllComponents(CustomCheckbox)[0].trigger(TestEnum.CLICK);
+  it("check trigger ToggleButton", async () => {
+    await wrapper.findComponent(ToggleButton).trigger(TestEnum.CLICK);
     expect(input[0].element.checked).toBe(true);
   });
 
-  it("check trigger 2nd checkbox", async () => {
-    await wrapper.findAllComponents(CustomCheckbox)[1].trigger(TestEnum.CLICK);
+  it("check trigger checkbox", async () => {
+    await wrapper.findComponent(CheckBox).trigger(TestEnum.CLICK);
     expect(input[1].element.checked).toBe(true);
   });
 

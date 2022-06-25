@@ -6,7 +6,7 @@ import { Response } from "@/model/model";
 
 describe("CheckBox", () => {
   const wrapper = mount(CheckBox, { props: { isChecked: false } });
-  const checkBox = wrapper.find(".custom-check");
+  const checkBox = wrapper.find(".checkbox");
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.INPUT);
@@ -40,6 +40,6 @@ describe("CheckBox", () => {
 
   it("sensitive to unchecking checkbox", async () => {
     await checkBox.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty(Response.CHECK, [[true], [false]]);
+    expect(wrapper.emitted()).toHaveProperty(Response.CHECK, [[], []]);
   });
 });
