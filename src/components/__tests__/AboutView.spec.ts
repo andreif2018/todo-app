@@ -82,7 +82,7 @@ describe("Check Error404View page", async () => {
   });
 
   it("features list element child element count", () => {
-    expect(list.childElementCount).toBe(6);
+    expect(list.childElementCount).toBe(7);
   });
 
   it("features list 1st child element", () => {
@@ -107,6 +107,10 @@ describe("Check Error404View page", async () => {
 
   it("features list 6th child element", () => {
     expect(list.children[5]?.tagName).toEqual(TestEnum.LI);
+  });
+
+  it("features list 7th child element", () => {
+    expect(list.children[6]?.tagName).toEqual(TestEnum.LI);
   });
 
   it("div feature 3rd child element", () => {
@@ -139,6 +143,10 @@ describe("Check Error404View page", async () => {
     expect(list.children[5]?.textContent).toEqual(
       "Delete All ToDo items in list"
     );
+  });
+
+  it("features list 7th child element text", () => {
+    expect(list.children[6]?.textContent).toEqual("Filtering items in list");
   });
 
   it("div feature 3rd child element text", () => {
