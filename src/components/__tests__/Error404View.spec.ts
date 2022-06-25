@@ -15,7 +15,7 @@ describe("check Error404View", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["error404"]);
+    expect(wrapper.element.className).toEqual("error404");
   });
 
   it("renders child element HeaderItem", () => {

@@ -15,7 +15,7 @@ describe("HeaderItem", () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["header"]);
+    expect(wrapper.element.className).toEqual("header");
   });
 
   it("renders props", () => {

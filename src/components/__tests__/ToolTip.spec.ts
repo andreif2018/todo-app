@@ -17,7 +17,7 @@ describe("ToolTip", () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["popup"]);
+    expect(wrapper.element.className).toEqual("popup");
   });
 
   it("renders props", () => {

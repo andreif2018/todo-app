@@ -22,7 +22,7 @@ describe("Check ToDoList", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["list-wrapper"]);
+    expect(wrapper.element.className).toEqual("list-wrapper");
   });
 
   it("renders child elements count correct", () => {

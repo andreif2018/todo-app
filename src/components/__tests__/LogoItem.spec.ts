@@ -6,7 +6,7 @@ describe("LogoItem", () => {
   const wrapper = shallowMount(LogoItem);
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["logo"]);
+    expect(wrapper.element.className).toEqual("logo");
   });
 
   it("assigns style for css class", () => {

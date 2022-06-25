@@ -31,7 +31,7 @@ describe("Check ToDoItem Component", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["todo-item"]);
+    expect(wrapper.element.className).toEqual("todo-item");
   });
 
   it("render child elements count", () => {

@@ -25,7 +25,7 @@ describe("Check AddToDo Component", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["add-wrapper"]);
+    expect(wrapper.element.className).toEqual("add-wrapper");
   });
 
   it("no render child element ToolTip by default", () => {

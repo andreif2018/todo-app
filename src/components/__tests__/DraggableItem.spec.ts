@@ -34,7 +34,7 @@ describe("DraggableItem", () => {
   });
 
   it("renders component class", () => {
-    expect(wrapper.classes()).toEqual(["draggable-item"]);
+    expect(wrapper.element.className).toEqual("draggable-item");
   });
 
   it("renders component attribute", () => {

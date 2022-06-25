@@ -13,7 +13,7 @@ describe("FooterItem", () => {
   });
 
   it("assigns css class name", () => {
-    expect(wrapper.classes()).toEqual(["footer"]);
+    expect(wrapper.element.className).toEqual("footer");
   });
 
   it("renders component structure", () => {

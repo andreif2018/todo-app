@@ -29,7 +29,7 @@ describe("Check MainItem", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["main"]);
+    expect(wrapper.element.className).toEqual("main");
   });
 
   it("renders child element div top bar", () => {

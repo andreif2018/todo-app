@@ -30,7 +30,7 @@ describe("Check Modal Popup Component", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["modal"]);
+    expect(wrapper.element.className).toEqual("modal");
   });
 
   it("render child elements count", () => {

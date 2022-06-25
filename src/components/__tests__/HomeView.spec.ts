@@ -23,7 +23,7 @@ describe("Check HomeView page", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.classes()).toEqual(["home"]);
+    expect(wrapper.element.className).toEqual("home");
   });
 
   it("renders child element HeaderItem", () => {
