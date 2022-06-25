@@ -13,11 +13,16 @@ const handleTip = (result: string) => {
 };
 
 const filteredList = computed(() => {
+  let tempo;
   if (store.todos.hideCompleted) {
-    return store.todos.list.filter((item) => !item.isDone);
+    tempo = store.todos.list.filter((item) => !item.isDone);
   } else {
-    return store.todos.list;
+    tempo = store.todos.list;
   }
+  if (store.todos.hidePriority) {
+    tempo = tempo.filter((item) => !item.isHigh);
+  }
+  return tempo;
 });
 </script>
 

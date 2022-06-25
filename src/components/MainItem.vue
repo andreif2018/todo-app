@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AddToDo from "@/components/AddToDo.vue";
-import ToDoList from "@/components/ToDoList.vue";
+import AddTodo from "@/components/AddTodo.vue";
+import TodoList from "@/components/TodoList.vue";
 import { useToDoStore } from "@/stores/todos";
 import FilterItem from "@/components/FilterItem.vue";
 
@@ -13,7 +13,7 @@ const handleClearAll = () => {
 <template>
   <main class="main">
     <div class="top-bar">
-      <AddToDo />
+      <AddTodo />
       <div class="clear-all-wrapper">
         <button
           class="clear-all"
@@ -25,7 +25,7 @@ const handleClearAll = () => {
       </div>
     </div>
     <FilterItem />
-    <ToDoList />
+    <TodoList />
   </main>
 </template>
 

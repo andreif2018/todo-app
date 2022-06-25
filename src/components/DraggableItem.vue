@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { ITodo } from "@/model/model";
-import ToDoItem from "@/components/ToDoItem.vue";
+import TodoItem from "@/components/TodoItem.vue";
 import { Response } from "@/model/model";
 import { toggleOn, toggleOff } from "@/utils/utils";
 import { regular, target } from "@/model/model";
@@ -54,7 +54,7 @@ const stop = () => {
     @dragleave="onDragLeave"
     @drop.stop="onDrop"
   >
-    <ToDoItem :item="props.item" @hint="(msg) => $emit(Response.HINT, msg)" />
+    <TodoItem :item="props.item" @hint="(msg) => $emit(Response.HINT, msg)" />
   </li>
 </template>
 

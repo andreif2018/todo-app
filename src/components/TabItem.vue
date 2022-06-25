@@ -37,7 +37,7 @@ const handleCheck = () => {
 
 <style scoped>
 .tab-wrapper {
-  border: 1px solid var(--color-border-custom);
+  border: 1px solid mediumaquamarine;
   width: 7vw;
   height: 70%;
   display: flex;
@@ -70,8 +70,8 @@ const handleCheck = () => {
 
 .tab-wrapper:hover,
 .tab-wrapper:active {
-  border: 1px solid mediumaquamarine;
-  box-shadow: 1px 1px 1px 1px var(--color-border-custom);
+  border: 2px solid cadetblue;
+  box-shadow: 1px 1px 1px 1px cadetblue;
   cursor: pointer;
   text-decoration: underline;
 }
