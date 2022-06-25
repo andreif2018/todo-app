@@ -1,8 +1,10 @@
-import { describe, it, expect, vitest } from "vitest";
+import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import TabItem from "../TabItem.vue";
 import { TestEnum } from "./model/test-model";
 import { createTestingPinia } from "@pinia/testing";
+import { useToDoStore } from "../../stores/todos";
+import { createPinia, setActivePinia } from "pinia";
 
 describe("TabItem", () => {
   const wrapper = mount(TabItem, {
@@ -41,5 +43,23 @@ describe("TabItem", () => {
 
   it("renders 2nd child element class", () => {
     expect(wrapper.element.lastElementChild?.className).toEqual("custom-tab");
+  });
+
+  it("renders default check status of checkbox", () => {
+    expect(wrapper.vm.isCheckedRef).toBe(false);
+  });
+
+  it("sensitive to checking checkbox", async () => {
+    const store = useToDoStore();
+    setActivePinia(createPinia());
+    const spy = (store.setFilter = vi.fn());
+    await wrapper.trigger(TestEnum.CLICK);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(wrapper.vm.isCheckedRef).toBe(true);
+  });
+
+  it("set to default check status of checkbox by click", async () => {
+    await wrapper.trigger(TestEnum.CLICK);
+    expect(wrapper.vm.isCheckedRef).toBe(false);
   });
 });

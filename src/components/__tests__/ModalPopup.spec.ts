@@ -13,6 +13,7 @@ describe("Check Modal Popup Component", async () => {
     modifiedTime: "456",
     completedTime: "789",
     isDone: false,
+    isHigh: false,
   };
   const wrapper = mount(ModalPopup, {
     props: { msg: testToDo },

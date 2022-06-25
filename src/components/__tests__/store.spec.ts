@@ -2,6 +2,7 @@ import { setActivePinia, createPinia } from "pinia";
 import { describe, it, expect, beforeEach } from "vitest";
 import { useToDoStore } from "@/stores/todos";
 import { TestEnum } from "./model/test-model";
+import { FilterEnum } from "../../model/model";
 
 describe("Todo Store", () => {
   beforeEach(() => {
@@ -65,8 +66,6 @@ describe("Todo Store", () => {
     store.createNewItem(TestEnum.TEST_NAME);
     const todoID = store.todos.list[0]._id;
     store.checkToDo(todoID);
-    expect(store.todos.list[0].completedTime).toBeTruthy();
-    expect(store.todos.list[0].isDone).toBeTruthy();
     store.checkToDo(todoID);
     expect(store.todos.list[0].completedTime).toBeFalsy();
     expect(store.todos.list[0].isDone).toBeFalsy();
@@ -89,28 +88,87 @@ describe("Todo Store", () => {
   it("method delete with incorrect argument", () => {
     const store = useToDoStore();
     store.createNewItem(TestEnum.TEST_NAME);
-    expect(store.todos.list.length).toBe(1);
     const todoID = store.todos.list[0]._id;
     store.deleteItem(todoID.slice(-1));
     expect(store.todos.list.length).toBe(1);
   });
 
-  it("method updateItem with incorrect argument", () => {
+  it("method updateItem with incorrect argument todoID", () => {
     const store = useToDoStore();
     store.createNewItem(TestEnum.TEST_NAME);
-    expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     const todoID = store.todos.list[0]._id;
     store.updateItem(todoID.slice(-1), "new todo name");
     expect(store.todos.list[store.findIndexById(todoID)].todoName).toEqual(
       TestEnum.TEST_NAME
     );
+  });
+
+  it("method updateItem with incorrect argument empty payload", () => {
+    const store = useToDoStore();
+    store.createNewItem(TestEnum.TEST_NAME);
+    const todoID = store.todos.list[0]._id;
     store.updateItem(todoID, "");
     expect(store.todos.list[store.findIndexById(todoID)].todoName).toEqual(
       TestEnum.TEST_NAME
     );
+  });
+
+  it("method updateItem with both arguments incorrect", () => {
+    const store = useToDoStore();
+    store.createNewItem(TestEnum.TEST_NAME);
+    const todoID = store.todos.list[0]._id;
     store.updateItem(todoID.slice(-1), "");
     expect(store.todos.list[store.findIndexById(todoID)].todoName).toEqual(
       TestEnum.TEST_NAME
     );
+  });
+
+  it("set filter hide completed true", () => {
+    const store = useToDoStore();
+    store.setFilter(FilterEnum.COMPLETED);
+    expect(store.todos.hideCompleted).toBe(true);
+  });
+
+  it("set filter hide completed false", () => {
+    const store = useToDoStore();
+    store.setFilter(FilterEnum.COMPLETED);
+    store.setFilter(FilterEnum.COMPLETED);
+    expect(store.todos.hideCompleted).toBe(false);
+  });
+
+  it("set filter hide priority true", () => {
+    const store = useToDoStore();
+    store.setFilter(FilterEnum.PRIORITY);
+    expect(store.todos.hidePriority).toBe(true);
+  });
+
+  it("set filter hide priority false", () => {
+    const store = useToDoStore();
+    store.setFilter(FilterEnum.PRIORITY);
+    store.setFilter(FilterEnum.PRIORITY);
+    expect(store.todos.hidePriority).toBe(false);
+  });
+
+  it("set priority", () => {
+    const store = useToDoStore();
+    store.createNewItem(TestEnum.TEST_NAME);
+    const todoID = store.todos.list[0]._id;
+    store.setPriority(todoID);
+    expect(store.todos.list.length).toBe(1);
+    expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
+    expect(store.todos.list[0].modifiedTime).toBeTruthy();
+    expect(store.todos.list[0].isHigh).toBeTruthy();
+  });
+
+  it("unset priority", () => {
+    const store = useToDoStore();
+    store.createNewItem(TestEnum.TEST_NAME);
+    const todoID = store.todos.list[0]._id;
+    store.setPriority(todoID);
+    store.setPriority(todoID);
+    expect(store.todos.list.length).toBe(1);
+    expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
+    expect(store.todos.list[0].modifiedTime).toBeTruthy();
+    expect(store.todos.list[0].isHigh).toBeFalsy();
   });
 });
