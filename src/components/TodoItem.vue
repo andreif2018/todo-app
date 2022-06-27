@@ -94,7 +94,6 @@ watch(
       @keyup.enter="save"
       @keyup.esc="save"
       minlength="3"
-      maxlength="32"
     />
     <div class="button-container" :style="{ display: rowStyle }">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />

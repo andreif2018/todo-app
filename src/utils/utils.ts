@@ -14,8 +14,8 @@ export const toggleOff = (element: Ref) => {
 };
 
 export const validateInput = (inputText: string) => {
-  if (inputText?.length > InputEnum.MAX_LENGTH) {
-    return InputEnum?.MAX_HINT;
+  if (inputText.length > InputEnum.MAX_LENGTH) {
+    return InputEnum.MAX_HINT;
   } else if (inputText?.length < InputEnum.MIN_LENGTH) {
     return InputEnum.MIN_HINT;
   } else {

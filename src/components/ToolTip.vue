@@ -14,7 +14,9 @@ defineProps<{
   width: 22rem;
   text-align: center;
   cursor: default;
-  border: 1px solid rgba(118, 118, 118, 0.3);
-  background-color: rgba(59, 59, 59, 0.3);
+  border: 1px solid orangered;
+  background-color: #ffcccc;
+  text-shadow: 1px 1px slategray;
+  border-radius: 5px;
 }
 </style>

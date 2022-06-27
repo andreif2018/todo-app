@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
 import { useToDoStore } from "@/stores/todos";
+import { InputEnum } from "@/model/model";
 
 const text = ref("");
 const hintMessage = ref();
@@ -28,7 +29,12 @@ const handleBlur = (event: Event) => {
 
 watch(
   () => text.value,
-  (text) => (hintMessage.value = validateInput(text))
+  (text) => {
+    hintMessage.value = validateInput(text);
+    if (text.length >= InputEnum.MIN_LENGTH) {
+      toggleOn(isNotified);
+    }
+  }
 );
 </script>
 <template>
@@ -44,7 +50,6 @@ watch(
         @keydown.esc="handleBlur($event)"
         @keyup.enter="handleBlur($event)"
         minlength="3"
-        maxlength="32"
       />
     </div>
   </div>

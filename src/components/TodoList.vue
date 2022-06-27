@@ -50,7 +50,7 @@ const filteredList = computed(() => {
   border-radius: 10px;
   border: 1px solid var(--color-border-custom);
   width: var(--work-field-width);
-  height: 59vh;
+  height: 55vh;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
