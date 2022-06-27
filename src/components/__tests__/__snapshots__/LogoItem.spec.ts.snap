@@ -6,6 +6,7 @@ exports[`LogoItem > assigns style for css class > snapshot 1`] = `
   data-v-59a3aee4=""
 >
   <svg
+    class=""
     data-v-59a3aee4=""
     height="60"
     width="60"
