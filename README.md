@@ -4,12 +4,14 @@
 
 ## Available features
   - Add ToDo item
-  - Update ToDo item
-  - Delete ToDo item
   - Complete ToDo item
-  - Drag and Drop ToDo item in list
+  - Set priority for ToDo item
+  - Update ToDo item
+  - View ToDo details
+  - Delete ToDo item
   - Delete All ToDo items in list
   - Filtering items in list
+  - Drag and Drop ToDo item in list
 
 
 Note: Adding ToDo is available by `+` button click or by `ENTER` key pressing 
