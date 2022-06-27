@@ -4,19 +4,32 @@ defineProps<{
 }>();
 </script>
 <template>
-  <div class="popup">{{ msg }}</div>
+  <div class="tooltip">
+    Hover over me
+    <span class="tooltip-text">Hint text</span>
+  </div>
 </template>
 
 <style scoped>
-.popup {
-  color: red;
-  font-size: 1rem;
-  width: 22rem;
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
   text-align: center;
-  cursor: default;
-  border: 1px solid orangered;
-  background-color: #ffcccc;
-  text-shadow: 1px 1px slategray;
-  border-radius: 5px;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
 }
 </style>
