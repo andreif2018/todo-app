@@ -5,7 +5,7 @@ import FooterItem from "../FooterItem.vue";
 import HeaderItem from "../HeaderItem.vue";
 import { TestEnum } from "./model/test-model";
 
-describe("Check Error404View page", async () => {
+describe("Check AboutView page", async () => {
   const wrapper = mount(AboutView);
   const main = wrapper.find("main");
   const feature = wrapper.find(".feature-container");
@@ -82,7 +82,7 @@ describe("Check Error404View page", async () => {
   });
 
   it("features list element child element count", () => {
-    expect(list.childElementCount).toBe(7);
+    expect(list.childElementCount).toBe(9);
   });
 
   it("features list 1st child element", () => {
@@ -113,6 +113,14 @@ describe("Check Error404View page", async () => {
     expect(list.children[6]?.tagName).toEqual(TestEnum.LI);
   });
 
+  it("features list 8th child element", () => {
+    expect(list.children[7]?.tagName).toEqual(TestEnum.LI);
+  });
+
+  it("features list 9th child element", () => {
+    expect(list.children[8]?.tagName).toEqual(TestEnum.LI);
+  });
+
   it("div feature 3rd child element", () => {
     expect(feature.element.children[2]?.tagName).toEqual("P");
   });
@@ -122,31 +130,39 @@ describe("Check Error404View page", async () => {
   });
 
   it("features list 2nd child element text", () => {
-    expect(list.children[1]?.textContent).toEqual("Update ToDo item");
+    expect(list.children[1]?.textContent).toEqual("Complete ToDo item");
   });
 
   it("features list 3rd child element text", () => {
-    expect(list.children[2]?.textContent).toEqual("Delete ToDo item");
+    expect(list.children[2]?.textContent).toEqual("Set priority for ToDo item");
   });
 
   it("features list 4th child element text", () => {
-    expect(list.children[3]?.textContent).toEqual("Complete ToDo item");
+    expect(list.children[3]?.textContent).toEqual("Update ToDo item");
   });
 
   it("features list 5th child element text", () => {
-    expect(list.children[4]?.textContent).toEqual(
-      "Drag and Drop ToDo item in list"
-    );
+    expect(list.children[4]?.textContent).toEqual("View ToDo item details");
   });
 
   it("features list 6th child element text", () => {
-    expect(list.children[5]?.textContent).toEqual(
+    expect(list.children[5]?.textContent).toEqual("Delete ToDo item");
+  });
+
+  it("features list 7th child element text", () => {
+    expect(list.children[6]?.textContent).toEqual(
       "Delete All ToDo items in list"
     );
   });
 
-  it("features list 7th child element text", () => {
-    expect(list.children[6]?.textContent).toEqual("Filtering items in list");
+  it("features list 8th child element text", () => {
+    expect(list.children[7]?.textContent).toEqual("Filtering items in list");
+  });
+
+  it("features list 9th child element text", () => {
+    expect(list.children[8]?.textContent).toEqual(
+      "Change order of ToDo item by Drag and Drop feature"
+    );
   });
 
   it("div feature 3rd child element text", () => {
