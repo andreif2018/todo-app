@@ -5,7 +5,7 @@ import NavPanel from "@/components/NavPanel.vue";
 
 <template>
   <footer class="footer">
-    <LogoItem />
+    <LogoItem :is-footer="true" />
     <a
       class="github"
       href="https://github.com/andreif2018/todo-app"

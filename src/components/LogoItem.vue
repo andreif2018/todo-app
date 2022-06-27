@@ -1,6 +1,16 @@
+<script setup lang="ts">
+const props = defineProps<{
+  isFooter?: boolean;
+}>();
+</script>
 <template>
   <div class="logo">
-    <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      :class="{ footerLogo: props.isFooter }"
+      width="60"
+      height="60"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g id="Layer_1">
         <title>Layer 1</title>
         <path
@@ -19,5 +29,9 @@
   width: 30vw;
   display: flex;
   justify-content: center;
+}
+
+.footerLogo {
+  transform: scale(70%);
 }
 </style>
