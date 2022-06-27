@@ -38,7 +38,7 @@ const handleCheck = () => {
 <style scoped>
 .tab-wrapper {
   border: 1px solid cadetblue;
-  width: 12vw;
+  width: 9vw;
   height: 70%;
   display: flex;
   flex-direction: row;

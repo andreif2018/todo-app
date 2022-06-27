@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import ToolTip from "@/components/ToolTip.vue";
+import HintItem from "@/components/HintItem.vue";
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
 import { useToDoStore } from "@/stores/todos";
 import { InputEnum } from "@/model/model";
@@ -39,7 +39,7 @@ watch(
 </script>
 <template>
   <div class="add-wrapper" @keyup.enter="addItem">
-    <ToolTip v-if="isNotified && hintMessage" :msg="hintMessage" />
+    <HintItem v-if="isNotified && hintMessage" :msg="hintMessage" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
       <input

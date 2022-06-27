@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import ToolTip from "@/components/ToolTip.vue";
+import HintItem from "@/components/HintItem.vue";
 import { onDrop, onDragStart } from "@/utils/drag-and-drop-util";
 import DraggableItem from "@/components/DraggableItem.vue";
 import { useToDoStore } from "@/stores/todos";
@@ -28,7 +28,7 @@ const filteredList = computed(() => {
 
 <template>
   <div class="list-wrapper">
-    <ToolTip v-if="tipContent" :msg="tipContent" />
+    <HintItem v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
         v-for="(item, index) in filteredList"
