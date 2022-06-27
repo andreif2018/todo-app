@@ -25,8 +25,8 @@
       #2c3e50 65%,
       #1c1e1c 100%
   );
-  --button-width: 3vw;
-  --button-height: 3vw;
+  --button-width: 2.5vw;
+  --button-height: 2.5vw;
   --work-field-width: 70vw;
   --box-shadow: 0 2px 3px 1px rgba(255, 255, 255, 0.19),
   0 2px 3px 1px rgba(255, 255, 255, 0.19),
@@ -38,7 +38,7 @@
 :root {
   --width-main: 100vw;
   --height-main: 83vh;
-  --todo-font-size: 1.25vw;
+  --todo-font-size: 1vw;
   --color-background-dark: var(--vt-c-background-dark);
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -96,7 +96,8 @@ body {
   height: var(--height-main);
   background: var(--color-background-dark);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 1vh;
 }

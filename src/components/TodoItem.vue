@@ -97,8 +97,8 @@ watch(
     />
     <div class="button-container" :style="{ display: rowStyle }">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
-      <button class="save" v-else @click="save">save</button>
-      <button class="info" @click="getInfo">?</button>
+      <button class="save" v-else @click="save" />
+      <button class="info" @click="getInfo" />
       <button class="remove" @click="remove" />
     </div>
     <ModalPopup
@@ -114,42 +114,41 @@ watch(
 @import "./../assets/base.css";
 
 .edit {
-  background-image: url("./../assets/edit.png");
+  background-image: url(../assets/lock.svg);
+}
+
+.edit:hover {
+  background-image: url(../assets/lock-hover.svg);
+}
+
+.info:hover {
+  background-image: url(../assets/info-hover.svg);
 }
 
 .remove {
   background-image: url("./../assets/delete.png");
 }
 
-.save,
-.info,
 .edit,
-.remove {
-  font-weight: bold;
-  font-size: large;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
-  text-shadow: 2px 1px 2px azure;
+.save,
+.info {
   background-repeat: no-repeat;
   background-position: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  outline: none;
   background-size: cover;
+  width: var(--button-width);
+  height: var(--button-height);
 }
 
 .save {
-  font-size: 1vw;
-  background-color: lightskyblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url(../assets/unlock.svg);
 }
 
-.save,
-.info,
-.edit,
-.remove {
-  width: var(--button-width);
-  height: var(--button-height);
-  font-weight: bold;
+.info {
+  background-image: url(../assets/info.svg);
 }
 
 .save:active,
@@ -160,8 +159,25 @@ watch(
 .info:hover,
 .edit:hover,
 .remove:hover {
-  box-shadow: var(--box-shadow);
   cursor: pointer;
+  transform: scale(120%);
+}
+
+.remove {
+  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
+  font-size: medium;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border-radius: 5px;
+  background-size: cover;
+  width: var(--button-width);
+  height: var(--button-height);
+}
+
+.remove:hover,
+.remove:active {
+  box-shadow: var(--box-shadow);
 }
 
 .todo-item {

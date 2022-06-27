@@ -66,6 +66,5 @@ const filteredList = computed(() => {
   justify-content: end;
   align-items: center;
   gap: 1vh;
-  overflow-y: scroll;
 }
 </style>

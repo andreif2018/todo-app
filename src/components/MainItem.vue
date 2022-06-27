@@ -50,7 +50,7 @@ const handleClearAll = () => {
   height: var(--button-height);
   background-color: lightcoral;
   font-weight: bold;
-  font-size: 1vw;
+  font-size: 0.8vw;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   text-shadow: 2px 1px 2px azure;

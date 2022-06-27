@@ -102,7 +102,7 @@ watch(
   padding-left: 15px;
   cursor: pointer;
   width: 50vw;
-  height: 6vh;
+  height: 5vh;
   background-color: azure;
   font-weight: bold;
   border-radius: 5px;

@@ -60,7 +60,7 @@ const stop = () => {
 
 <style scoped>
 .draggable-item {
-  min-height: 9vh;
+  min-height: 7vh;
   border-width: 2px;
   width: 67vw;
   display: flex;
