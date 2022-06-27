@@ -27,3 +27,5 @@ coverage
 *.sw?
 
 package-lock.json
+deploy.sh
+env.d.ts
