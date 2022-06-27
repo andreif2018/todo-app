@@ -39,37 +39,36 @@ const handleClearAll = () => {
 }
 
 .clear-all-wrapper {
+  width: max-content;
   height: 10vh;
   display: flex;
   align-items: center;
 }
 
 .clear-all {
+  color: red;
   cursor: pointer;
-  width: calc(2 * var(--button-width));
   height: var(--button-height);
-  background-color: lightcoral;
+  background-color: azure;
   font-weight: bold;
-  font-size: 0.8vw;
+  font-size: 1vw;
   border-radius: 5px;
-  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
-  text-shadow: 2px 1px 2px azure;
+  box-shadow: 1px 1px 1px rgba(207, 78, 78);
+  text-shadow: 1px 1px black;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.clear-all:active,
-.clear-all:hover {
+.clear-all:not(:disabled):active,
+.clear-all:not(:disabled):hover {
   cursor: pointer;
   box-shadow: var(--box-shadow);
+  text-decoration: underline;
 }
 
 .clear-all:disabled {
   cursor: default;
-}
-
-.clear-all:disabled:hover {
-  box-shadow: none;
+  color: rgba(207, 78, 78, 0.5);
 }
 </style>

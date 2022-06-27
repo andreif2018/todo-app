@@ -126,7 +126,8 @@ watch(
 }
 
 .remove {
-  background-image: url("./../assets/delete.png");
+  background-image: url(../assets/remove.svg);
+  background-color: lightcoral;
 }
 
 .edit,
