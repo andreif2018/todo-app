@@ -15,7 +15,7 @@ describe("DraggableItem", () => {
     modifiedTime: undefined,
     completedTime: undefined,
     isCompleted: false,
-    isHigh: false,
+    isUrgent: false,
   };
   const wrapper = mount(DraggableItem, {
     props: { item: testToDo },

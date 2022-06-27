@@ -13,7 +13,7 @@ describe("Check Modal Popup Component", async () => {
     modifiedTime: "456",
     completedTime: "789",
     isCompleted: false,
-    isHigh: false,
+    isUrgent: false,
   };
   const wrapper = mount(ModalPopup, {
     props: { msg: testToDo },
@@ -44,7 +44,7 @@ describe("Check Modal Popup Component", async () => {
 
   it("render message-wrapper text", () => {
     expect(messageContainer.element.textContent).toEqual(
-      "Todo: I am test ToDoCreated: 123Modified: 456Completed: 789"
+      "Todo: I am test ToDoPriority:  Non-urgentCreated: 123Modified: 456Completed: 789"
     );
   });
 });

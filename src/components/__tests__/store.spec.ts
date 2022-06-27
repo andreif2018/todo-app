@@ -138,14 +138,14 @@ describe("store", () => {
 
   it("set filter hide priority true", () => {
     const store = useToDoStore();
-    store.setFilter(FilterEnum.NON_URGENT);
+    store.setFilter(FilterEnum.NON_URGENT_ITEMS);
     expect(store.todos.hideLowPriority).toBe(true);
   });
 
   it("set filter hide priority false", () => {
     const store = useToDoStore();
-    store.setFilter(FilterEnum.NON_URGENT);
-    store.setFilter(FilterEnum.NON_URGENT);
+    store.setFilter(FilterEnum.NON_URGENT_ITEMS);
+    store.setFilter(FilterEnum.NON_URGENT_ITEMS);
     expect(store.todos.hideLowPriority).toBe(false);
   });
 
@@ -157,7 +157,7 @@ describe("store", () => {
     expect(store.todos.list.length).toBe(1);
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos.list[0].modifiedTime).toBeTruthy();
-    expect(store.todos.list[0].isHigh).toBeTruthy();
+    expect(store.todos.list[0].isUrgent).toBeTruthy();
   });
 
   it("unset priority", () => {
@@ -169,6 +169,6 @@ describe("store", () => {
     expect(store.todos.list.length).toBe(1);
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos.list[0].modifiedTime).toBeTruthy();
-    expect(store.todos.list[0].isHigh).toBeFalsy();
+    expect(store.todos.list[0].isUrgent).toBeFalsy();
   });
 });

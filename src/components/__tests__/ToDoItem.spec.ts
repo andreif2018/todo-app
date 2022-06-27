@@ -19,7 +19,7 @@ describe("Check TodoItem Component", async () => {
     modifiedTime: undefined,
     completedTime: undefined,
     isCompleted: false,
-    isHigh: false,
+    isUrgent: false,
   };
   const wrapper = mount(TodoItem, {
     props: { item: testToDo },
