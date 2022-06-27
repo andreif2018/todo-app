@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Response } from "@/model/model";
 import type { ITodo } from "@/model/model";
+import { PriorityEnum } from "@/model/model";
 
 const props = defineProps<{
   msg: ITodo;
@@ -10,7 +11,15 @@ const props = defineProps<{
   <div class="modal">
     <div class="message-wrapper">
       <div class="popup-name">
-        <span class="popup-title">Todo: </span>{{ props.msg.todoName }}
+        <div class="popup-title">Todo: {{ props.msg.todoName }}</div>
+        <div v-if="props.msg.isUrgent" class="cell trail">
+          <span class="popup-title">Priority: </span>
+          <span class="urgent">{{ PriorityEnum.URGENT }}</span>
+        </div>
+        <div v-else class="cell trail">
+          <span class="popup-title">Priority: </span>
+          {{ PriorityEnum.NON_URGENT }}
+        </div>
       </div>
       <div class="cells-bar">
         <div v-if="props.msg.createdTime" class="cell">
@@ -24,7 +33,9 @@ const props = defineProps<{
           <span class="popup-title">Completed: </span
           >{{ props.msg.completedTime }}
         </div>
-        <div v-else class="popup-title cell">Not Completed</div>
+        <div v-else class="cell">
+          <span class="popup-title">Status: </span>Not Completed
+        </div>
       </div>
     </div>
     <div class="hide-wrapper">
@@ -98,5 +109,21 @@ const props = defineProps<{
 .cell {
   grid-row: 1;
   text-align: left;
+}
+
+.popup-name {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.trail {
+  padding-left: 3vw;
+}
+
+.urgent {
+  font-weight: bold;
+  color: red;
 }
 </style>

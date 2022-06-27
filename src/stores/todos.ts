@@ -24,7 +24,7 @@ export const useToDoStore = defineStore({
         modifiedTime: undefined,
         completedTime: undefined,
         isCompleted: false,
-        isHigh: false,
+        isUrgent: false,
       });
     },
 
@@ -53,7 +53,7 @@ export const useToDoStore = defineStore({
     setPriority(todoID: string) {
       const index = this.findIndexById(todoID);
       if (index !== -1) {
-        this.todos.list[index].isHigh = !this.todos.list[index].isHigh;
+        this.todos.list[index].isUrgent = !this.todos.list[index].isUrgent;
         this.todos.list[index].modifiedTime = new Date().toLocaleString();
       }
     },

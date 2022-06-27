@@ -8,7 +8,7 @@ export default {
 
 <template>
   <div class="about">
-    <HeaderItem msg="About page" />
+    <HeaderItem msg="About App" />
     <main class="main">
       <p>This is ToDo App!</p>
       <p>Have Fun :)</p>

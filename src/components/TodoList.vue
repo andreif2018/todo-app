@@ -20,7 +20,7 @@ const filteredList = computed(() => {
     tempo = store.todos.list;
   }
   if (store.todos.hideLowPriority) {
-    tempo = tempo.filter((item) => item.isHigh);
+    tempo = tempo.filter((item) => item.isUrgent);
   }
   return tempo;
 });

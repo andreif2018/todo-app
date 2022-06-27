@@ -74,7 +74,7 @@ watch(
 <template>
   <li class="todo-item">
     <ToggleButton
-      :is-checked="props.item.isHigh"
+      :is-checked="props.item.isUrgent"
       @toggle="handleToggle"
       :style="{ display: rowStyle }"
     />

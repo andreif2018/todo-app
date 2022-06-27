@@ -7,7 +7,7 @@ import { FilterEnum } from "@/model/model";
     <p class="status-filters-title">Status Filters:</p>
     <div class="box-wrapper">
       <TabItem :msg="FilterEnum.COMPLETED" :left="true" />
-      <TabItem :msg="FilterEnum.NON_URGENT" :right="true" />
+      <TabItem :msg="FilterEnum.NON_URGENT_ITEMS" :right="true" />
     </div>
   </div>
 </template>

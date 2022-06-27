@@ -19,7 +19,7 @@ export type ITodo = {
   modifiedTime?: string;
   completedTime?: string;
   isCompleted: boolean;
-  isHigh: boolean;
+  isUrgent: boolean;
 };
 
 export enum DragAndDropEnum {
@@ -43,7 +43,12 @@ export enum StyleEnum {
 
 export enum FilterEnum {
   COMPLETED = "Completed items",
-  NON_URGENT = "Non-urgent items",
+  NON_URGENT_ITEMS = "Non-urgent items",
+}
+
+export enum PriorityEnum {
+  URGENT = "Urgent !!!",
+  NON_URGENT = "Non-urgent",
 }
 
 export type IStore = {
