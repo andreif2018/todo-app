@@ -37,7 +37,7 @@ const handleCheck = () => {
 
 <style scoped>
 .tab-wrapper {
-  border: 1px solid mediumaquamarine;
+  border: 1px solid cadetblue;
   width: 12vw;
   height: 70%;
   display: flex;
@@ -49,11 +49,11 @@ const handleCheck = () => {
 }
 
 .tab-wrapper.checked {
-  border: 2px solid var(--color-border-custom);
-  background: mediumaquamarine;
+  border: 2px solid mediumaquamarine;
+  background: cadetblue;
   font-size: medium;
   font-weight: bold;
-  color: #1c1e1c;
+  text-shadow: 2px 2px #2c3e50;
 }
 
 .custom-tab {
@@ -70,8 +70,8 @@ const handleCheck = () => {
 
 .tab-wrapper:hover,
 .tab-wrapper:active {
-  border: 2px solid cadetblue;
-  box-shadow: 1px 1px 1px 1px cadetblue;
+  border: 2px solid mediumaquamarine;
+  box-shadow: 1px 1px 1px 1px mediumaquamarine;
   cursor: pointer;
   text-decoration: underline;
 }

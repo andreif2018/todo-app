@@ -43,6 +43,8 @@ watch(
         v-model="text"
         @keydown.esc="handleBlur($event)"
         @keyup.enter="handleBlur($event)"
+        minlength="3"
+        maxlength="32"
       />
     </div>
   </div>

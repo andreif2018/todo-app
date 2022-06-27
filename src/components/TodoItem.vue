@@ -93,6 +93,8 @@ watch(
       :style="{ display: rowStyle }"
       @keyup.enter="save"
       @keyup.esc="save"
+      minlength="3"
+      maxlength="32"
     />
     <div class="button-container" :style="{ display: rowStyle }">
       <button class="edit" v-if="isToDoDisabled" @click="edit" />
@@ -209,6 +211,7 @@ watch(
 .regular:focus {
   background: cadetblue;
   border: blue;
+  text-shadow: 2px 2px #2c3e50;
 }
 
 .regular:invalid {

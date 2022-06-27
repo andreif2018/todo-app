@@ -42,8 +42,8 @@ export enum StyleEnum {
 }
 
 export enum FilterEnum {
-  COMPLETED = "Completed items",
-  NON_URGENT_ITEMS = "Non-urgent items",
+  COMPLETED = "Completed",
+  NON_URGENT_ITEMS = "Non-urgent",
 }
 
 export enum PriorityEnum {
