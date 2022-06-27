@@ -14,12 +14,9 @@ const handleCheck = () => {
 </script>
 
 <template>
-  <input
-    class="checkbox"
-    type="checkbox"
-    @click="handleCheck"
-    :checked="isCheckedRef"
-  />
+  <div class="checkbox-wrapper" @click="handleCheck">
+    <input class="checkbox" type="checkbox" :checked="isCheckedRef" />
+  </div>
 </template>
 
 <style scoped>
@@ -43,5 +40,10 @@ const handleCheck = () => {
 .checkbox:active {
   box-shadow: 1px 1px 1px 1px mediumaquamarine;
   cursor: pointer;
+}
+
+.checkbox-wrapper {
+  width: max-content;
+  height: max-content;
 }
 </style>

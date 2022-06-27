@@ -42,8 +42,8 @@ export enum StyleEnum {
 }
 
 export enum FilterEnum {
-  COMPLETED = "Completed",
-  PRIORITY = "Low Priority",
+  COMPLETED = "Completed items",
+  NON_URGENT = "Non-urgent items",
 }
 
 export type IStore = {

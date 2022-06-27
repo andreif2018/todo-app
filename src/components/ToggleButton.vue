@@ -16,38 +16,39 @@ const handleCheck = () => {
 </script>
 
 <template>
-  <input
-    class="toggle"
-    type="checkbox"
-    @click="handleCheck"
-    :checked="isCheckedRef"
-  />
+  <div :class="{ onState: props.isChecked }" @click="handleCheck">
+    <input class="toggle" type="checkbox" :checked="isCheckedRef" />
+  </div>
 </template>
 
 <style scoped>
 @import "./../assets/base.css";
 .toggle {
   appearance: none;
-  width: calc(var(--button-width));
-  height: calc(var(--button-height));
-  background: url("./../assets/priority.svg") transparent no-repeat center
+  width: calc(var(--button-width) / 1.5);
+  height: calc(var(--button-height) / 1.5);
+  background: url("../assets/non-urgent.svg") transparent no-repeat center
     center / contain;
   outline: none;
 }
 
 .toggle:checked {
   appearance: none;
-  background: url("../assets/priority-on.svg") transparent no-repeat center
-    center / contain;
+  background: url("../assets/urgent.svg") transparent no-repeat center center /
+    contain;
 }
 
 .toggle:hover {
-  transform: scale(105%);
+  transform: scale(110%);
   cursor: pointer;
 }
 
 .toggle:active {
-  transform: scale(110%);
+  transform: scale(125%);
   cursor: pointer;
+}
+
+.onState {
+  transform: scale(160%);
 }
 </style>
