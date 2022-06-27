@@ -11,7 +11,7 @@
   - Delete ToDo item
   - Delete All ToDo items in list
   - Filtering items in list
-  - Drag and Drop ToDo item in list
+  - Change order of ToDo item by Drag and Drop feature
 
 
 Note: Adding ToDo is available by `+` button click or by `ENTER` key pressing 
