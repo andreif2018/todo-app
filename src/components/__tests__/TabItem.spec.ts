@@ -8,6 +8,7 @@ import { createPinia, setActivePinia } from "pinia";
 
 describe("TabItem", () => {
   const wrapper = mount(TabItem, {
+    props: { msg: "item" },
     global: {
       plugins: [
         createTestingPinia({
@@ -34,7 +35,7 @@ describe("TabItem", () => {
   });
 
   it("renders 1st child element linked text", () => {
-    expect(wrapper.element.firstElementChild?.textContent).toEqual("Show");
+    expect(wrapper.element.firstElementChild?.textContent).toEqual("Hide item");
   });
 
   it("renders 2nd child element label", () => {
@@ -65,6 +66,6 @@ describe("TabItem", () => {
 
   it("renders 1st child element linked text if checked", async () => {
     await wrapper.trigger(TestEnum.CLICK);
-    expect(wrapper.element.firstElementChild?.textContent).toEqual("Hide");
+    expect(wrapper.element.firstElementChild?.textContent).toEqual("Show item");
   });
 });

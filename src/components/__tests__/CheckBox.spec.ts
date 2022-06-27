@@ -9,15 +9,19 @@ describe("CheckBox", () => {
   const checkBox = wrapper.find(".checkbox");
 
   it("renders component tag name", () => {
-    expect(wrapper.element.tagName).toEqual(TestEnum.INPUT);
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
+  });
+
+  it("renders component class name", () => {
+    expect(wrapper.element.className).toEqual("checkbox-wrapper");
   });
 
   it("renders attribute type", () => {
-    expect(wrapper.attributes("type")).toEqual("checkbox");
+    expect(checkBox.attributes("type")).toEqual("checkbox");
   });
 
   it("renders component structure", () => {
-    expect(wrapper.element.childElementCount).toBe(0);
+    expect(wrapper.element.childElementCount).toBe(1);
   });
 
   it("renders default attribute", () => {

@@ -9,15 +9,15 @@ describe("ToggleButton", () => {
   const toggle = wrapper.find(".toggle");
 
   it("renders component tag name", () => {
-    expect(wrapper.element.tagName).toEqual(TestEnum.INPUT);
+    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
   it("renders attribute type", () => {
-    expect(wrapper.attributes("type")).toEqual("checkbox");
+    expect(toggle.attributes("type")).toEqual("checkbox");
   });
 
   it("renders component structure", () => {
-    expect(wrapper.element.childElementCount).toBe(0);
+    expect(wrapper.element.childElementCount).toBe(1);
   });
 
   it("renders default attribute", () => {
