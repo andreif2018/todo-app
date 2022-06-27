@@ -1,7 +1,7 @@
 import { describe, it, expect, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import TodoList from "../TodoList.vue";
-import ToolTip from "../../components/ToolTip.vue";
+import HintItem from "../HintItem.vue";
 import { TestEnum } from "./model/test-model";
 import { createTestingPinia } from "@pinia/testing";
 
@@ -29,8 +29,8 @@ describe("Check TodoList", async () => {
     expect(wrapper.element.childElementCount).toBe(1);
   });
 
-  it("not renders child element ToolTip due v-if", () => {
-    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
+  it("not renders child element HintItem due v-if", () => {
+    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
   });
 
   it("renders container", () => {

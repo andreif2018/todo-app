@@ -2,7 +2,7 @@ import { describe, it, expect, vitest, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import AddTodo from "../AddTodo.vue";
 import { TestEnum } from "./model/test-model";
-import ToolTip from "../ToolTip.vue";
+import HintItem from "../HintItem.vue";
 import { createTestingPinia } from "@pinia/testing";
 
 describe("Check AddTodo Component", async () => {
@@ -28,8 +28,8 @@ describe("Check AddTodo Component", async () => {
     expect(wrapper.element.className).toEqual("add-wrapper");
   });
 
-  it("no render child element ToolTip by default", () => {
-    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
+  it("no render child element HintItem by default", () => {
+    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
   });
 
   it("renders child container structure", () => {
@@ -74,37 +74,37 @@ describe("Check AddTodo Component", async () => {
     expect(textField.element.value).toBe("");
   });
 
-  it("renders tooltip in case invalid input", async () => {
+  it("renders hint in case invalid input", async () => {
     await textField.setValue(TestEnum.CHARS_2); // 2 chars is invalid input
     await button.trigger(TestEnum.CLICK);
     expect(textField.element.value).toBe(TestEnum.CHARS_2);
-    expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
+    expect(wrapper.findComponent(HintItem).exists()).toBeTruthy();
   });
 
-  it("tooltip is hidden in case valid input", async () => {
+  it("hint is hidden in case valid input", async () => {
     await textField.setValue(TestEnum.CHARS_3); // 3 chars is valid input
     expect(textField.element.value).toBe(TestEnum.CHARS_3);
-    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
+    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
   });
 
-  it("renders tooltip in case invalid input upper bound", async () => {
+  it("renders hint in case invalid input upper bound", async () => {
     await textField.setValue(TestEnum.CHARS_33); // 33 chars is invalid input
     await button.trigger(TestEnum.CLICK);
     expect(textField.element.value).toBe(TestEnum.CHARS_33);
-    expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
+    expect(wrapper.findComponent(HintItem).exists()).toBeTruthy();
   });
 
-  it("tooltip is hidden in case valid input", async () => {
+  it("hint is hidden in case valid input", async () => {
     await textField.setValue(TestEnum.CHARS_32);
     expect(textField.element.value).toBe(TestEnum.CHARS_32);
-    expect(wrapper.findComponent(ToolTip).exists()).toBeFalsy();
+    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
   });
 
-  it("renders tooltip in case submit empty text", async () => {
+  it("renders hint in case submit empty text", async () => {
     await textField.setValue("");
     await button.trigger(TestEnum.CLICK);
     expect(textField.element.value).toBe("");
-    expect(wrapper.findComponent(ToolTip).exists()).toBeTruthy();
+    expect(wrapper.findComponent(HintItem).exists()).toBeTruthy();
   });
 
   it("method handleBlur is sensitive by esc key pressing", async () => {

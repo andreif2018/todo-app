@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import ToolTip from "../ToolTip.vue";
+import HintItem from "../HintItem.vue";
 import { TestEnum } from "./model/test-model";
 
-describe("ToolTip", () => {
-  const testProps = "test tooltip";
-  const updatedProps = "updated tooltip";
-  const wrapper = mount(ToolTip, { props: { msg: testProps } });
+describe("HintItem", () => {
+  const testProps = "test hint";
+  const updatedProps = "updated hint";
+  const wrapper = mount(HintItem, { props: { msg: testProps } });
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
@@ -17,15 +17,15 @@ describe("ToolTip", () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.element.className).toEqual("popup");
+    expect(wrapper.element.className).toEqual("hint");
   });
 
   it("renders props", () => {
-    expect(wrapper.find(".popup").text()).toEqual(testProps);
+    expect(wrapper.text()).toEqual(testProps);
   });
 
   it("renders updated props", async () => {
     await wrapper.setProps({ msg: updatedProps });
-    expect(wrapper.find(".popup").text()).toEqual(updatedProps);
+    expect(wrapper.text()).toEqual(updatedProps);
   });
 });
