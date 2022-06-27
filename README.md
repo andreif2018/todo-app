@@ -7,7 +7,7 @@
   - Complete ToDo item
   - Set priority for ToDo item
   - Update ToDo item
-  - View ToDo details
+  - View ToDo item details
   - Delete ToDo item
   - Delete All ToDo items in list
   - Filtering items in list
