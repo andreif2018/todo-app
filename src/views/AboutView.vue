@@ -16,12 +16,14 @@ export default {
         <p>Available features:</p>
         <ul>
           <li>Add ToDo item</li>
-          <li>Update ToDo item</li>
-          <li>Delete ToDo item</li>
           <li>Complete ToDo item</li>
-          <li>Drag and Drop ToDo item in list</li>
+          <li>Set priority for ToDo item</li>
+          <li>Update ToDo item</li>
+          <li>View ToDo item details</li>
+          <li>Delete ToDo item</li>
           <li>Delete All ToDo items in list</li>
           <li>Filtering items in list</li>
+          <li>Change order of ToDo item by Drag and Drop feature</li>
         </ul>
         <p>
           Adding ToDo feature is available by button click<br />
