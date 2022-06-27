@@ -15,7 +15,18 @@ const handleCheck = () => {
 
 <template>
   <div class="checkbox-wrapper" @click="handleCheck">
-    <input class="checkbox" type="checkbox" :checked="isCheckedRef" />
+    <input
+      v-if="!isCheckedRef"
+      class="checkbox"
+      type="checkbox"
+      :checked="!isCheckedRef"
+    />
+    <input
+      v-else
+      class="checkbox checked"
+      type="checkbox"
+      :checked="isCheckedRef"
+    />
   </div>
 </template>
 
@@ -30,7 +41,7 @@ const handleCheck = () => {
   background-color: snow;
 }
 
-.checkbox:checked {
+.checked {
   appearance: none;
   background: url("./../assets/tick.svg") lightgray no-repeat center center /
     contain;

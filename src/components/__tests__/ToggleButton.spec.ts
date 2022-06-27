@@ -40,6 +40,6 @@ describe("ToggleButton", () => {
 
   it("sensitive to unchecking checkbox", async () => {
     await toggle.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty(Response.TOGGLE, [[], []]);
+    expect(wrapper.emitted()).toHaveProperty(Response.TOGGLE, [[]]);
   });
 });

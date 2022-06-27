@@ -17,7 +17,18 @@ const handleCheck = () => {
 
 <template>
   <div :class="{ onState: props.isChecked }" @click="handleCheck">
-    <input class="toggle" type="checkbox" :checked="isCheckedRef" />
+    <input
+      v-if="!isCheckedRef"
+      class="toggle"
+      type="checkbox"
+      :checked="!isCheckedRef"
+    />
+    <input
+      v-else
+      class="toggle checked"
+      type="checkbox"
+      :checked="isCheckedRef"
+    />
   </div>
 </template>
 
@@ -32,7 +43,7 @@ const handleCheck = () => {
   outline: none;
 }
 
-.toggle:checked {
+.checked {
   appearance: none;
   background: url("../assets/urgent.svg") transparent no-repeat center center /
     contain;

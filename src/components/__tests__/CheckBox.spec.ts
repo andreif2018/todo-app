@@ -44,6 +44,6 @@ describe("CheckBox", () => {
 
   it("sensitive to unchecking checkbox", async () => {
     await checkBox.trigger(TestEnum.CLICK);
-    expect(wrapper.emitted()).toHaveProperty(Response.CHECK, [[], []]);
+    expect(wrapper.emitted()).toHaveProperty(Response.CHECK, [[]]);
   });
 });
