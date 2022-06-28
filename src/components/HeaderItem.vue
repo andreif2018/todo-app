@@ -9,11 +9,13 @@ defineProps<{
 
 <template>
   <header class="header">
-    <LogoItem />
-    <div class="title">
-      <h1>{{ msg }}</h1>
+    <div class="header-wrapper">
+      <LogoItem />
+      <div class="title">
+        <h1>{{ msg }}</h1>
+      </div>
+      <NavPanel />
     </div>
-    <NavPanel />
   </header>
 </template>
 
@@ -22,7 +24,7 @@ defineProps<{
   grid-area: header;
   line-height: 1.5;
   height: 10vh;
-  width: 100vw;
+  width: var(--width-main);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,8 +34,21 @@ defineProps<{
 }
 
 .header .title {
-  width: 40vw;
+  width: 40%;
   text-align: center;
   color: azure;
+}
+
+.header-wrapper {
+  width: var(--width-1920);
+  grid-area: header;
+  line-height: 1.5;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid slategray;
+  margin: 0 auto;
 }
 </style>
