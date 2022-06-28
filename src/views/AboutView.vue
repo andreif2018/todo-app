@@ -13,20 +13,22 @@ export default {
       <p>This is ToDo App!</p>
       <p>Have Fun :)</p>
       <div class="feature-container">
-        <p>Available features:</p>
+        <p class="container-title">Available features:</p>
         <ul>
-          <li>Add ToDo item</li>
-          <li>Complete ToDo item</li>
-          <li>Set priority for ToDo item</li>
-          <li>Update ToDo item</li>
-          <li>View ToDo item details</li>
-          <li>Delete ToDo item</li>
-          <li>Delete All ToDo items in list</li>
-          <li>Filtering items in list</li>
-          <li>Change order of ToDo item by Drag and Drop feature</li>
+          <li>Add ToDo</li>
+          <li>Complete ToDo</li>
+          <li>Set priority for ToDo</li>
+          <li>Update ToDo</li>
+          <li>View ToDo details</li>
+          <li>Delete ToDo</li>
+          <li>Delete All ToDo's</li>
+          <li>Filtering list</li>
+          <li>Change order by <span class="accent">Drag and Drop</span></li>
         </ul>
+        <br />
+        <hr />
         <p>
-          Adding ToDo feature is available by button click<br />
+          <span class="accent">Adding</span> is available by button click<br />
           or by `ENTER` key pressing
         </p>
       </div>
@@ -51,7 +53,17 @@ export default {
 }
 
 .feature-container {
-  font-size: 1.5rem;
-  height: 40vh;
+  font-size: 1.2rem;
+  height: 60vh;
+}
+
+.accent {
+  font-weight: bold;
+  font-style: oblique;
+  color: mediumaquamarine;
+}
+
+.container-title {
+  text-decoration: underline;
 }
 </style>

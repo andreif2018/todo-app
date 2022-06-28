@@ -3,18 +3,18 @@
 ##  [Demo site](https://andreif2018.github.io/todo-app/)
 
 ## Available features
-  - Add ToDo item
-  - Complete ToDo item
-  - Set priority for ToDo item
-  - Update ToDo item
-  - View ToDo item details
-  - Delete ToDo item
-  - Delete All ToDo items in list
-  - Filtering items in list
-  - Change order of ToDo item by Drag and Drop feature
+  - Add ToDo
+  - Complete ToDo
+  - Set priority for ToDo
+  - Update ToDo
+  - View ToDo details
+  - Delete ToDo
+  - Delete All ToDo's
+  - Filtering list
+  - Change order by `Drag and Drop`
 
 
-Note: Adding ToDo is available by `+` button click or by `ENTER` key pressing 
+Note: `Adding` is available by `+` button click or by `ENTER` key pressing 
    
 ## Template below should help get you started developing with Vue 3 in Vite.
 
