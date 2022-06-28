@@ -49,7 +49,7 @@ const handleClearAll = () => {
   color: red;
   cursor: pointer;
   height: var(--button-height);
-  background-color: azure;
+  background-color: #f7dfdc;
   font-weight: bold;
   font-size: 1vw;
   border-radius: 5px;

@@ -72,6 +72,7 @@ const stop = () => {
 
 .current {
   opacity: 0.2;
+  background-color: lightslategray;
 }
 
 .target {
