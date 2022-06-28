@@ -8,6 +8,7 @@ import { TestEnum } from "./model/test-model";
 describe("HeaderItem", () => {
   const testProps = "test header";
   const wrapper = mount(HeaderItem, { props: { msg: testProps } });
+  const content = wrapper.find(".header-content");
   const childDiv = wrapper.find(".title");
 
   it("renders component tag name", () => {
@@ -18,8 +19,12 @@ describe("HeaderItem", () => {
     expect(wrapper.element.className).toEqual("header");
   });
 
+  it("renders content element", () => {
+    expect(content.element.tagName).toEqual(TestEnum.ARTICLE);
+  });
+
   it("renders props", () => {
-    expect(childDiv.find("H1").text()).toEqual(testProps);
+    expect(childDiv.text()).toEqual(testProps);
   });
 
   it("renders child element tag name", () => {
@@ -27,7 +32,11 @@ describe("HeaderItem", () => {
   });
 
   it("renders component structure", () => {
-    expect(wrapper.element.childElementCount).toBe(3);
+    expect(wrapper.element.childElementCount).toBe(1);
+  });
+
+  it("renders child component structure", () => {
+    expect(content.element.childElementCount).toBe(3);
   });
 
   it("renders child element LogoItem", () => {

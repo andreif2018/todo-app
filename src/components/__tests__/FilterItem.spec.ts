@@ -20,7 +20,7 @@ describe("FilterItem", () => {
   const tabContainer = wrapper.find(".box-wrapper");
 
   it("renders component tag name", () => {
-    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
+    expect(wrapper.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("assigns css class name", () => {
@@ -39,11 +39,15 @@ describe("FilterItem", () => {
     expect(filterTitle.element.tagName).toEqual("P");
   });
 
-  it("renders 2nd child element linked text", () => {
-    expect(tabContainer.element.tagName).toEqual(TestEnum.DIV);
+  it("renders 2nd child element tag name", () => {
+    expect(tabContainer.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("renders 2nd child element structure", () => {
     expect(tabContainer.element.childElementCount).toBe(2);
+  });
+
+  it("renders linked text", () => {
+    expect(filterTitle.text()).toEqual("Status Filters:");
   });
 });

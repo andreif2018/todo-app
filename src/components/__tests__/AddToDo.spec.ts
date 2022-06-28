@@ -21,11 +21,11 @@ describe("Check AddTodo Component", async () => {
   const textField = wrapper.find("input");
 
   it("renders component tag name", () => {
-    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
+    expect(wrapper.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("assigns css class", () => {
-    expect(wrapper.element.className).toEqual("add-wrapper");
+    expect(wrapper.element.className).toEqual("add-todo-wrapper");
   });
 
   it("no render child element HintItem by default", () => {

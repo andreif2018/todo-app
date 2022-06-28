@@ -9,6 +9,8 @@ describe("check Error404View", async () => {
   const wrapper = mount(Error404View);
   const title = wrapper.find("h2");
   const link = wrapper.find("a");
+  const content = wrapper.find(".error404-content");
+  const contentText = content.find("h2");
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
@@ -35,11 +37,11 @@ describe("check Error404View", async () => {
   });
 
   it("check title of h2 element", () => {
-    expect(title.text()).toEqual("Page Not found");
+    expect(title.text()).toEqual("Error 404!");
   });
 
-  it("check text of h2 element", () => {
-    expect(title.text()).toEqual("Page Not found");
+  it("check text of contentText element", () => {
+    expect(contentText.text()).toEqual("Resource Not found");
   });
 
   it("check text of link a element", () => {
@@ -48,5 +50,9 @@ describe("check Error404View", async () => {
 
   it("check attribute of link a element", () => {
     expect(link.attributes()["href"]).toEqual("/");
+  });
+
+  it("renders content tag name", () => {
+    expect(content.element.tagName).toEqual(TestEnum.SECTION);
   });
 });

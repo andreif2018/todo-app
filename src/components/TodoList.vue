@@ -27,7 +27,7 @@ const filteredList = computed(() => {
 </script>
 
 <template>
-  <div class="list-wrapper">
+  <article class="list-wrapper">
     <HintItem v-if="tipContent" :msg="tipContent" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
@@ -39,7 +39,7 @@ const filteredList = computed(() => {
         @drop.stop="onDrop($event, index, filteredList)"
       />
     </ol>
-  </div>
+  </article>
 </template>
 
 <style scoped>
@@ -60,6 +60,7 @@ const filteredList = computed(() => {
 }
 
 .list-wrapper {
+  width: 80%;
   height: 64vh;
   display: flex;
   flex-direction: column;

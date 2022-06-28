@@ -38,7 +38,7 @@ watch(
 );
 </script>
 <template>
-  <div class="add-wrapper" @keyup.enter="addItem">
+  <article class="add-todo-wrapper" @keyup.enter="addItem">
     <HintItem v-if="isNotified && hintMessage" :msg="hintMessage" />
     <div class="add-container">
       <button class="add-button" @click="addItem">+</button>
@@ -52,18 +52,18 @@ watch(
         minlength="3"
       />
     </div>
-  </div>
+  </article>
 </template>
 
 <style scoped>
 @import "./../assets/base.css";
 
 .add-container {
-  width: 55.4vw;
+  width: 84%;
   height: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -88,7 +88,8 @@ watch(
   cursor: pointer;
 }
 
-.add-wrapper {
+.add-todo-wrapper {
+  width: 70%;
   height: 14vh;
   display: flex;
   flex-direction: column;
@@ -101,7 +102,7 @@ watch(
   font-size: var(--todo-font-size);
   padding-left: 15px;
   cursor: pointer;
-  width: 50vw;
+  width: 70%;
   height: 5vh;
   background-color: azure;
   font-weight: bold;

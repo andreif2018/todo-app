@@ -193,9 +193,9 @@ watch(
 }
 
 .button-container {
-  width: max-content;
+  width: 30%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 1vw;
 }
@@ -209,7 +209,7 @@ watch(
   font-size: var(--todo-font-size);
   padding-left: 15px;
   cursor: pointer;
-  width: 65%;
+  width: 55%;
   height: 4vh;
   background-color: transparent;
   font-weight: bold;

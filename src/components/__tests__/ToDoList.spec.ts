@@ -18,7 +18,7 @@ describe("Check TodoList", async () => {
   const container = wrapper.find(".list-container");
 
   it("renders component tag name", () => {
-    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
+    expect(wrapper.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("assigns css class", () => {

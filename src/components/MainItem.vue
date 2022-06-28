@@ -12,20 +12,22 @@ const handleClearAll = () => {
 
 <template>
   <main class="main">
-    <div class="top-bar">
-      <AddTodo />
-      <div class="clear-all-wrapper">
-        <button
-          class="clear-all"
-          @click="handleClearAll"
-          :disabled="store.todos.list.length <= 0"
-        >
-          Delete All
-        </button>
-      </div>
-    </div>
-    <FilterItem />
-    <TodoList />
+    <section class="main-content">
+      <article class="top-bar">
+        <AddTodo />
+        <div class="clear-all-wrapper">
+          <button
+            class="clear-all"
+            @click="handleClearAll"
+            :disabled="store.todos.list.length <= 0"
+          >
+            Delete All
+          </button>
+        </div>
+      </article>
+      <FilterItem />
+      <TodoList />
+    </section>
   </main>
 </template>
 
@@ -34,24 +36,26 @@ const handleClearAll = () => {
 .top-bar {
   display: flex;
   align-items: end;
-  justify-content: space-between;
-  width: 64vw;
+  justify-content: center;
+  width: 69%;
 }
 
 .clear-all-wrapper {
-  width: max-content;
+  width: 20%;
   height: 10vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .clear-all {
+  width: 55%;
   color: red;
   cursor: pointer;
   height: var(--button-height);
   background-color: #f7dfdc;
   font-weight: bold;
-  font-size: 1vw;
+  font-size: 65%;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(207, 78, 78);
   text-shadow: 1px 1px black;
@@ -64,7 +68,7 @@ const handleClearAll = () => {
 .clear-all:not(:disabled):hover {
   cursor: pointer;
   box-shadow: var(--box-shadow);
-  text-decoration: underline;
+  font-size: 66%;
 }
 
 .clear-all:disabled {

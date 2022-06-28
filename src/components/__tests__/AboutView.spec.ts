@@ -8,6 +8,7 @@ import { TestEnum } from "./model/test-model";
 describe("Check AboutView page", async () => {
   const wrapper = mount(AboutView);
   const main = wrapper.find("main");
+  const content = wrapper.find(".about-content");
   const feature = wrapper.find(".feature-container");
   const list = feature.element.children[1];
 
@@ -36,27 +37,33 @@ describe("Check AboutView page", async () => {
   });
 
   it("renders child element count in main element", () => {
-    expect(main.element.childElementCount).toBe(3);
+    expect(main.element.childElementCount).toBe(1);
   });
 
-  it("main element child elements count", () => {
-    expect(main.element.childElementCount).toBe(3);
+  it("renders child element tag name", () => {
+    expect(content.element.tagName).toEqual(TestEnum.SECTION);
   });
 
-  it("main element first child component text", () => {
-    expect(main.element.children[0].textContent).toEqual("This is ToDo App!");
+  it("renders child element count in main element", () => {
+    expect(content.element.childElementCount).toBe(3);
+  });
+
+  it("content first child component text", () => {
+    expect(content.element.children[0].textContent).toEqual(
+      "This is ToDo App!"
+    );
   });
 
   it("main element first child component tag name", () => {
-    expect(main.element.children[0].tagName).toEqual("P");
+    expect(main.element.children[0].tagName).toEqual(TestEnum.SECTION);
   });
 
-  it("main element second child component text", () => {
-    expect(main.element.children[1].textContent).toEqual("Have Fun :)");
+  it("content second child component text", () => {
+    expect(content.element.children[1].textContent).toEqual("Have Fun :)");
   });
 
-  it("main element second child component tag name", () => {
-    expect(main.element.children[1].tagName).toEqual("P");
+  it("content second child component tag name", () => {
+    expect(content.element.firstElementChild?.tagName).toEqual("P");
   });
 
   it("div feature tag name", () => {

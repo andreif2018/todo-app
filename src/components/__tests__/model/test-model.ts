@@ -5,6 +5,8 @@ export enum TestEnum {
   CHARS_3 = "ch3",
   CHARS_2 = "c2",
   DIV = "DIV",
+  SECTION = "SECTION",
+  ARTICLE = "ARTICLE",
   BUTTON = "BUTTON",
   INPUT = "INPUT",
   LI = "LI",

@@ -9,7 +9,7 @@ export default {
 
 <template>
   <div class="home">
-    <HeaderItem msg="ToDo list" />
+    <HeaderItem msg="ToDo App" />
     <MainItem />
     <FooterItem />
   </div>
@@ -20,6 +20,7 @@ export default {
 
 .home {
   overflow-x: hidden;
+  width: 100vw;
   min-height: 100vh;
   align-items: center;
   display: grid;

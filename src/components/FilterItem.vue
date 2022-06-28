@@ -3,22 +3,22 @@ import TabItem from "@/components/TabItem.vue";
 import { FilterEnum } from "@/model/model";
 </script>
 <template>
-  <div class="filter-container">
+  <article class="filter-container">
     <p class="status-filters-title">Status Filters:</p>
-    <div class="box-wrapper">
+    <article class="box-wrapper">
       <TabItem :msg="FilterEnum.COMPLETED" :left="true" />
       <TabItem :msg="FilterEnum.NON_URGENT_ITEMS" :right="true" />
-    </div>
-  </div>
+    </article>
+  </article>
 </template>
 
 <style scoped>
 .filter-container {
-  width: max-content;
+  width: 51.5%;
   height: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-size: large;
 }

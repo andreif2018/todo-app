@@ -7,9 +7,9 @@
 
 <style scoped>
 .nav-wrapper {
-  width: 30vw;
+  width: 30%;
   display: flex;
   flex-direction: row;
-  place-items: flex-start;
+  justify-content: center;
 }
 </style>

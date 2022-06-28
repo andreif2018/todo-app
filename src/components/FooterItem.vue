@@ -5,15 +5,17 @@ import NavPanel from "@/components/NavPanel.vue";
 
 <template>
   <footer class="footer">
-    <LogoItem :is-footer="true" />
-    <a
-      class="github"
-      href="https://github.com/andreif2018/todo-app"
-      target="_blank"
-      rel="noopener noreferrer"
-      >View in GitHub</a
-    >
-    <NavPanel />
+    <article class="footer-content">
+      <LogoItem :is-footer="true" />
+      <a
+        class="github"
+        href="https://github.com/andreif2018/todo-app"
+        target="_blank"
+        rel="noopener noreferrer"
+        >View in GitHub</a
+      >
+      <NavPanel />
+    </article>
   </footer>
 </template>
 
@@ -22,13 +24,20 @@ import NavPanel from "@/components/NavPanel.vue";
   grid-area: footer;
   line-height: 1.5;
   height: 7vh;
-  width: 100vw;
+  width: var(--width-main);
+  border-top: 1px solid slategray;
+}
+
+.footer-content {
+  grid-area: footer;
+  line-height: 1.5;
+  width: var(--width-1920);
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c3e50;
-  border-top: 1px solid slategray;
+  margin: 0 auto;
 }
 
 .github {

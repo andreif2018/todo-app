@@ -3,10 +3,12 @@ import { mount } from "@vue/test-utils";
 import FooterItem from "../FooterItem.vue";
 import LogoItem from "../LogoItem.vue";
 import NavPanel from "../NavPanel.vue";
+import { TestEnum } from "./model/test-model";
 
 describe("FooterItem", () => {
   const wrapper = mount(FooterItem);
   const link = wrapper.find(".github");
+  const content = wrapper.find(".footer-content");
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual("FOOTER");
@@ -17,7 +19,15 @@ describe("FooterItem", () => {
   });
 
   it("renders component structure", () => {
-    expect(wrapper.element.childElementCount).toBe(3);
+    expect(wrapper.element.childElementCount).toBe(1);
+  });
+
+  it("renders child component structure", () => {
+    expect(content.element.childElementCount).toBe(3);
+  });
+
+  it("renders child component structure", () => {
+    expect(content.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("renders child element LogoItem", () => {

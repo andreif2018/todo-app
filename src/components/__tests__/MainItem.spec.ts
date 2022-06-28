@@ -20,6 +20,7 @@ describe("Check MainItem", async () => {
       ],
     },
   });
+  const content = wrapper.find(".main-content");
   const bar = wrapper.find(".top-bar");
   const buttonWrapper = wrapper.find(".clear-all-wrapper");
   const button = wrapper.find(".clear-all");
@@ -32,20 +33,32 @@ describe("Check MainItem", async () => {
     expect(wrapper.element.className).toEqual("main");
   });
 
-  it("renders child element div top bar", () => {
+  it("renders child element content", () => {
+    expect(content.exists()).toBeTruthy();
+  });
+
+  it("renders child element top bar", () => {
     expect(bar.exists()).toBeTruthy();
   });
 
-  it("renders child element div top bar tag name", () => {
-    expect(bar.element.tagName).toEqual(TestEnum.DIV);
+  it("renders child element content tag name", () => {
+    expect(content.element.tagName).toEqual(TestEnum.SECTION);
+  });
+
+  it("renders child element top bar tag name", () => {
+    expect(bar.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("renders child element TodoList", () => {
     expect(wrapper.findComponent(TodoList).exists()).toBeTruthy();
   });
 
-  it("renders child elements count correct", () => {
-    expect(wrapper.element.childElementCount).toBe(3);
+  it("renders child elements count", () => {
+    expect(wrapper.element.childElementCount).toBe(1);
+  });
+
+  it("renders grand child elements count", () => {
+    expect(content.element.childElementCount).toBe(3);
   });
 
   it("renders child element children elements count", () => {

@@ -26,7 +26,7 @@ const props = defineProps<{
 
 <style scoped>
 .logo {
-  width: 30vw;
+  width: 30%;
   display: flex;
   justify-content: center;
 }

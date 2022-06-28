@@ -10,28 +10,30 @@ export default {
   <div class="about">
     <HeaderItem msg="About App" />
     <main class="main">
-      <p>This is ToDo App!</p>
-      <p>Have Fun :)</p>
-      <div class="feature-container">
-        <p class="container-title">Available features:</p>
-        <ul>
-          <li>Add ToDo</li>
-          <li>Complete ToDo</li>
-          <li>Set priority for ToDo</li>
-          <li>Update ToDo</li>
-          <li>View ToDo details</li>
-          <li>Delete ToDo</li>
-          <li>Delete All ToDo's</li>
-          <li>Filtering list</li>
-          <li>Change order by <span class="accent">Drag and Drop</span></li>
-        </ul>
-        <br />
-        <hr />
-        <p>
-          <span class="accent">Adding</span> is available by button click<br />
-          or by `ENTER` key pressing
-        </p>
-      </div>
+      <section class="about-content">
+        <p>This is ToDo App!</p>
+        <p>Have Fun :)</p>
+        <div class="feature-container">
+          <p class="container-title">Available features:</p>
+          <ul>
+            <li>Add ToDo</li>
+            <li>Complete ToDo</li>
+            <li>Set priority for ToDo</li>
+            <li>Update ToDo</li>
+            <li>View ToDo details</li>
+            <li>Delete ToDo</li>
+            <li>Delete All ToDo's</li>
+            <li>Filtering list</li>
+            <li>Change order by <span class="accent">Drag and Drop</span></li>
+          </ul>
+          <br />
+          <hr />
+          <p>
+            <span class="accent">Adding</span> is available by button click<br />
+            or by `ENTER` key pressing
+          </p>
+        </div>
+      </section>
     </main>
     <FooterItem />
   </div>
@@ -65,5 +67,16 @@ export default {
 
 .container-title {
   text-decoration: underline;
+}
+
+.about-content {
+  width: var(--width-1920);
+  margin: 0 auto;
+  height: 100%;
+  padding-bottom: 1vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

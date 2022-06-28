@@ -10,10 +10,12 @@ export default {
   <div class="error404">
     <HeaderItem msg="Error 404!" />
     <main class="main">
-      <h2>Page Not found</h2>
-      <p>
-        <a href="/">Go to the Home page</a>
-      </p>
+      <section class="error404-content">
+        <h2>Resource Not found</h2>
+        <p>
+          <a href="/">Go to the Home page</a>
+        </p>
+      </section>
     </main>
     <FooterItem />
   </div>
@@ -37,5 +39,16 @@ export default {
 .main p a {
   color: mediumaquamarine;
   text-decoration: underline;
+}
+
+.error404-content {
+  width: var(--width-1920);
+  margin: 0 auto;
+  height: 100%;
+  padding-bottom: 1vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 </style>
