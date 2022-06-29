@@ -8,40 +8,31 @@ const props = defineProps<{
 }>();
 </script>
 <template>
-  <div class="modal">
-    <div class="message-wrapper">
-      <div class="popup-name">
-        <div class="popup-title">Todo: {{ props.msg.todoName }}</div>
-        <div v-if="props.msg.isUrgent" class="cell trail">
-          <span class="popup-title">Priority: </span>
-          <span class="urgent">{{ PriorityEnum.URGENT }}</span>
-        </div>
-        <div v-else class="cell trail">
-          <span class="popup-title">Priority: </span>
-          {{ PriorityEnum.NON_URGENT }}
-        </div>
-      </div>
-      <div class="cells-bar">
-        <div v-if="props.msg.createdTime" class="cell">
-          <span class="popup-title">Created: </span>{{ props.msg.createdTime }}
-        </div>
-        <div v-if="props.msg.modifiedTime" class="cell">
-          <span class="popup-title">Modified: </span
-          >{{ props.msg.modifiedTime }}
-        </div>
-        <div v-if="props.msg.completedTime" class="cell">
-          <span class="popup-title">Completed: </span
-          >{{ props.msg.completedTime }}
-        </div>
-        <div v-else class="cell">
-          <span class="popup-title">Status: </span>Not Completed
-        </div>
-      </div>
-    </div>
+  <article class="modal">
+    <ul class="message-wrapper">
+      <li><span class="popup-title">Todo: </span>{{ props.msg.todoName }}</li>
+      <li>
+        <span class="popup-title">Priority: </span>
+        <span v-if="props.msg.isUrgent" class="urgent">{{
+          PriorityEnum.URGENT
+        }}</span>
+        <span v-else>{{ PriorityEnum.NON_URGENT }}</span>
+      </li>
+      <li>
+        <span class="popup-title">Created: </span>{{ props.msg.createdTime }}
+      </li>
+      <li v-if="props.msg.modifiedTime">
+        <span class="popup-title">Modified: </span>{{ props.msg.createdTime }}
+      </li>
+      <li v-if="props.msg.completedTime">
+        <span class="popup-title">Completed: </span>{{ props.msg.createdTime }}
+      </li>
+      <li v-else><span class="popup-title">Status: </span>Not Completed</li>
+    </ul>
     <div class="hide-wrapper">
       <button class="hide" @click="$emit(Response.HIDE)">X</button>
     </div>
-  </div>
+  </article>
 </template>
 
 <style scoped>
@@ -52,7 +43,6 @@ const props = defineProps<{
   font-weight: bold;
   font-size: medium;
   width: 100%;
-  height: 6.5vh;
   text-align: center;
   cursor: default;
   border: 1px solid rgba(118, 118, 118, 0.3);
@@ -62,6 +52,11 @@ const props = defineProps<{
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: -50%;
+  left: 0;
+  z-index: 100;
+  height: max-content;
 }
 
 .hide {
@@ -96,30 +91,6 @@ const props = defineProps<{
 
 .popup-title {
   font-weight: bold;
-}
-
-.cells-bar {
-  width: 100%;
-  font-size: 0.75vw;
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-auto-columns: 33% 33% auto;
-}
-
-.cell {
-  grid-row: 1;
-  text-align: left;
-}
-
-.popup-name {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.trail {
-  padding-left: 3vw;
 }
 
 .urgent {

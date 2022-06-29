@@ -189,6 +189,7 @@ watch(
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
+  position: relative;
 }
 
 .button-container {
