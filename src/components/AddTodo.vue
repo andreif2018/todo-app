@@ -27,6 +27,10 @@ const handleBlur = (event: Event) => {
   target?.blur();
 };
 
+const hideHint = () => {
+  toggleOff(isNotified);
+};
+
 watch(
   () => text.value,
   (text) => {
@@ -49,6 +53,7 @@ watch(
         @keydown.esc="handleBlur($event)"
         @keyup.enter="handleBlur($event)"
         minlength="3"
+        @blur="hideHint"
       />
       <button class="add-button" @click="addItem">+</button>
     </div>
