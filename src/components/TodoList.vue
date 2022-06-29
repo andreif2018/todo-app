@@ -28,7 +28,10 @@ const filteredList = computed(() => {
 
 <template>
   <article class="list-wrapper">
-    <HintItem v-if="tipContent" :msg="tipContent" />
+    <HintItem
+      v-if="tipContent && store.todos.list.length > 0"
+      :msg="tipContent"
+    />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
         v-for="(item, index) in filteredList"
@@ -46,10 +49,8 @@ const filteredList = computed(() => {
 @import "./../assets/base.css";
 
 .list-container {
-  padding: 2vh;
   border-radius: 10px;
   border: 1px solid var(--color-border-custom);
-  width: var(--work-field-width);
   height: 55vh;
   min-height: 10vh;
   display: flex;
@@ -60,12 +61,67 @@ const filteredList = computed(() => {
 }
 
 .list-wrapper {
-  width: 80%;
   height: 64vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
   gap: 1vh;
+}
+
+@media only screen and (min-width: 1920px) {
+  .list-wrapper {
+    width: var(--width-work-area);
+  }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1919px) {
+  .list-wrapper {
+    width: var(--width-work-area);
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+  .list-wrapper {
+    width: var(--width-work-area);
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  .list-wrapper {
+    width: var(--width-work-area);
+  }
+}
+
+@media only screen and (min-width: 780px) and (max-width: 959px) {
+  .list-wrapper {
+    width: var(--width-work-area);
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 779px) {
+  .list-wrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 639px) {
+  .list-wrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .list-container {
+    width: 90%;
+    padding: 2vh;
+  }
+}
+
+@media only screen and (max-width: 1919px) {
+  .list-container {
+    width: 100%;
+    padding: 2vh 0;
+  }
 }
 </style>

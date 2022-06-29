@@ -62,4 +62,16 @@ const handleCheck = () => {
 .onState {
   transform: scale(160%);
 }
+
+@media only screen and (max-width: 779px) {
+  .toggle {
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .onState {
+    transform: scale(135%);
+  }
+}
 </style>

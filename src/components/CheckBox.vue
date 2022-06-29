@@ -57,4 +57,12 @@ const handleCheck = () => {
   width: max-content;
   height: max-content;
 }
+
+@media only screen and (max-width: 779px) {
+  .checkbox {
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
 </style>

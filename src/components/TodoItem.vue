@@ -189,11 +189,9 @@ watch(
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  padding: 10px 10px;
 }
 
 .button-container {
-  width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -209,7 +207,6 @@ watch(
   font-size: var(--todo-font-size);
   padding-left: 15px;
   cursor: pointer;
-  width: 55%;
   height: 4vh;
   background-color: transparent;
   font-weight: bold;
@@ -237,5 +234,55 @@ watch(
 .attention {
   border: 2px dashed red;
   border-spacing: 1px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .regular {
+    width: 65%;
+  }
+
+  .button-container {
+    width: 20%;
+  }
+
+  .todo-item {
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .regular {
+    width: 70%;
+  }
+
+  .todo-item {
+    padding: 3px;
+  }
+
+  .button-container {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .edit,
+  .remove,
+  .save,
+  .info {
+    background-size: 100%;
+    width: 37px;
+    height: 37px;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .edit,
+  .remove,
+  .save,
+  .info {
+    background-size: 100%;
+    width: 25px;
+    height: 25px;
+  }
 }
 </style>

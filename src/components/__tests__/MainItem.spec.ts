@@ -21,7 +21,7 @@ describe("Check MainItem", async () => {
     },
   });
   const content = wrapper.find(".main-content");
-  const bar = wrapper.find(".top-bar");
+  const bar = wrapper.find(".tool-bar");
   const buttonWrapper = wrapper.find(".clear-all-wrapper");
   const button = wrapper.find(".clear-all");
   const store = useToDoStore();

@@ -1,8 +1,8 @@
 export enum InputEnum {
   MIN_HINT = "Text length should be at least 3 characters",
-  MAX_HINT = "Text length should be maximum 32 characters",
+  MAX_HINT = "Text length should be maximum 48 characters",
   MIN_LENGTH = 3,
-  MAX_LENGTH = 32,
+  MAX_LENGTH = 48,
 }
 
 export enum Response {

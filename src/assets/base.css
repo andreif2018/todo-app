@@ -25,9 +25,6 @@
       #2c3e50 65%,
       #1c1e1c 100%
   );
-  --button-width: 2.5vw;
-  --button-height: 2.5vw;
-  --work-field-width: 85%;
   --box-shadow: 0 2px 3px 1px rgba(255, 255, 255, 0.19),
   0 2px 3px 1px rgba(255, 255, 255, 0.19),
   0 2px 3px 1px rgba(255, 255, 255, 0.19),
@@ -36,10 +33,7 @@
 
 /* semantic color variables for this project */
 :root {
-  --width-1920: 1920px;
   --width-main: 100vw;
-  --height-main: 83vh;
-  --todo-font-size: 1vw;
   --color-background-dark: var(--vt-c-background-dark);
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -78,7 +72,6 @@
 }
 
 body {
-  min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background-dark);
   transition: color 0.5s, background-color 0.5s;
@@ -94,11 +87,9 @@ body {
 .main {
   grid-area: main;
   width: var(--width-main);
-  height: var(--height-main);
 }
 
 .main-content {
-  width: var(--width-1920);
   margin: 0 auto;
   height: 100%;
   padding-bottom: 1vh;
@@ -106,4 +97,119 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+@media only screen and (min-width: 1920px) {
+  :root {
+    --width-1920: 1920px;
+    --todo-font-size: 0.75vw;
+    --width-work-area: 70%;
+    --button-width: 2.5vw;
+    --button-height: 2.5vw;
+  }
+
+  .main-content {
+    width: var(--width-1920);
+  }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1919px) {
+  :root {
+    --width-1440: 1440px;
+    --todo-font-size: 1.1vw;
+    --width-work-area: 75%;
+    --button-width: 3vw;
+    --button-height: 3vw;
+  }
+
+  .main-content {
+    width: var(--width-1440);
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1439px) {
+  :root {
+    --width-1200: 1200px;
+    --todo-font-size: 1.15vw;
+    --width-work-area: 80%;
+    --button-width: 3.5vw;
+    --button-height: 3.5vw;
+  }
+
+  .main-content {
+    width: var(--width-1200);
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  :root {
+    --width-960: 960px;
+    --todo-font-size: 1.5vw;
+    --width-work-area: 85%;
+    --button-width: 4vw;
+    --button-height: 4vw;
+  }
+
+  .main-content {
+    width: var(--width-960);
+  }
+}
+
+
+@media only screen and (min-width: 780px) and (max-width: 959px) {
+  :root {
+    --width-780: 780px;
+    --todo-font-size: 1.7vw;
+    --width-work-area: 90%;
+    --button-width: 5vw;
+    --button-height: 5vw;
+  }
+
+  .main-content {
+    width: var(--width-780);
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 779px) {
+  :root {
+    --width-640: 640px;
+    --todo-font-size: 1.65vw;
+    --width-work-area: 100%;
+    --button-width: 7vw;
+    --button-height: 7vw;
+  }
+
+  .main-content {
+    width: var(--width-640);
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 639px) {
+  :root {
+    --width-360: 360px;
+    --todo-font-size: 2.7vw;
+    --width-work-area: 100%;
+    --button-width: 8vw;
+    --button-height: 8vw;
+  }
+
+  .main-content {
+    width: var(--width-360);
+  }
+
+  body {
+    overflow-y: scroll;
+    min-height: 100vh;
+  }
+}
+
+@media only screen and (min-width: 641px) {
+  .main {
+    height: 83vh;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
 }

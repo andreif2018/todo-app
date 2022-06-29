@@ -38,10 +38,8 @@ const handleCheck = () => {
 <style scoped>
 .tab-wrapper {
   border: 1px solid cadetblue;
-  width: 9vw;
   height: 70%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: smaller;
@@ -82,5 +80,48 @@ const handleCheck = () => {
 
 .right {
   border-radius: 0 10px 10px 0;
+}
+
+@media only screen and (min-width: 1920px) {
+  .tab-wrapper {
+    width: 9vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1919px) {
+  .tab-wrapper {
+    width: 11vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1439px) {
+  .tab-wrapper {
+    width: 12vw;
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  .tab-wrapper {
+    width: 14vw;
+  }
+}
+
+@media only screen and (min-width: 780px) and (max-width: 959px) {
+  .tab-wrapper {
+    width: 20vw;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 779px) {
+  .tab-wrapper {
+    width: 22vw;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 639px) {
+  .tab-wrapper {
+    width: 28vw;
+    flex-direction: column;
+  }
 }
 </style>

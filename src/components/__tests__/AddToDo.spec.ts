@@ -95,8 +95,8 @@ describe("Check AddTodo Component", async () => {
   });
 
   it("hint is hidden in case valid input", async () => {
-    await textField.setValue(TestEnum.CHARS_32);
-    expect(textField.element.value).toBe(TestEnum.CHARS_32);
+    await textField.setValue(TestEnum.CHARS_48);
+    expect(textField.element.value).toBe(TestEnum.CHARS_48);
     expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
   });
 
