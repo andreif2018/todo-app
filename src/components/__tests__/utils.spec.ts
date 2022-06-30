@@ -1,10 +1,20 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vitest, beforeAll } from "vitest";
 import { validateInput, toggleOn, toggleOff } from "../../utils/utils";
 import { TestEnum } from "./model/test-model";
 import { InputEnum } from "../../model/model";
 import { ref } from "vue";
+import { createPinia, setActivePinia } from "pinia";
+import { useToDoStore } from "../../stores/todos";
+import { createTestingPinia } from "@pinia/testing";
 
 describe("utils", () => {
+  createTestingPinia({
+    createSpy: vitest.fn,
+  });
+  beforeAll(() => {
+    setActivePinia(createPinia());
+  });
+
   it("input over max allowed value", () => {
     expect(validateInput(TestEnum.CHARS_49)).toStrictEqual(InputEnum.MAX_HINT);
   });
@@ -43,5 +53,13 @@ describe("utils", () => {
     const data = ref(false);
     toggleOff(data);
     expect(data.value).toBe(false);
+  });
+
+  it("false in case duplicate name in store", () => {
+    const store = useToDoStore();
+    store.createNewItem(TestEnum.TEST_NAME);
+    expect(validateInput(TestEnum.TEST_NAME)).toStrictEqual(
+      InputEnum.DUPLICATE
+    );
   });
 });

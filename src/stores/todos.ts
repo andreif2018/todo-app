@@ -11,6 +11,7 @@ export const useToDoStore = defineStore({
         list: [],
         hideCompleted: false,
         hideLowPriority: false,
+        titles: [],
       },
     } as IStore),
 
@@ -26,14 +27,18 @@ export const useToDoStore = defineStore({
         isCompleted: false,
         isUrgent: false,
       });
+      this.todos.titles.push(value);
     },
 
     updateItem(todoID: string, payload: string) {
       if (!todoID || !payload) return;
       const index = this.findIndexById(todoID);
       if (index !== -1) {
+        const oldName = this.findNameByIndex(index);
+        const titleIndex = this.todos.titles.indexOf(oldName);
         this.todos.list[index].todoName = payload;
         this.todos.list[index].modifiedTime = new Date().toLocaleString();
+        this.todos.titles[titleIndex] = payload;
       }
     },
 
@@ -61,15 +66,22 @@ export const useToDoStore = defineStore({
     deleteItem(todoID: string) {
       const index = this.findIndexById(todoID);
       if (index === -1) return;
+      const todoName = this.findNameByIndex(index);
       this.todos.list.splice(index, 1);
+      this.todos.titles = this.todos.titles.filter((item) => item !== todoName);
     },
 
     clearAll() {
       this.todos.list = [];
+      this.todos.titles = [];
     },
 
     findIndexById(todoID: string) {
       return this.todos.list.findIndex((item: ITodo) => item._id === todoID);
+    },
+
+    findNameByIndex(index: number) {
+      return this.todos.list[index].todoName;
     },
 
     setFilter(filterName: string) {

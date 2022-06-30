@@ -3,6 +3,7 @@ export enum InputEnum {
   MAX_HINT = "Text length should be maximum 48 characters",
   MIN_LENGTH = 3,
   MAX_LENGTH = 48,
+  DUPLICATE = "ToDo with such name already exists",
 }
 
 export enum Response {
@@ -52,5 +53,10 @@ export enum PriorityEnum {
 }
 
 export type IStore = {
-  todos: { list: ITodo[]; hideCompleted: boolean; hideLowPriority: boolean };
+  todos: {
+    list: ITodo[];
+    titles: string[];
+    hideCompleted: boolean;
+    hideLowPriority: boolean;
+  };
 };

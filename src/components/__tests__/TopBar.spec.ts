@@ -27,7 +27,7 @@ describe("Check TopBar", async () => {
   });
 
   it("assigns css class", () => {
-    expect(wrapper.element.className).toEqual("tool-bar");
+    expect(wrapper.element.className).toEqual("top-bar");
   });
 
   it("renders child element FilterItem", () => {

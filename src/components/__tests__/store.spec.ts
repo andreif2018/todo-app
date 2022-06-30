@@ -22,6 +22,7 @@ describe("store", () => {
     expect(store.todos.list[0].modifiedTime).toBeFalsy();
     expect(store.todos.list[0].completedTime).toBeFalsy();
     expect(store.todos.list[0].isCompleted).toBeFalsy();
+    expect(store.todos.titles).toEqual([TestEnum.TEST_NAME]);
   });
 
   it("clear all", () => {
@@ -35,6 +36,7 @@ describe("store", () => {
     expect(store.todos.list.length).toBe(2);
     store.clearAll();
     expect(store.todos.list).toStrictEqual([]);
+    expect(store.todos.titles).toStrictEqual([]);
   });
 
   it("update item", () => {
@@ -47,6 +49,7 @@ describe("store", () => {
     expect(store.todos.list[0].modifiedTime).toBeTruthy();
     expect(store.todos.list[0].completedTime).toBeFalsy();
     expect(store.todos.list[0].isCompleted).toBeFalsy();
+    expect(store.todos.titles).toEqual([TestEnum.TEST_NAME]);
   });
 
   it("check item", () => {
@@ -77,12 +80,14 @@ describe("store", () => {
     const todoID = store.todos.list[0]._id;
     store.deleteItem(todoID);
     expect(store.todos.list.length).toBe(0);
+    expect(store.todos.titles).toEqual([]);
   });
 
   it("method createNewItem without argument", () => {
     const store = useToDoStore();
     store.createNewItem("");
     expect(store.todos.list.length).toBe(0);
+    expect(store.todos.titles).toEqual([]);
   });
 
   it("method delete with incorrect argument", () => {
@@ -91,6 +96,7 @@ describe("store", () => {
     const todoID = store.todos.list[0]._id;
     store.deleteItem(todoID.slice(-1));
     expect(store.todos.list.length).toBe(1);
+    expect(store.todos.titles).toEqual([TestEnum.TEST_NAME]);
   });
 
   it("method updateItem with incorrect argument todoID", () => {
@@ -101,6 +107,7 @@ describe("store", () => {
     expect(store.todos.list[store.findIndexById(todoID)].todoName).toEqual(
       TestEnum.TEST_NAME
     );
+    expect(store.todos.titles).toEqual([TestEnum.TEST_NAME]);
   });
 
   it("method updateItem with incorrect argument empty payload", () => {
@@ -111,6 +118,7 @@ describe("store", () => {
     expect(store.todos.list[store.findIndexById(todoID)].todoName).toEqual(
       TestEnum.TEST_NAME
     );
+    expect(store.todos.titles).toEqual([TestEnum.TEST_NAME]);
   });
 
   it("method updateItem with both arguments incorrect", () => {
@@ -121,6 +129,7 @@ describe("store", () => {
     expect(store.todos.list[store.findIndexById(todoID)].todoName).toEqual(
       TestEnum.TEST_NAME
     );
+    expect(store.todos.titles).toEqual([TestEnum.TEST_NAME]);
   });
 
   it("set filter hide completed true", () => {
