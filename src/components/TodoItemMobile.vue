@@ -70,41 +70,45 @@ watch(
 
 <template>
   <li class="todo-item">
-    <ToggleButton
-      :is-checked="props.item.isUrgent"
-      @toggle="handleToggle"
-      :style="{ display: rowStyle }"
-    />
-    <CheckBox
-      :is-checked="props.item.isCompleted"
-      @check="handleCheck"
-      :style="{ display: rowStyle }"
-    />
-    <input
-      :class="{ done: props.item.isCompleted, attention: hintMessage }"
-      class="regular"
-      type="text"
-      v-model="text"
-      :disabled="isToDoDisabled"
-      v-focus
-      :style="{ display: rowStyle }"
-      @keyup.enter="save"
-      @keyup.esc="save"
-      minlength="3"
-    />
-    <ToolBar
-      :item="props.item"
-      @edit="edit"
-      @save="save"
-      @info="getInfo"
-      v-if="!isModal"
-    />
-    <ModalPopup
-      v-if="isModal"
-      :msg="props.item"
-      :style="{ display: modalStyle }"
-      @hide="closeModal"
-    />
+    <div class="top-line">
+      <input
+        :class="{ done: props.item.isCompleted, attention: hintMessage }"
+        class="regular"
+        type="text"
+        v-model="text"
+        :disabled="isToDoDisabled"
+        v-focus
+        :style="{ display: rowStyle }"
+        @keyup.enter="save"
+        @keyup.esc="save"
+        minlength="3"
+      />
+    </div>
+    <div class="tool-container">
+      <ToggleButton
+        :is-checked="props.item.isUrgent"
+        @toggle="handleToggle"
+        :style="{ display: rowStyle }"
+      />
+      <CheckBox
+        :is-checked="props.item.isCompleted"
+        @check="handleCheck"
+        :style="{ display: rowStyle }"
+      />
+      <ToolBar
+        :item="props.item"
+        @edit="edit"
+        @save="save"
+        @info="getInfo"
+        v-if="!isModal"
+      />
+      <ModalPopup
+        v-if="isModal"
+        :msg="props.item"
+        :style="{ display: modalStyle }"
+        @hide="closeModal"
+      />
+    </div>
   </li>
 </template>
 
@@ -112,21 +116,23 @@ watch(
 @import "./../assets/base.css";
 .todo-item {
   border: none;
-  height: 4.5vh;
+  height: 7vh;
   width: 96%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
   position: relative;
+  flex-direction: column;
 }
 
 .regular {
+  width: 95%;
   border: 1px solid var(--color-border-custom);
   font-size: var(--todo-font-size);
   padding-left: 15px;
   cursor: pointer;
-  height: 4vh;
+  height: 3vh;
   background-color: transparent;
   font-weight: bold;
   border-radius: 5px;
@@ -134,6 +140,7 @@ watch(
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  margin-top: 4px;
 }
 
 .regular:focus {
@@ -146,27 +153,20 @@ watch(
   border: 2px dashed red;
 }
 
-@media only screen and (min-width: 1440px) {
-  .regular {
-    width: 65%;
-  }
-
-  .todo-item {
-    padding: 10px;
-  }
+.tool-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-@media only screen and (max-width: 1439px) {
-  .regular {
-    width: 70%;
-  }
-
-  .todo-item {
-    padding: 3px;
-  }
+.top-line {
+  height: max-content;
+  width: 100%;
 }
 
-@media only screen and (max-width: 639px) {
+@media only screen and (min-width: 640px) {
   .todo-item {
     display: none;
   }

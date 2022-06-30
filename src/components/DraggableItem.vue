@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import type { ITodo } from "@/model/model";
 import TodoItem from "@/components/TodoItem.vue";
+import TodoItemMobile from "@/components/TodoItemMobile.vue";
 import { Response } from "@/model/model";
 import { toggleOn, toggleOff } from "@/utils/utils";
 import { regular, target } from "@/model/model";
@@ -55,6 +56,10 @@ const stop = () => {
     @drop.stop="onDrop"
   >
     <TodoItem :item="props.item" @hint="(msg) => $emit(Response.HINT, msg)" />
+    <TodoItemMobile
+      :item="props.item"
+      @hint="(msg) => $emit(Response.HINT, msg)"
+    />
   </li>
 </template>
 
