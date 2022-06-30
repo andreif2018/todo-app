@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import AddTodo from "@/components/AddTodo.vue";
 import TodoList from "@/components/TodoList.vue";
-import ToolBar from "@/components/ToolBar.vue";
+import TopBar from "@/components/TopBar.vue";
 </script>
 
 <template>
   <main class="main">
     <section class="main-content">
       <AddTodo />
-      <ToolBar />
+      <TopBar />
       <TodoList />
     </section>
   </main>
