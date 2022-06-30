@@ -25,7 +25,8 @@ const props = defineProps<{
         <span class="popup-title">Modified: </span>{{ props.msg.modifiedTime }}
       </li>
       <li v-if="props.msg.completedTime">
-        <span class="popup-title">Completed: </span>{{ props.msg.completedTime }}
+        <span class="popup-title">Completed: </span
+        >{{ props.msg.completedTime }}
       </li>
       <li v-else><span class="popup-title">Status: </span>Not Completed</li>
     </ul>
