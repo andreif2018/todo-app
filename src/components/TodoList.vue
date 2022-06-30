@@ -71,31 +71,31 @@ const filteredList = computed(() => {
 
 @media only screen and (min-width: 1920px) {
   .list-wrapper {
-    width: var(--width-work-area);
+    width: var(--work-area-width);
   }
 }
 
 @media only screen and (min-width: 1440px) and (max-width: 1919px) {
   .list-wrapper {
-    width: var(--width-work-area);
+    width: var(--work-area-width);
   }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .list-wrapper {
-    width: var(--width-work-area);
+    width: var(--work-area-width);
   }
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1199px) {
   .list-wrapper {
-    width: var(--width-work-area);
+    width: var(--work-area-width);
   }
 }
 
 @media only screen and (min-width: 780px) and (max-width: 959px) {
   .list-wrapper {
-    width: var(--width-work-area);
+    width: var(--work-area-width);
   }
 }
 

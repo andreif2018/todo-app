@@ -55,7 +55,7 @@ watch(
         minlength="3"
         @blur="hideHint"
       />
-      <button class="add-button" @click="addItem">+</button>
+      <button class="add-button" @click="addItem">Add</button>
     </div>
   </article>
 </template>
@@ -66,18 +66,17 @@ watch(
 .add-container {
   height: 10vh;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .add-button {
   cursor: pointer;
-  width: var(--button-width);
   height: var(--button-height);
   background-color: mediumaquamarine;
   font-weight: bold;
-  font-size: x-large;
+  font-size: medium;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
   text-shadow: 2px 1px 2px azure;
@@ -93,7 +92,6 @@ watch(
 }
 
 .add-todo-wrapper {
-  width: var(--width-work-area);
   height: 14vh;
   display: flex;
   flex-direction: column;
@@ -123,44 +121,92 @@ watch(
 }
 
 @media only screen and (min-width: 1920px) {
-  .add-container {
-    width: 60%;
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+  }
+
+  .add-button {
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 1440px) and (max-width: 1919px) {
-  .add-container {
-    width: 75%;
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+  }
+
+  .add-button {
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1439px) {
-  .add-container {
-    width: 90%;
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+  }
+
+  .add-button {
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1199px) {
-  .add-container {
-    width: 95%;
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+  }
+
+  .add-button {
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 780px) and (max-width: 959px) {
-  .add-container {
-    width: 100%;
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+  }
+
+  .add-button {
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 779px) {
-  .add-container {
-    width: 100%;
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+  }
+
+  .add-button {
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 360px) and (max-width: 639px) {
+  .add-todo-wrapper {
+    width: var(--top-block-width);
+    height: 15vh;
+    justify-content: flex-end;
+  }
+
   .add-container {
     width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 1vh;
+    height: 11vh;
+  }
+
+  .title {
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  .add-button {
+    width: var(--button-width);
+    font-size: medium;
+  }
+
+  .title {
+    height: 3.5vh;
   }
 }
 </style>

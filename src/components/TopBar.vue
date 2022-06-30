@@ -9,7 +9,7 @@ const handleClearAll = () => {
 </script>
 
 <template>
-  <article class="tool-bar">
+  <article class="top-bar">
     <FilterItem />
     <div class="clear-all-wrapper">
       <button
@@ -25,7 +25,7 @@ const handleClearAll = () => {
 
 <style scoped>
 @import "./../assets/base.css";
-.tool-bar {
+.top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,6 +45,7 @@ const handleClearAll = () => {
   cursor: pointer;
   background-color: #f7dfdc;
   font-weight: bold;
+  font-size: medium;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(207, 78, 78);
   text-shadow: 1px 1px black;
@@ -66,81 +67,74 @@ const handleClearAll = () => {
 }
 
 @media only screen and (min-width: 1920px) {
-  .tool-bar {
-    width: 38%;
+  .top-bar {
+    width: var(--top-block-width);
   }
 
   .clear-all {
-    font-size: 50%;
-    width: 5vw;
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 1440px) and (max-width: 1919px) {
-  .tool-bar {
-    width: 51%;
+  .top-bar {
+    width: var(--top-block-width);
   }
 
   .clear-all {
-    font-size: 55%;
-    width: 5vw;
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1439px) {
-  .tool-bar {
-    width: 65%;
+  .top-bar {
+    width: var(--top-block-width);
   }
 
   .clear-all {
-    font-size: 55%;
-    width: 6vw;
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1199px) {
-  .tool-bar {
-    width: 72.5%;
+  .top-bar {
+    width: var(--top-block-width);
   }
 
   .clear-all {
-    font-size: 65%;
-    width: 10vw;
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 780px) and (max-width: 959px) {
-  .tool-bar {
-    width: 80.5%;
+  .top-bar {
+    width: var(--top-block-width);
   }
 
   .clear-all {
-    font-size: 65%;
-    width: 11vw;
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 779px) {
-  .tool-bar {
-    width: 90%;
+  .top-bar {
+    width: var(--top-block-width);
   }
 
   .clear-all {
-    font-size: 60%;
-    width: 12vw;
+    width: var(--button-width);
   }
 }
 
 @media only screen and (min-width: 360px) and (max-width: 639px) {
-  .tool-bar {
-    width: 100%;
+  .top-bar {
+    width: var(--top-block-width);
     flex-direction: column;
     height: 100%;
   }
 
   .clear-all {
-    font-size: 70%;
-    width: 15vw;
+    width: var(--button-width);
   }
 }
 </style>

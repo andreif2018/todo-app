@@ -120,7 +120,7 @@ const handleCheck = () => {
 
 @media only screen and (min-width: 360px) and (max-width: 639px) {
   .tab-wrapper {
-    width: 28vw;
+    width: 120px;
     flex-direction: column;
   }
 }

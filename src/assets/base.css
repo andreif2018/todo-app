@@ -103,9 +103,12 @@ body {
   :root {
     --width-1920: 1920px;
     --todo-font-size: 0.75vw;
-    --width-work-area: 70%;
-    --button-width: 2.5vw;
+    --work-area-width: 70%;
+    --toggle-width: 2.5vw;
+    --toggle-height: 2.5vw;
+    --button-width: 6.5vw;
     --button-height: 2.5vw;
+    --top-block-width: 55%;
   }
 
   .main-content {
@@ -117,9 +120,12 @@ body {
   :root {
     --width-1440: 1440px;
     --todo-font-size: 1.1vw;
-    --width-work-area: 75%;
-    --button-width: 3vw;
+    --work-area-width: 75%;
+    --toggle-width: 3vw;
+    --toggle-height: 3vw;
+    --button-width: 6.5vw;
     --button-height: 3vw;
+    --top-block-width: 55%;
   }
 
   .main-content {
@@ -131,9 +137,12 @@ body {
   :root {
     --width-1200: 1200px;
     --todo-font-size: 1.15vw;
-    --width-work-area: 80%;
-    --button-width: 3.5vw;
+    --work-area-width: 80%;
+    --toggle-width: 3.5vw;
+    --toggle-height: 3.5vw;
+    --button-width: 8vw;
     --button-height: 3.5vw;
+    --top-block-width: 70%;
   }
 
   .main-content {
@@ -145,9 +154,12 @@ body {
   :root {
     --width-960: 960px;
     --todo-font-size: 1.5vw;
-    --width-work-area: 85%;
-    --button-width: 4vw;
-    --button-height: 4vw;
+    --work-area-width: 85%;
+    --toggle-width: 4vw;
+    --toggle-height: 4vw;
+    --button-width: 8vw;
+    --button-height: 3.5vw;
+    --top-block-width: 85%;
   }
 
   .main-content {
@@ -160,9 +172,12 @@ body {
   :root {
     --width-780: 780px;
     --todo-font-size: 1.7vw;
-    --width-work-area: 90%;
-    --button-width: 5vw;
-    --button-height: 5vw;
+    --work-area-width: 90%;
+    --toggle-width: 5vw;
+    --toggle-height: 5vw;
+    --button-width: 9.5vw;
+    --button-height: 4.5vw;
+    --top-block-width: 90%;
   }
 
   .main-content {
@@ -174,9 +189,12 @@ body {
   :root {
     --width-640: 640px;
     --todo-font-size: 1.65vw;
-    --width-work-area: 100%;
-    --button-width: 7vw;
-    --button-height: 7vw;
+    --work-area-width: 100%;
+    --toggle-width: 7vw;
+    --toggle-height: 7vw;
+    --button-width: 10.5vw;
+    --button-height: 5.5vw;
+    --top-block-width: 90%;
   }
 
   .main-content {
@@ -184,13 +202,38 @@ body {
   }
 }
 
-@media only screen and (min-width: 360px) and (max-width: 639px) {
+@media only screen and (min-width: 480px) and (max-width: 639px) {
+  :root {
+    --width-480: 480px;
+    --todo-font-size: 2.7vw;
+    --work-area-width: 100%;
+    --toggle-width: 8vw;
+    --toggle-height: 8vw;
+    --button-width: 15vw;
+    --button-height: 7vw;
+    --top-block-width: 90%;
+  }
+
+  .main-content {
+    width: var(--width-360);
+  }
+
+  body {
+    overflow-y: scroll;
+    min-height: 100vh;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 479px) {
   :root {
     --width-360: 360px;
     --todo-font-size: 2.7vw;
-    --width-work-area: 100%;
-    --button-width: 8vw;
+    --work-area-width: 100%;
+    --toggle-width: 8vw;
+    --toggle-height: 8vw;
+    --button-width: 15vw;
     --button-height: 8vw;
+    --top-block-width: 95%;
   }
 
   .main-content {

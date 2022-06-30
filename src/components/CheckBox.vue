@@ -34,8 +34,8 @@ const handleCheck = () => {
 @import "./../assets/base.css";
 .checkbox {
   appearance: none;
-  width: calc(var(--button-width) / 2);
-  height: calc(var(--button-height) / 2);
+  width: calc(var(--toggle-width) / 2);
+  height: calc(var(--toggle-height) / 2);
   border: 1px solid slategray;
   border-radius: 5px;
   background-color: snow;

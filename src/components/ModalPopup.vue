@@ -55,14 +55,14 @@ const props = defineProps<{
   align-items: center;
   position: absolute;
   top: -50%;
-  right: calc(var(--width-work-area) / 2);
+  right: calc(var(--work-area-width) / 2);
   z-index: 1000;
   height: max-content;
 }
 
 .hide {
-  width: calc(var(--button-width) * 0.75);
-  height: calc(var(--button-width) * 0.75);
+  width: calc(var(--toggle-width) * 0.75);
+  height: calc(var(--toggle-width) * 0.75);
   background-color: lightcoral;
   border-radius: 5px;
   color: black;
@@ -81,7 +81,7 @@ const props = defineProps<{
 }
 
 .hide-wrapper {
-  width: calc(var(--button-width) + 1vw);
+  width: calc(var(--toggle-width) + 1vw);
 }
 
 .hide:active {

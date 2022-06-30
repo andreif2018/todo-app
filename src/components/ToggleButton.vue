@@ -36,8 +36,8 @@ const handleCheck = () => {
 @import "./../assets/base.css";
 .toggle {
   appearance: none;
-  width: calc(var(--button-width) / 1.5);
-  height: calc(var(--button-height) / 1.5);
+  width: calc(var(--toggle-width) / 1.5);
+  height: calc(var(--toggle-height) / 1.5);
   background: url("../assets/non-urgent.svg") transparent no-repeat center
     center / contain;
   outline: none;

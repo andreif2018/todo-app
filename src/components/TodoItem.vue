@@ -140,8 +140,8 @@ watch(
   border-radius: 5px;
   outline: none;
   background-size: cover;
-  width: var(--button-width);
-  height: var(--button-height);
+  width: var(--toggle-width);
+  height: var(--toggle-height);
 }
 
 .save {
@@ -172,8 +172,8 @@ watch(
   background-color: transparent;
   border-radius: 5px;
   background-size: cover;
-  width: var(--button-width);
-  height: var(--button-height);
+  width: var(--toggle-width);
+  height: var(--toggle-height);
 }
 
 .remove:hover,

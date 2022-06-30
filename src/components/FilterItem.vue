@@ -41,6 +41,12 @@ import { FilterEnum } from "@/model/model";
   .filter-container {
     flex-direction: column;
     height: 20vh;
+    justify-content: center;
+    width: 150px;
+  }
+
+  .status-filters-title {
+    padding-top: 50px;
   }
 }
 </style>

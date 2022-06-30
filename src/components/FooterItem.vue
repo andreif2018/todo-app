@@ -102,7 +102,8 @@ import NavPanel from "@/components/NavPanel.vue";
   }
 
   .github {
-    font-size: x-small;
+    font-size: small;
+    transform: scale(0.75);
   }
 }
 </style>
