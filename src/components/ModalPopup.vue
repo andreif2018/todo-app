@@ -55,7 +55,7 @@ const props = defineProps<{
   align-items: center;
   position: absolute;
   top: -50%;
-  right: calc(var(--work-area-width) / 2);
+  right: 0;
   z-index: 1000;
   height: max-content;
 }

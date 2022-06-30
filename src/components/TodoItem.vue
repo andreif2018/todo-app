@@ -7,6 +7,7 @@ import { ref, watch } from "vue";
 import ModalPopup from "@/components/ModalPopup.vue";
 import { useToDoStore } from "@/stores/todos";
 import ToggleButton from "@/components/ToggleButton.vue";
+import ToolBar from "@/components/ToolBar.vue";
 
 const props = defineProps<{
   item: ITodo;
@@ -36,10 +37,6 @@ const save = () => {
     store.updateItem(props.item._id, String(text.value));
     toggleOn(isToDoDisabled);
   }
-};
-
-const remove = () => {
-  store.deleteItem(props.item._id);
 };
 
 const getInfo = () => {
@@ -95,12 +92,13 @@ watch(
       @keyup.esc="save"
       minlength="3"
     />
-    <div class="button-container" :style="{ display: rowStyle }">
-      <button class="edit" v-if="isToDoDisabled" @click="edit" />
-      <button class="save" v-else @click="save" />
-      <button class="info" @click="getInfo" />
-      <button class="remove" @click="remove" />
-    </div>
+    <ToolBar
+      :item="props.item"
+      @edit="edit"
+      @save="save"
+      @info="getInfo"
+      v-if="!isModal"
+    />
     <ModalPopup
       v-if="isModal"
       :msg="props.item"
@@ -112,75 +110,6 @@ watch(
 
 <style scoped>
 @import "./../assets/base.css";
-
-.edit {
-  background-image: url(../assets/lock.svg);
-}
-
-.edit:hover {
-  background-image: url(../assets/lock-hover.svg);
-}
-
-.info:hover {
-  background-image: url(../assets/info-hover.svg);
-}
-
-.remove {
-  background-image: url(../assets/remove.svg);
-  background-color: lightcoral;
-}
-
-.edit,
-.save,
-.info {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  background-size: cover;
-  width: var(--toggle-width);
-  height: var(--toggle-height);
-}
-
-.save {
-  background-image: url(../assets/unlock.svg);
-}
-
-.info {
-  background-image: url(../assets/info.svg);
-}
-
-.save:active,
-.info:active,
-.edit:active,
-.remove:active,
-.save:hover,
-.info:hover,
-.edit:hover,
-.remove:hover {
-  cursor: pointer;
-  transform: scale(120%);
-}
-
-.remove {
-  box-shadow: 1px 1px 1px rgba(69, 69, 69, 0.7);
-  font-size: medium;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  border-radius: 5px;
-  background-size: cover;
-  width: var(--toggle-width);
-  height: var(--toggle-height);
-}
-
-.remove:hover,
-.remove:active {
-  box-shadow: var(--box-shadow);
-}
-
 .todo-item {
   border: none;
   height: 4.5vh;
@@ -190,17 +119,6 @@ watch(
   align-items: center;
   border-radius: 10px;
   position: relative;
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1vw;
-}
-
-.done {
-  text-decoration: line-through;
 }
 
 .regular {
@@ -218,10 +136,6 @@ watch(
   background-size: cover;
 }
 
-.done {
-  text-decoration: line-through;
-}
-
 .regular:focus {
   background: cadetblue;
   border: blue;
@@ -232,18 +146,9 @@ watch(
   border: 2px dashed red;
 }
 
-.attention {
-  border: 2px dashed red;
-  border-spacing: 1px;
-}
-
 @media only screen and (min-width: 1440px) {
   .regular {
     width: 65%;
-  }
-
-  .button-container {
-    width: 20%;
   }
 
   .todo-item {
@@ -258,32 +163,6 @@ watch(
 
   .todo-item {
     padding: 3px;
-  }
-
-  .button-container {
-    width: 15%;
-  }
-}
-
-@media only screen and (max-width: 1439px) {
-  .edit,
-  .remove,
-  .save,
-  .info {
-    background-size: 100%;
-    width: 37px;
-    height: 37px;
-  }
-}
-
-@media only screen and (max-width: 959px) {
-  .edit,
-  .remove,
-  .save,
-  .info {
-    background-size: 100%;
-    width: 25px;
-    height: 25px;
   }
 }
 </style>

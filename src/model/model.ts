@@ -11,6 +11,9 @@ export enum Response {
   HIDE = "hide",
   CHECK = "check",
   TOGGLE = "toggle",
+  EDIT = "edit",
+  SAVE = "save",
+  INFO = "info",
 }
 
 export type ITodo = {
