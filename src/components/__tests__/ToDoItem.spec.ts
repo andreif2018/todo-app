@@ -132,7 +132,7 @@ describe("Check TodoItem Component", async () => {
 
   it("set over max allowed value", async () => {
     await editButton.trigger(TestEnum.CLICK);
-    await input[2].setValue(TestEnum.CHARS_33);
+    await input[2].setValue(TestEnum.CHARS_49);
     expect(wrapper.vm.hintMessage).toEqual(InputEnum.MAX_HINT);
   });
 

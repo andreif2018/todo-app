@@ -7,7 +7,6 @@ import { TestEnum } from "./model/test-model";
 
 describe("check Error404View", async () => {
   const wrapper = mount(Error404View);
-  const title = wrapper.find("h2");
   const link = wrapper.find("a");
   const content = wrapper.find(".error404-content");
   const contentText = content.find("h2");
@@ -34,10 +33,6 @@ describe("check Error404View", async () => {
 
   it("renders child element count", () => {
     expect(wrapper.element.childElementCount).toBe(3);
-  });
-
-  it("check title of h2 element", () => {
-    expect(title.text()).toEqual("Error 404!");
   });
 
   it("check text of contentText element", () => {

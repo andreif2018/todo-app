@@ -15,7 +15,7 @@ describe("NavPanel", async () => {
   const homeLinkElement = wrapper.find('[to="/"]');
   const aboutLinkElement = wrapper.find('[to="/about"]');
   const panel = wrapper.find("nav");
-  const tagName = "ROUTERLINK";
+  const tagName = "ROUTER-LINK";
 
   it("assigns css class", () => {
     expect(panel.element.className).toEqual("nav-wrapper");

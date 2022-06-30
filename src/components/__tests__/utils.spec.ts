@@ -6,7 +6,7 @@ import { ref } from "vue";
 
 describe("utils", () => {
   it("input over max allowed value", () => {
-    expect(validateInput(TestEnum.CHARS_33)).toStrictEqual(InputEnum.MAX_HINT);
+    expect(validateInput(TestEnum.CHARS_49)).toStrictEqual(InputEnum.MAX_HINT);
   });
 
   it("input below min allowed value", () => {

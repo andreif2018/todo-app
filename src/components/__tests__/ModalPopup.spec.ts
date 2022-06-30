@@ -27,7 +27,7 @@ describe("Check Modal Popup Component", async () => {
   });
   const messageContainer = wrapper.find(".message-wrapper");
   it("renders component tag name", () => {
-    expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
+    expect(wrapper.element.tagName).toEqual(TestEnum.ARTICLE);
   });
 
   it("assigns css class", () => {
@@ -39,12 +39,24 @@ describe("Check Modal Popup Component", async () => {
   });
 
   it("render message-wrapper", () => {
-    expect(messageContainer.element.tagName).toEqual(TestEnum.DIV);
+    expect(messageContainer.element.tagName).toEqual("UL");
   });
 
   it("render message-wrapper text", () => {
-    expect(messageContainer.element.textContent).toEqual(
-      "Todo: I am test ToDoPriority:  Non-urgentCreated: 123Modified: 456Completed: 789"
+    expect(messageContainer.element.children[0].textContent).toEqual(
+      "Todo: I am test ToDo"
+    );
+    expect(messageContainer.element.children[1].textContent).toEqual(
+      "Priority: Non-urgent"
+    );
+    expect(messageContainer.element.children[2].textContent).toEqual(
+      "Created: 123"
+    );
+    expect(messageContainer.element.children[3].textContent).toEqual(
+      "Modified: 456"
+    );
+    expect(messageContainer.element.children[4].textContent).toEqual(
+      "Completed: 789"
     );
   });
 });

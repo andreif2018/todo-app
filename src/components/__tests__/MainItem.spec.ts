@@ -86,7 +86,7 @@ describe("Check MainItem", async () => {
   });
 
   it("renders button text", () => {
-    expect(button.text()).toEqual("Delete All");
+    expect(button.text()).toEqual("Clear");
   });
 
   it("renders button in disabled state by default", () => {

@@ -48,6 +48,6 @@ describe("FilterItem", () => {
   });
 
   it("renders linked text", () => {
-    expect(filterTitle.text()).toEqual("Status Filters:");
+    expect(filterTitle.text()).toEqual("Filters");
   });
 });

@@ -88,9 +88,9 @@ describe("Check AddTodo Component", async () => {
   });
 
   it("renders hint in case invalid input upper bound", async () => {
-    await textField.setValue(TestEnum.CHARS_33); // 33 chars is invalid input
+    await textField.setValue(TestEnum.CHARS_49); // 33 chars is invalid input
     await button.trigger(TestEnum.CLICK);
-    expect(textField.element.value).toBe(TestEnum.CHARS_33);
+    expect(textField.element.value).toBe(TestEnum.CHARS_49);
     expect(wrapper.findComponent(HintItem).exists()).toBeTruthy();
   });
 

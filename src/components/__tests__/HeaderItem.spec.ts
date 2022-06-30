@@ -9,7 +9,7 @@ describe("HeaderItem", () => {
   const testProps = "test header";
   const wrapper = mount(HeaderItem, { props: { msg: testProps } });
   const content = wrapper.find(".header-content");
-  const childDiv = wrapper.find(".title");
+  const childDiv = wrapper.find(".header-title");
 
   it("renders component tag name", () => {
     expect(wrapper.element.tagName).toEqual("HEADER");
