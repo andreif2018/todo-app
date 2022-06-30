@@ -1,6 +1,6 @@
 export enum TestEnum {
   CLICK = "click",
-  CHARS_33 = "this is a upper bound test char33",
+  CHARS_49 = "This is over maximum allowed of 49 characters for",
   CHARS_48 = "This is a string value of 48 characters for test",
   CHARS_3 = "ch3",
   CHARS_2 = "c2",

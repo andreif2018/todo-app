@@ -16,7 +16,7 @@ const addItem = () => {
     hintMessage.value = validateInput(text.value);
   }
   if (!hintMessage.value) {
-    store.createNewItem(text.value);
+    store.createNewItem(String(text.value));
     text.value = "";
     toggleOff(isNotified);
   }

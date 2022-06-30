@@ -33,7 +33,7 @@ const edit = () => {
 
 const save = () => {
   if (!hintMessage.value) {
-    store.updateItem(props.item._id, text.value);
+    store.updateItem(props.item._id, String(text.value));
     toggleOn(isToDoDisabled);
   }
 };
