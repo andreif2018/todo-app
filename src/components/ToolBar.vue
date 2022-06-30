@@ -149,7 +149,7 @@ watch(
   }
 }
 
-@media only screen and (max-width: 1439px) {
+@media only screen and (min-width: 960px) and (max-width: 1439px) {
   .edit,
   .remove,
   .save,
@@ -173,7 +173,15 @@ watch(
 
 @media only screen and (max-width: 639px) {
   .button-container {
-    width: 30%;
+    width: 20%;
+  }
+  .edit,
+  .remove,
+  .save,
+  .info {
+    background-size: 100%;
+    width: 20px;
+    height: 20px;
   }
 }
 </style>

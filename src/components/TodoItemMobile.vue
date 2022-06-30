@@ -119,7 +119,7 @@ watch(
   height: 7vh;
   width: 96%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
   position: relative;

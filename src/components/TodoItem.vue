@@ -121,6 +121,10 @@ watch(
   position: relative;
 }
 
+.done {
+  text-decoration: line-through;
+}
+
 .regular {
   border: 1px solid var(--color-border-custom);
   font-size: var(--todo-font-size);
