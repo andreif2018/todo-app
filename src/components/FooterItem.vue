@@ -100,5 +100,9 @@ import NavPanel from "@/components/NavPanel.vue";
   .footer-content {
     width: var(--width-360);
   }
+
+  .github {
+    font-size: x-small;
+  }
 }
 </style>

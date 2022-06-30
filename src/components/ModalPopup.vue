@@ -22,10 +22,10 @@ const props = defineProps<{
         <span class="popup-title">Created: </span>{{ props.msg.createdTime }}
       </li>
       <li v-if="props.msg.modifiedTime">
-        <span class="popup-title">Modified: </span>{{ props.msg.createdTime }}
+        <span class="popup-title">Modified: </span>{{ props.msg.modifiedTime }}
       </li>
       <li v-if="props.msg.completedTime">
-        <span class="popup-title">Completed: </span>{{ props.msg.createdTime }}
+        <span class="popup-title">Completed: </span>{{ props.msg.completedTime }}
       </li>
       <li v-else><span class="popup-title">Status: </span>Not Completed</li>
     </ul>
@@ -42,7 +42,7 @@ const props = defineProps<{
   color: black;
   font-weight: bold;
   font-size: medium;
-  width: 100%;
+  width: max-content;
   text-align: center;
   cursor: default;
   border: 1px solid rgba(118, 118, 118, 0.3);
@@ -55,13 +55,13 @@ const props = defineProps<{
   position: absolute;
   top: -50%;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
   height: max-content;
 }
 
 .hide {
-  width: 1.75vw;
-  height: 1.75vw;
+  width: calc(var(--button-width) * 0.75);
+  height: calc(var(--button-width) * 0.75);
   background-color: lightcoral;
   border-radius: 5px;
   color: black;
@@ -74,6 +74,9 @@ const props = defineProps<{
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  font-size: small;
+  list-style-type: none;
+  padding: 10px;
 }
 
 .hide-wrapper {
@@ -96,5 +99,18 @@ const props = defineProps<{
 .urgent {
   font-weight: bold;
   color: red;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 639px) {
+  .message-wrapper {
+    width: 100%;
+    height: max-content;
+  }
+  .message-wrapper:first-child {
+    width: 250px;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 </style>

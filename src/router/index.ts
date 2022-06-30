@@ -22,6 +22,8 @@ const router = createRouter({
       component: Error404View,
     },
   ],
+  linkActiveClass: "active-link",
+  linkExactActiveClass: "exact-active-link",
 });
 
 export default router;

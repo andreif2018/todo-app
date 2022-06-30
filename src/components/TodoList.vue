@@ -109,6 +109,10 @@ const filteredList = computed(() => {
   .list-wrapper {
     width: 95%;
   }
+
+  .list-container {
+    overflow-x: auto;
+  }
 }
 
 @media only screen and (min-width: 1920px) {
