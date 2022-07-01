@@ -16,6 +16,11 @@ export const useToDoStore = defineStore({
     } as IStore),
 
   actions: {
+    memorize() {
+      window.localStorage.removeItem("todos");
+      window.localStorage.setItem("todos", JSON.stringify(this.todos));
+    },
+
     createNewItem(value: string) {
       if (!value) return;
       this.todos.list.push({
@@ -28,6 +33,7 @@ export const useToDoStore = defineStore({
         isUrgent: false,
       });
       this.todos.titles.push(value);
+      this.memorize();
     },
 
     updateItem(todoID: string, payload: string) {
@@ -39,6 +45,7 @@ export const useToDoStore = defineStore({
         this.todos.list[index].todoName = payload;
         this.todos.list[index].modifiedTime = new Date().toLocaleString();
         this.todos.titles[titleIndex] = payload;
+        this.memorize();
       }
     },
 
@@ -52,6 +59,7 @@ export const useToDoStore = defineStore({
         } else {
           this.todos.list[index].completedTime = undefined;
         }
+        this.memorize();
       }
     },
 
@@ -60,6 +68,7 @@ export const useToDoStore = defineStore({
       if (index !== -1) {
         this.todos.list[index].isUrgent = !this.todos.list[index].isUrgent;
         this.todos.list[index].modifiedTime = new Date().toLocaleString();
+        this.memorize();
       }
     },
 
@@ -69,11 +78,14 @@ export const useToDoStore = defineStore({
       const todoName = this.findNameByIndex(index);
       this.todos.list.splice(index, 1);
       this.todos.titles = this.todos.titles.filter((item) => item !== todoName);
+      window.localStorage.setItem("todos", JSON.stringify(this.todos));
+      this.memorize();
     },
 
     clearAll() {
       this.todos.list = [];
       this.todos.titles = [];
+      this.memorize();
     },
 
     findIndexById(todoID: string) {
@@ -90,11 +102,17 @@ export const useToDoStore = defineStore({
       } else {
         this.todos.hideLowPriority = !this.todos.hideLowPriority;
       }
+      this.memorize();
     },
 
-    restore(data: string) {
-      this.todos.list = JSON.parse(data).list;
-      this.todos.titles = JSON.parse(data).titles;
+    restore() {
+      const item = window.localStorage.getItem("todos");
+      if (item) {
+        this.todos.list = JSON.parse(item).list;
+        this.todos.hideCompleted = JSON.parse(item).hideCompleted;
+        this.todos.hideLowPriority = JSON.parse(item).hideLowPriority;
+        this.todos.titles = JSON.parse(item).titles;
+      }
     },
   },
 });
