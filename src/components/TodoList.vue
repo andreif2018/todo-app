@@ -13,6 +13,11 @@ const handleTip = (result: string) => {
 };
 
 const filteredList = computed(() => {
+  const data = sessionStorage.getItem("todos");
+  if (data) {
+    store.restore(data);
+    return false;
+  }
   let tempo;
   if (store.todos.hideCompleted) {
     tempo = store.todos.list.filter((item) => !item.isCompleted);
@@ -32,6 +37,7 @@ const filteredList = computed(() => {
       v-if="tipContent && store.todos.list.length > 0"
       :msg="tipContent"
     />
+    <HintItem v-else :msg="tipContent" :style="{ visibility: 'hidden' }" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
         v-for="(item, index) in filteredList"

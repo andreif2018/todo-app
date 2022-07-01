@@ -91,5 +91,10 @@ export const useToDoStore = defineStore({
         this.todos.hideLowPriority = !this.todos.hideLowPriority;
       }
     },
+
+    restore(data: string) {
+      this.todos.list = JSON.parse(data).list;
+      this.todos.titles = JSON.parse(data).titles;
+    },
   },
 });
