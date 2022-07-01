@@ -13,7 +13,7 @@ describe("HintItem", () => {
   });
 
   it("renders component structure", () => {
-    expect(wrapper.element.childElementCount).toBe(0);
+    expect(wrapper.element.childElementCount).toBe(1);
   });
 
   it("assigns css class", () => {
@@ -27,5 +27,9 @@ describe("HintItem", () => {
   it("renders updated props", async () => {
     await wrapper.setProps({ msg: updatedProps });
     expect(wrapper.text()).toEqual(updatedProps);
+  });
+
+  it("renders child element structure", () => {
+    expect(wrapper.element.firstElementChild?.childElementCount).toBe(0);
   });
 });
