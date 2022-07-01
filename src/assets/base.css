@@ -217,12 +217,12 @@ body {
 
   .main-content {
     width: var(--width-360);
-    height: auto;
+    height: max-content;
     min-height: 83vh;
   }
 
   .main {
-    height: auto;
+    height: max-content;
     min-height: 83vh;
   }
 
@@ -246,12 +246,12 @@ body {
 
   .main-content {
     width: var(--width-360);
-    height: auto;
+    height: max-content;
     min-height: 83vh;
   }
 
   .main {
-    height: auto;
+    height: max-content;
     min-height: 83vh;
   }
 

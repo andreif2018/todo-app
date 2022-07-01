@@ -14,6 +14,7 @@ defineProps<{
 <style scoped>
 .hint {
   height: 6vh;
+  min-height: 6vh;
   display: flex;
   justify-content: center;
   align-items: center;

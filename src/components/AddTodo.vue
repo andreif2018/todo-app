@@ -185,6 +185,7 @@ watch(
   .add-todo-wrapper {
     width: var(--top-block-width);
     height: 18vh;
+    min-height: 18vh;
   }
 
   .add-container {

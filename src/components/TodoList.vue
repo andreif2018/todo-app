@@ -13,10 +13,9 @@ const handleTip = (result: string) => {
 };
 
 const filteredList = computed(() => {
-  const data = sessionStorage.getItem("todos");
+  const data = window.localStorage.getItem("todos");
   if (data) {
-    store.restore(data);
-    return false;
+    store.restore();
   }
   let tempo;
   if (store.todos.hideCompleted) {
@@ -113,15 +112,16 @@ const filteredList = computed(() => {
 @media only screen and (min-width: 360px) and (max-width: 639px) {
   .list-wrapper {
     width: 95%;
+    min-height: 39vh;
     height: auto;
-    min-height: 35vh;
+    overflow-y: hidden;
   }
 
   .list-container {
     overflow-x: auto;
     overflow-y: hidden;
     height: auto;
-    min-height: 26vh;
+    min-height: 33vh;
   }
 }
 
