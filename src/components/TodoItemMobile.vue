@@ -126,6 +126,10 @@ watch(
   flex-direction: column;
 }
 
+.done {
+  text-decoration: line-through;
+}
+
 .regular {
   width: 95%;
   border: 1px solid var(--color-border-custom);
