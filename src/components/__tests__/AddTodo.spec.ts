@@ -28,8 +28,10 @@ describe("Check AddTodo Component", async () => {
     expect(wrapper.element.className).toEqual("add-todo-wrapper");
   });
 
-  it("no render child element HintItem by default", () => {
-    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
+  it("render HintItem with visibility hidden", () => {
+    expect(
+      wrapper.findComponent(HintItem).element.getAttribute("style")
+    ).toEqual("visibility: hidden;");
   });
 
   it("renders child container structure", () => {
@@ -84,7 +86,9 @@ describe("Check AddTodo Component", async () => {
   it("hint is hidden in case valid input", async () => {
     await textField.setValue(TestEnum.CHARS_3); // 3 chars is valid input
     expect(textField.element.value).toBe(TestEnum.CHARS_3);
-    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
+    expect(
+      wrapper.findComponent(HintItem).element.getAttribute("style")
+    ).toEqual("visibility: hidden;");
   });
 
   it("renders hint in case invalid input upper bound", async () => {
@@ -97,7 +101,9 @@ describe("Check AddTodo Component", async () => {
   it("hint is hidden in case valid input", async () => {
     await textField.setValue(TestEnum.CHARS_48);
     expect(textField.element.value).toBe(TestEnum.CHARS_48);
-    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
+    expect(
+      wrapper.findComponent(HintItem).element.getAttribute("style")
+    ).toEqual("visibility: hidden;");
   });
 
   it("renders hint in case submit empty text", async () => {

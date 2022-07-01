@@ -26,11 +26,13 @@ describe("Check TodoList", async () => {
   });
 
   it("renders child elements count correct", () => {
-    expect(wrapper.element.childElementCount).toBe(1);
+    expect(wrapper.element.childElementCount).toBe(2); // + hint
   });
 
   it("not renders child element HintItem due v-if", () => {
-    expect(wrapper.findComponent(HintItem).exists()).toBeFalsy();
+    expect(
+      wrapper.findComponent(HintItem).element.getAttribute("style")
+    ).toEqual("visibility: hidden;");
   });
 
   it("renders container", () => {
