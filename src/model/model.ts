@@ -4,7 +4,7 @@ export enum InputEnum {
   MIN_LENGTH = 3,
   MAX_LENGTH = 48,
   DUPLICATE = "ToDo with such name already exists",
-  OVERFLOW = "List is full, remove todo to add new one",
+  OVERFLOW = "Todo List for this week is full. Remove at least 1 todo to add new one",
   LIST_MAX_LENGTH = 12,
 }
 
