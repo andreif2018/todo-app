@@ -55,11 +55,19 @@ describe("utils", () => {
     expect(data.value).toBe(false);
   });
 
-  it("false in case duplicate name in store", () => {
+  it("raise alert message in case duplicate name in store", () => {
     const store = useToDoStore();
     store.createNewItem(TestEnum.TEST_NAME);
     expect(validateInput(TestEnum.TEST_NAME)).toStrictEqual(
       InputEnum.DUPLICATE
     );
+  });
+
+  it("raise alert message in case todo list is full", () => {
+    const store = useToDoStore();
+    for (let i = 0; i < InputEnum.LIST_MAX_LENGTH; i++) {
+      store.createNewItem(TestEnum.TEST_NAME + i);
+    }
+    expect(validateInput(TestEnum.TEST_NAME)).toStrictEqual(InputEnum.OVERFLOW);
   });
 });
