@@ -64,10 +64,10 @@ watch(
 @import "./../assets/base.css";
 
 .add-container {
-  height: 10vh;
+  height: 6vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -95,7 +95,7 @@ watch(
   height: 14vh;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 

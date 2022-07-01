@@ -29,6 +29,7 @@ const handleClearAll = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 19vh;
 }
 
 .clear-all-wrapper {

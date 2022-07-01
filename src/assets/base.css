@@ -87,6 +87,7 @@ body {
 .main {
   grid-area: main;
   width: var(--width-main);
+  height: 83vh;
 }
 
 .main-content {

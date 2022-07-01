@@ -51,7 +51,7 @@ const filteredList = computed(() => {
 .list-container {
   border-radius: 10px;
   border: 1px solid var(--color-border-custom);
-  height: 55vh;
+  height: 42vh;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -61,12 +61,11 @@ const filteredList = computed(() => {
 }
 
 .list-wrapper {
-  height: 64vh;
+  height: 49vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  gap: 1vh;
 }
 
 @media only screen and (min-width: 1920px) {
