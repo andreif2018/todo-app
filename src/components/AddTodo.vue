@@ -44,6 +44,7 @@ watch(
 <template>
   <article class="add-todo-wrapper" @keyup.enter="addItem">
     <HintItem v-if="isNotified && hintMessage" :msg="hintMessage" />
+    <HintItem v-else msg="" :style="{ visibility: 'hidden' }" />
     <div class="add-container">
       <input
         class="title"
@@ -183,8 +184,7 @@ watch(
 @media only screen and (min-width: 360px) and (max-width: 639px) {
   .add-todo-wrapper {
     width: var(--top-block-width);
-    height: 15vh;
-    justify-content: flex-end;
+    height: 18vh;
   }
 
   .add-container {

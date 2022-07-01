@@ -47,7 +47,7 @@ export default {
   align-items: center;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 10vh 1fr 7vh;
   grid-template-areas:
     "header"
     "main"
@@ -78,5 +78,20 @@ export default {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 639px) {
+  .about-content {
+    font-size: large;
+    justify-content: space-evenly;
+    width: 100%;
+    height: auto;
+    min-height: 83vh;
+  }
+
+  .feature-container {
+    font-size: medium;
+    height: auto;
+  }
 }
 </style>

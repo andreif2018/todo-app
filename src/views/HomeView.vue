@@ -25,7 +25,7 @@ export default {
   align-items: center;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 10vh 1fr 7vh;
   grid-template-areas:
     "header"
     "main"

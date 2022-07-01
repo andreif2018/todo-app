@@ -131,7 +131,7 @@ const handleClearAll = () => {
   .top-bar {
     width: var(--top-block-width);
     flex-direction: column;
-    height: 100%;
+    height: 25vh;
   }
 
   .clear-all {

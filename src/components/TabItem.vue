@@ -115,6 +115,7 @@ const handleCheck = () => {
 @media only screen and (min-width: 640px) and (max-width: 779px) {
   .tab-wrapper {
     width: 22vw;
+    height: 7.5vh;
   }
 }
 
@@ -122,6 +123,7 @@ const handleCheck = () => {
   .tab-wrapper {
     width: 120px;
     flex-direction: column;
+    height: 7.5vh;
   }
 }
 </style>

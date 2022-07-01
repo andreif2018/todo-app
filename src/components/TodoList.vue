@@ -113,10 +113,15 @@ const filteredList = computed(() => {
 @media only screen and (min-width: 360px) and (max-width: 639px) {
   .list-wrapper {
     width: 95%;
+    height: auto;
+    min-height: 35vh;
   }
 
   .list-container {
     overflow-x: auto;
+    overflow-y: hidden;
+    height: auto;
+    min-height: 26vh;
   }
 }
 

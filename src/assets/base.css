@@ -87,7 +87,7 @@ body {
 .main {
   grid-area: main;
   width: var(--width-main);
-  height: 83vh;
+  height: auto;
 }
 
 .main-content {
@@ -217,6 +217,13 @@ body {
 
   .main-content {
     width: var(--width-360);
+    height: auto;
+    min-height: 83vh;
+  }
+
+  .main {
+    height: auto;
+    min-height: 83vh;
   }
 
   body {
@@ -239,6 +246,13 @@ body {
 
   .main-content {
     width: var(--width-360);
+    height: auto;
+    min-height: 83vh;
+  }
+
+  .main {
+    height: auto;
+    min-height: 83vh;
   }
 
   body {
