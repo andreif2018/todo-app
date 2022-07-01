@@ -17,6 +17,9 @@ export const toggleOff = (element: Ref) => {
 export const validateInput = (inputText: string) => {
   const store = useToDoStore();
   const data = String(inputText);
+  if (store.todos.list.length >= InputEnum.LIST_MAX_LENGTH) {
+    return InputEnum.OVERFLOW;
+  }
   if (data.length > InputEnum.MAX_LENGTH) {
     return InputEnum.MAX_HINT;
   } else if (data?.length < InputEnum.MIN_LENGTH) {
