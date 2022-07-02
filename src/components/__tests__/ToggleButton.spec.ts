@@ -12,6 +12,10 @@ describe("ToggleButton", () => {
     expect(wrapper.element.tagName).toEqual(TestEnum.DIV);
   });
 
+  it("renders tag name", () => {
+    expect(toggle.element.tagName).toEqual(TestEnum.INPUT);
+  });
+
   it("renders attribute type", () => {
     expect(toggle.attributes("type")).toEqual("checkbox");
   });
@@ -33,6 +37,10 @@ describe("ToggleButton", () => {
     expect(wrapper.emitted()).toHaveProperty(Response.TOGGLE);
   });
 
+  it("update className according to checked state", async () => {
+    expect(wrapper.find("input").element.className).toEqual("toggle checked");
+  });
+
   it("renders updated props", async () => {
     await wrapper.setProps({ isChecked: true });
     expect(wrapper.props().isChecked).toBe(true);
@@ -41,5 +49,10 @@ describe("ToggleButton", () => {
   it("sensitive to unchecking checkbox", async () => {
     await toggle.trigger(TestEnum.CLICK);
     expect(wrapper.emitted()).toHaveProperty(Response.TOGGLE, [[]]);
+  });
+
+  it("update className according to unchecked state", async () => {
+    await wrapper.vm.handleCheck();
+    await expect(toggle.element.className).toEqual("toggle");
   });
 });

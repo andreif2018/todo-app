@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
-import type { ITodo } from "@/model/model";
 import { Response } from "@/model/model";
 import { ref, watch } from "vue";
 import { useToDoStore } from "@/stores/todos";
 
 const props = defineProps<{
-  item: ITodo;
+  itemId: string;
+  itemName: string;
 }>();
 const emit = defineEmits([
   Response.HINT,
@@ -16,7 +16,7 @@ const emit = defineEmits([
 ]);
 
 const store = useToDoStore();
-const text = ref(props.item.todoName);
+const text = ref(props.itemName);
 const isToDoDisabled = ref(true);
 const hintMessage = ref();
 
@@ -27,14 +27,14 @@ const edit = () => {
 
 const save = () => {
   if (!hintMessage.value) {
-    store.updateItem(props.item._id, String(text.value));
+    store.updateItem(props.itemId, String(text.value));
     toggleOn(isToDoDisabled);
     emit(Response.SAVE);
   }
 };
 
 const remove = () => {
-  store.deleteItem(props.item._id);
+  store.deleteItem(props.itemId);
 };
 
 const getInfo = () => {

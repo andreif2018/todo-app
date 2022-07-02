@@ -11,7 +11,7 @@ import { createTestingPinia } from "@pinia/testing";
 describe("Check TodoItem Component", async () => {
   const testToDo: ITodo = {
     _id: TestEnum.TEST_ID,
-    todoName: "I am test ToDo",
+    todoName: TestEnum.TEST_NAME,
     createdTime: new Date().toLocaleString(),
     modifiedTime: undefined,
     completedTime: undefined,

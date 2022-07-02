@@ -1,24 +1,14 @@
-import { describe, it, expect, vitest, vi } from "vitest";
+import { describe, expect, it, vi, vitest } from "vitest";
 import { mount } from "@vue/test-utils";
 import ToolBar from "../ToolBar.vue";
 import { TestEnum } from "./model/test-model";
-import type { ITodo } from "../../model/model";
 import { createTestingPinia } from "@pinia/testing";
 import { createPinia, setActivePinia } from "pinia";
 import { useToDoStore } from "../../stores/todos";
 
 describe("Check ToolBar Component", async () => {
-  const testToDo: ITodo = {
-    _id: TestEnum.TEST_ID,
-    todoName: "I am test ToDo",
-    createdTime: new Date().toLocaleString(),
-    modifiedTime: undefined,
-    completedTime: undefined,
-    isCompleted: false,
-    isUrgent: false,
-  };
   const wrapper = mount(ToolBar, {
-    props: { item: testToDo },
+    props: { itemId: TestEnum.TEST_ID, itemName: TestEnum.TEST_NAME },
     global: {
       plugins: [
         createTestingPinia({

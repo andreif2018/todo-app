@@ -180,4 +180,16 @@ describe("store", () => {
     expect(store.todos.list[0].modifiedTime).toBeTruthy();
     expect(store.todos.list[0].isUrgent).toBeFalsy();
   });
+
+  it("handle restore", async () => {
+    const store = useToDoStore();
+    await store.createNewItem(TestEnum.TEST_NAME);
+    const tempo = store.todos;
+    store.todos.list = [];
+    store.todos.titles = [];
+    store.todos.hideCompleted = true;
+    store.todos.hideLowPriority = true;
+    await store.restore();
+    expect(store.todos).toEqual(tempo);
+  });
 });

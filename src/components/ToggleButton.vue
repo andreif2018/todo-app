@@ -4,7 +4,7 @@ import { ref } from "vue";
 import { Response } from "@/model/model";
 
 const props = defineProps<{
-  isChecked?: boolean;
+  isChecked: boolean;
 }>();
 
 const emit = defineEmits([Response.TOGGLE]);

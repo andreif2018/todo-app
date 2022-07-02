@@ -11,7 +11,7 @@ import { createTestingPinia } from "@pinia/testing";
 describe("Check TodoItemMobile Component", async () => {
   const testToDo: ITodo = {
     _id: TestEnum.TEST_ID,
-    todoName: "I am test ToDo",
+    todoName: TestEnum.TEST_NAME,
     createdTime: new Date().toLocaleString(),
     modifiedTime: undefined,
     completedTime: undefined,
@@ -76,7 +76,7 @@ describe("Check TodoItemMobile Component", async () => {
 
   it("update todo item back to disabled status", async () => {
     await wrapper.vm.edit();
-    await input[0].setValue("I am test ToDo");
+    await input[0].setValue(TestEnum.TEST_NAME);
     await wrapper.vm.save();
     expect(wrapper.vm.isToDoDisabled).toBeTruthy();
   });

@@ -8,7 +8,7 @@ import type { ITodo } from "../../model/model";
 describe("Check Modal Popup Component", async () => {
   const testToDo: ITodo = {
     _id: TestEnum.TEST_ID,
-    todoName: "I am test ToDo",
+    todoName: TestEnum.TEST_NAME,
     createdTime: "123",
     modifiedTime: "456",
     completedTime: "789",
@@ -44,7 +44,7 @@ describe("Check Modal Popup Component", async () => {
 
   it("render message-wrapper text", () => {
     expect(messageContainer.element.children[0].textContent).toEqual(
-      "Todo: I am test ToDo"
+      `Todo: ${TestEnum.TEST_NAME}`
     );
     expect(messageContainer.element.children[1].textContent).toEqual(
       "Priority: Non-urgent"
@@ -58,5 +58,25 @@ describe("Check Modal Popup Component", async () => {
     expect(messageContainer.element.children[4].textContent).toEqual(
       "Completed: 789"
     );
+  });
+
+  it("render message-wrapper", async () => {
+    const urgentName = "I am urgent ToDo";
+    const urgentToDo: ITodo = {
+      _id: TestEnum.TEST_ID,
+      todoName: urgentName,
+      createdTime: "123",
+      modifiedTime: "456",
+      completedTime: "789",
+      isCompleted: false,
+      isUrgent: true,
+    };
+    await wrapper.setProps({ msg: urgentToDo });
+    const urgent = wrapper.find(".urgent");
+    expect(urgent.element.tagName).toEqual("SPAN");
+    expect(messageContainer.element.children[0].textContent).toEqual(
+      `Todo: ${urgentName}`
+    );
+    expect(urgent.element.textContent).toEqual("Urgent !!!");
   });
 });

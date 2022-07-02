@@ -96,7 +96,8 @@ watch(
         :style="{ display: rowStyle }"
       />
       <ToolBar
-        :item="props.item"
+        :item-id="props.item._id"
+        :item-name="props.item.todoName"
         @edit="edit"
         @save="save"
         @info="getInfo"

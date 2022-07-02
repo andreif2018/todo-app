@@ -10,7 +10,7 @@ import { regular, target } from "../../model/model";
 describe("DraggableItem", () => {
   const testToDo: ITodo = {
     _id: TestEnum.TEST_ID,
-    todoName: "I am test ToDo",
+    todoName: TestEnum.TEST_NAME,
     createdTime: new Date().toLocaleString(),
     modifiedTime: undefined,
     completedTime: undefined,

@@ -3,7 +3,7 @@ import { toggleOff, toggleOn } from "@/utils/utils";
 import { ref } from "vue";
 import { Response } from "@/model/model";
 const props = defineProps<{
-  isChecked?: boolean;
+  isChecked: boolean;
 }>();
 const emit = defineEmits([Response.CHECK]);
 const isCheckedRef = ref(props.isChecked);
