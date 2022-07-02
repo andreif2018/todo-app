@@ -118,7 +118,6 @@ const filteredList = computed(() => {
   }
 
   .list-container {
-    overflow-x: auto;
     overflow-y: hidden;
     height: auto;
     min-height: 33vh;

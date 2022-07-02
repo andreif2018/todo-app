@@ -19,7 +19,6 @@ export default {
 @import "./../assets/base.css";
 
 .home {
-  overflow-x: hidden;
   width: 100vw;
   min-height: 100vh;
   align-items: center;
