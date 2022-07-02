@@ -16,7 +16,7 @@ const emit = defineEmits([Response.HINT]);
 
 const store = useToDoStore();
 const text = ref(props.item.todoName);
-const isToDoDisabled = ref(true);
+const isDisabled = ref(true);
 const hintMessage = ref();
 const rowStyle = ref(StyleEnum.FLEX);
 const modalStyle = ref(StyleEnum.NONE);
@@ -29,14 +29,13 @@ vFocus = {
 };
 
 const edit = () => {
-  toggleOff(isToDoDisabled);
-  store.editItem(text.value);
+  toggleOff(isDisabled);
 };
 
 const save = () => {
   if (!hintMessage.value) {
     store.updateItem(props.item._id, String(text.value));
-    toggleOn(isToDoDisabled);
+    toggleOn(isDisabled);
   }
 };
 
@@ -86,7 +85,7 @@ watch(
       class="regular"
       type="text"
       v-model="text"
-      :disabled="isToDoDisabled"
+      :disabled="isDisabled"
       v-focus
       :style="{ display: rowStyle }"
       @keyup.enter="save"
@@ -100,6 +99,7 @@ watch(
       @save="save"
       @info="getInfo"
       v-if="!isModal"
+      :is-disabled="isDisabled"
     />
     <ModalPopup
       v-if="isModal"

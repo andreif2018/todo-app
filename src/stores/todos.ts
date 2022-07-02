@@ -114,7 +114,7 @@ export const useToDoStore = defineStore({
     },
 
     editItem(todoName: string) {
-      this.todos.titles = this.todos.titles.filter((item) => item === todoName);
+      this.todos.titles = this.todos.titles.filter((item) => item !== todoName);
     },
   },
 });

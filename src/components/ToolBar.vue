@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
+import { validateInput } from "@/utils/utils";
 import { Response } from "@/model/model";
 import { ref } from "vue";
 import { useToDoStore } from "@/stores/todos";
@@ -7,22 +7,20 @@ import { useToDoStore } from "@/stores/todos";
 const props = defineProps<{
   itemId: string;
   itemName: string;
+  isDisabled: boolean;
 }>();
 const emit = defineEmits([Response.SAVE, Response.EDIT, Response.INFO]);
 
 const store = useToDoStore();
 const text = ref(props.itemName);
-const isToDoDisabled = ref(true);
 
 const edit = () => {
-  toggleOff(isToDoDisabled);
+  store.editItem(text.value);
   emit(Response.EDIT);
 };
 
 const save = () => {
   if (!validateInput(props.itemName)) {
-    store.updateItem(props.itemId, String(text.value));
-    toggleOn(isToDoDisabled);
     emit(Response.SAVE);
   }
 };
@@ -38,7 +36,7 @@ const getInfo = () => {
 
 <template>
   <div class="button-container">
-    <button class="edit" v-if="isToDoDisabled" @click="edit" />
+    <button class="edit" v-if="props.isDisabled" @click="edit" />
     <button class="save" v-else @click="save" />
     <button class="info" @click="getInfo" />
     <button class="remove" @click="remove" />
