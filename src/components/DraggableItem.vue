@@ -76,7 +76,7 @@ const stop = () => {
 }
 
 .current {
-  opacity: 0.2;
+  opacity: 0.5;
   background-color: lightslategray;
 }
 
