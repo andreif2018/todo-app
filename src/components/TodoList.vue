@@ -36,7 +36,7 @@ const filteredList = computed(() => {
       v-if="tipContent && store.todos.list.length > 0"
       :msg="tipContent"
     />
-    <HintItem v-else :msg="tipContent" :style="{ visibility: 'hidden' }" />
+    <HintItem v-else :style="{ visibility: 'hidden' }" />
     <ol class="list-container" @dragenter.prevent @dragover.prevent>
       <DraggableItem
         v-for="(item, index) in filteredList"

@@ -44,7 +44,7 @@ watch(
 <template>
   <article class="add-todo-wrapper" @keyup.enter="addItem">
     <HintItem v-if="isNotified && hintMessage" :msg="hintMessage" />
-    <HintItem v-else msg="" :style="{ visibility: 'hidden' }" />
+    <HintItem v-else :style="{ visibility: 'hidden' }" />
     <div class="add-container">
       <input
         class="title"
