@@ -39,11 +39,12 @@ describe("store", () => {
     expect(store.todos.titles).toStrictEqual([]);
   });
 
-  it("update item", () => {
+  it("update item", async () => {
     const store = useToDoStore();
     store.createNewItem("1st item");
     const todoID = store.todos.list[0]._id;
-    store.updateItem(todoID, TestEnum.TEST_NAME);
+    await store.editItem(TestEnum.TEST_NAME);
+    await store.updateItem(todoID, TestEnum.TEST_NAME);
     expect(store.todos.list.length).toBe(1);
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
     expect(store.todos.list[0].modifiedTime).toBeTruthy();
