@@ -1,24 +1,18 @@
 <script setup lang="ts">
 import { toggleOff, toggleOn, validateInput } from "@/utils/utils";
 import { Response } from "@/model/model";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { useToDoStore } from "@/stores/todos";
 
 const props = defineProps<{
   itemId: string;
   itemName: string;
 }>();
-const emit = defineEmits([
-  Response.HINT,
-  Response.SAVE,
-  Response.EDIT,
-  Response.INFO,
-]);
+const emit = defineEmits([Response.SAVE, Response.EDIT, Response.INFO]);
 
 const store = useToDoStore();
 const text = ref(props.itemName);
 const isToDoDisabled = ref(true);
-const hintMessage = ref();
 
 const edit = () => {
   toggleOff(isToDoDisabled);
@@ -26,7 +20,7 @@ const edit = () => {
 };
 
 const save = () => {
-  if (!hintMessage.value) {
+  if (!validateInput(props.itemName)) {
     store.updateItem(props.itemId, String(text.value));
     toggleOn(isToDoDisabled);
     emit(Response.SAVE);
@@ -40,14 +34,6 @@ const remove = () => {
 const getInfo = () => {
   emit(Response.INFO);
 };
-
-watch(
-  () => text.value,
-  (text) => {
-    hintMessage.value = validateInput(text);
-    emit(Response.HINT, hintMessage.value);
-  }
-);
 </script>
 
 <template>

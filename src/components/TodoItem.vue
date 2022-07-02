@@ -95,7 +95,7 @@ watch(
     />
     <ToolBar
       :item-id="props.item._id"
-      :item-name="props.item.todoName"
+      :item-name="text"
       @edit="edit"
       @save="save"
       @info="getInfo"
@@ -150,6 +150,10 @@ watch(
 
 .regular:invalid {
   border: 2px dashed red;
+}
+
+.attention {
+  border: 1px dashed red;
 }
 
 @media only screen and (min-width: 1440px) {

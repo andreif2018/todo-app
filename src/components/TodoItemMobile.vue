@@ -98,7 +98,7 @@ watch(
       />
       <ToolBar
         :item-id="props.item._id"
-        :item-name="props.item.todoName"
+        :item-name="text"
         @edit="edit"
         @save="save"
         @info="getInfo"
@@ -130,6 +130,10 @@ watch(
 
 .done {
   text-decoration: line-through;
+}
+
+.attention {
+  border: 1px dashed red;
 }
 
 .regular {
