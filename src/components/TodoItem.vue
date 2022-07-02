@@ -30,6 +30,7 @@ vFocus = {
 
 const edit = () => {
   toggleOff(isToDoDisabled);
+  store.editItem(text.value);
 };
 
 const save = () => {

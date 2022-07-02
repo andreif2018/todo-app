@@ -40,11 +40,9 @@ export const useToDoStore = defineStore({
       if (!todoID || !payload) return;
       const index = this.findIndexById(todoID);
       if (index !== -1) {
-        const oldName = this.findNameByIndex(index);
-        const titleIndex = this.todos.titles.indexOf(oldName);
         this.todos.list[index].todoName = payload;
         this.todos.list[index].modifiedTime = new Date().toLocaleString();
-        this.todos.titles[titleIndex] = payload;
+        this.todos.titles.push(payload);
         this.memorize();
       }
     },
@@ -113,6 +111,10 @@ export const useToDoStore = defineStore({
         this.todos.hideLowPriority = JSON.parse(item).hideLowPriority;
         this.todos.titles = JSON.parse(item).titles;
       }
+    },
+
+    editItem(todoName: string) {
+      this.todos.titles = this.todos.titles.filter((item) => item === todoName);
     },
   },
 });
