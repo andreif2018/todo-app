@@ -8,7 +8,11 @@ import { useToDoStore } from "../../stores/todos";
 
 describe("Check ToolBar Component", async () => {
   const wrapper = mount(ToolBar, {
-    props: { itemId: TestEnum.TEST_ID, itemName: TestEnum.TEST_NAME },
+    props: {
+      itemId: TestEnum.TEST_ID,
+      itemName: TestEnum.TEST_NAME,
+      isDisabled: true,
+    },
     global: {
       plugins: [
         createTestingPinia({
@@ -46,16 +50,6 @@ describe("Check ToolBar Component", async () => {
     expect(removeButton.element.tagName).toBe(TestEnum.BUTTON);
   });
 
-  it("update todo item disabled status", async () => {
-    await wrapper.vm.edit();
-    expect(wrapper.vm.isToDoDisabled).toBeFalsy();
-  });
-
-  it("update todo item back to disabled status", async () => {
-    await wrapper.vm.save();
-    expect(wrapper.vm.isToDoDisabled).toBeTruthy();
-  });
-
   it("handle remove method", async () => {
     const store = useToDoStore();
     setActivePinia(createPinia());
@@ -63,5 +57,17 @@ describe("Check ToolBar Component", async () => {
     const spy = (store.deleteItem = vi.fn());
     await wrapper.vm.remove();
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it("sensitive to props update", async () => {
+    const store = useToDoStore();
+    setActivePinia(createPinia());
+    await store.createNewItem(TestEnum.TEST_NAME);
+    await wrapper.setProps({
+      itemId: TestEnum.TEST_ID,
+      itemName: TestEnum.TEST_NAME,
+      isDisabled: false,
+    });
+    expect(wrapper.find(".save").exists()).toBe(true);
   });
 });

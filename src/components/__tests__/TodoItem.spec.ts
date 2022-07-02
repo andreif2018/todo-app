@@ -71,12 +71,12 @@ describe("Check TodoItem Component", async () => {
 
   it("update todo item disabled status", async () => {
     await wrapper.vm.edit();
-    expect(wrapper.vm.isToDoDisabled).toBeFalsy();
+    expect(wrapper.vm.isDisabled).toBeFalsy();
   });
 
   it("update todo item back to disabled status", async () => {
     await wrapper.vm.save();
-    expect(wrapper.vm.isToDoDisabled).toBeTruthy();
+    expect(wrapper.vm.isDisabled).toBeTruthy();
   });
 
   it("update todo item", async () => {

@@ -71,14 +71,14 @@ describe("Check TodoItemMobile Component", async () => {
 
   it("enables status", async () => {
     await wrapper.vm.edit();
-    expect(wrapper.vm.isToDoDisabled).toBeFalsy();
+    expect(wrapper.vm.isDisabled).toBeFalsy();
   });
 
   it("update todo item back to disabled status", async () => {
     await wrapper.vm.edit();
     await input[0].setValue(TestEnum.TEST_NAME);
     await wrapper.vm.save();
-    expect(wrapper.vm.isToDoDisabled).toBeTruthy();
+    expect(wrapper.vm.isDisabled).toBeTruthy();
   });
 
   it("update todo item", async () => {

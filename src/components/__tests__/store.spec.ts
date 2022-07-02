@@ -41,9 +41,10 @@ describe("store", () => {
 
   it("update item", async () => {
     const store = useToDoStore();
-    store.createNewItem("1st item");
+    const initialName = "1st item";
+    store.createNewItem(initialName);
     const todoID = store.todos.list[0]._id;
-    await store.editItem(TestEnum.TEST_NAME);
+    await store.editItem(initialName);
     await store.updateItem(todoID, TestEnum.TEST_NAME);
     expect(store.todos.list.length).toBe(1);
     expect(store.todos.list[0].todoName).toEqual(TestEnum.TEST_NAME);
