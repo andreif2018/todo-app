@@ -121,57 +121,7 @@ watch(
   border: 2px dashed red;
 }
 
-@media only screen and (min-width: 1920px) {
-  .add-todo-wrapper {
-    width: var(--top-block-width);
-  }
-
-  .add-button {
-    width: var(--button-width);
-  }
-}
-
-@media only screen and (min-width: 1440px) and (max-width: 1919px) {
-  .add-todo-wrapper {
-    width: var(--top-block-width);
-  }
-
-  .add-button {
-    width: var(--button-width);
-  }
-}
-
-@media only screen and (min-width: 1200px) and (max-width: 1439px) {
-  .add-todo-wrapper {
-    width: var(--top-block-width);
-  }
-
-  .add-button {
-    width: var(--button-width);
-  }
-}
-
-@media only screen and (min-width: 960px) and (max-width: 1199px) {
-  .add-todo-wrapper {
-    width: var(--top-block-width);
-  }
-
-  .add-button {
-    width: var(--button-width);
-  }
-}
-
-@media only screen and (min-width: 780px) and (max-width: 959px) {
-  .add-todo-wrapper {
-    width: var(--top-block-width);
-  }
-
-  .add-button {
-    width: var(--button-width);
-  }
-}
-
-@media only screen and (min-width: 640px) and (max-width: 779px) {
+@media only screen and (min-width: 640px) {
   .add-todo-wrapper {
     width: var(--top-block-width);
   }
